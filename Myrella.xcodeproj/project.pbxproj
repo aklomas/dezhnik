@@ -1,0 +1,484 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A61CD60F1991015200D5E07E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A61CD60E1991015200D5E07E /* Foundation.framework */; };
+		A61CD6111991015200D5E07E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A61CD6101991015200D5E07E /* CoreGraphics.framework */; };
+		A61CD6131991015200D5E07E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A61CD6121991015200D5E07E /* UIKit.framework */; };
+		A61CD6191991015200D5E07E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A61CD6171991015200D5E07E /* InfoPlist.strings */; };
+		A61CD61B1991015200D5E07E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A61CD61A1991015200D5E07E /* main.m */; };
+		A61CD61F1991015200D5E07E /* MainVCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A61CD61E1991015200D5E07E /* MainVCAppDelegate.m */; };
+		A61CD6221991015200D5E07E /* MainVCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A61CD6211991015200D5E07E /* MainVCRootViewController.m */; };
+		A61CD6251991015200D5E07E /* MainVCDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A61CD6241991015200D5E07E /* MainVCDataViewController.m */; };
+		A61CD6281991015200D5E07E /* MainVCModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = A61CD6271991015200D5E07E /* MainVCModelController.m */; };
+		A61CD62B1991015200D5E07E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A61CD6291991015200D5E07E /* Main.storyboard */; };
+		A61CD62D1991015200D5E07E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A61CD62C1991015200D5E07E /* Images.xcassets */; };
+		A61CD6341991015200D5E07E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A61CD6331991015200D5E07E /* XCTest.framework */; };
+		A61CD6351991015200D5E07E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A61CD60E1991015200D5E07E /* Foundation.framework */; };
+		A61CD6361991015200D5E07E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A61CD6121991015200D5E07E /* UIKit.framework */; };
+		A61CD63E1991015200D5E07E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A61CD63C1991015200D5E07E /* InfoPlist.strings */; };
+		A61CD6401991015200D5E07E /* MyrellaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A61CD63F1991015200D5E07E /* MyrellaTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A61CD6371991015200D5E07E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A61CD6031991015200D5E07E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A61CD60A1991015200D5E07E;
+			remoteInfo = Myrella;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A61CD60B1991015200D5E07E /* Myrella.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Myrella.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A61CD60E1991015200D5E07E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A61CD6101991015200D5E07E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A61CD6121991015200D5E07E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A61CD6161991015200D5E07E /* Myrella-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Myrella-Info.plist"; sourceTree = "<group>"; };
+		A61CD6181991015200D5E07E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A61CD61A1991015200D5E07E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A61CD61C1991015200D5E07E /* Myrella-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Myrella-Prefix.pch"; sourceTree = "<group>"; };
+		A61CD61D1991015200D5E07E /* MainVCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainVCAppDelegate.h; sourceTree = "<group>"; };
+		A61CD61E1991015200D5E07E /* MainVCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainVCAppDelegate.m; sourceTree = "<group>"; };
+		A61CD6201991015200D5E07E /* MainVCRootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainVCRootViewController.h; sourceTree = "<group>"; };
+		A61CD6211991015200D5E07E /* MainVCRootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainVCRootViewController.m; sourceTree = "<group>"; };
+		A61CD6231991015200D5E07E /* MainVCDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainVCDataViewController.h; sourceTree = "<group>"; };
+		A61CD6241991015200D5E07E /* MainVCDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainVCDataViewController.m; sourceTree = "<group>"; };
+		A61CD6261991015200D5E07E /* MainVCModelController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainVCModelController.h; sourceTree = "<group>"; };
+		A61CD6271991015200D5E07E /* MainVCModelController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainVCModelController.m; sourceTree = "<group>"; };
+		A61CD62A1991015200D5E07E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A61CD62C1991015200D5E07E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A61CD6321991015200D5E07E /* MyrellaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyrellaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A61CD6331991015200D5E07E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		A61CD63B1991015200D5E07E /* MyrellaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyrellaTests-Info.plist"; sourceTree = "<group>"; };
+		A61CD63D1991015200D5E07E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A61CD63F1991015200D5E07E /* MyrellaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyrellaTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A61CD6081991015200D5E07E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A61CD6111991015200D5E07E /* CoreGraphics.framework in Frameworks */,
+				A61CD6131991015200D5E07E /* UIKit.framework in Frameworks */,
+				A61CD60F1991015200D5E07E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A61CD62F1991015200D5E07E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A61CD6341991015200D5E07E /* XCTest.framework in Frameworks */,
+				A61CD6361991015200D5E07E /* UIKit.framework in Frameworks */,
+				A61CD6351991015200D5E07E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A61CD6021991015200D5E07E = {
+			isa = PBXGroup;
+			children = (
+				A61CD6141991015200D5E07E /* Myrella */,
+				A61CD6391991015200D5E07E /* MyrellaTests */,
+				A61CD60D1991015200D5E07E /* Frameworks */,
+				A61CD60C1991015200D5E07E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A61CD60C1991015200D5E07E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A61CD60B1991015200D5E07E /* Myrella.app */,
+				A61CD6321991015200D5E07E /* MyrellaTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A61CD60D1991015200D5E07E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A61CD60E1991015200D5E07E /* Foundation.framework */,
+				A61CD6101991015200D5E07E /* CoreGraphics.framework */,
+				A61CD6121991015200D5E07E /* UIKit.framework */,
+				A61CD6331991015200D5E07E /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A61CD6141991015200D5E07E /* Myrella */ = {
+			isa = PBXGroup;
+			children = (
+				A61CD61D1991015200D5E07E /* MainVCAppDelegate.h */,
+				A61CD61E1991015200D5E07E /* MainVCAppDelegate.m */,
+				A61CD6201991015200D5E07E /* MainVCRootViewController.h */,
+				A61CD6211991015200D5E07E /* MainVCRootViewController.m */,
+				A61CD6231991015200D5E07E /* MainVCDataViewController.h */,
+				A61CD6241991015200D5E07E /* MainVCDataViewController.m */,
+				A61CD6261991015200D5E07E /* MainVCModelController.h */,
+				A61CD6271991015200D5E07E /* MainVCModelController.m */,
+				A61CD6291991015200D5E07E /* Main.storyboard */,
+				A61CD62C1991015200D5E07E /* Images.xcassets */,
+				A61CD6151991015200D5E07E /* Supporting Files */,
+			);
+			path = Myrella;
+			sourceTree = "<group>";
+		};
+		A61CD6151991015200D5E07E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A61CD6161991015200D5E07E /* Myrella-Info.plist */,
+				A61CD6171991015200D5E07E /* InfoPlist.strings */,
+				A61CD61A1991015200D5E07E /* main.m */,
+				A61CD61C1991015200D5E07E /* Myrella-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A61CD6391991015200D5E07E /* MyrellaTests */ = {
+			isa = PBXGroup;
+			children = (
+				A61CD63F1991015200D5E07E /* MyrellaTests.m */,
+				A61CD63A1991015200D5E07E /* Supporting Files */,
+			);
+			path = MyrellaTests;
+			sourceTree = "<group>";
+		};
+		A61CD63A1991015200D5E07E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A61CD63B1991015200D5E07E /* MyrellaTests-Info.plist */,
+				A61CD63C1991015200D5E07E /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A61CD60A1991015200D5E07E /* Myrella */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A61CD6431991015200D5E07E /* Build configuration list for PBXNativeTarget "Myrella" */;
+			buildPhases = (
+				A61CD6071991015200D5E07E /* Sources */,
+				A61CD6081991015200D5E07E /* Frameworks */,
+				A61CD6091991015200D5E07E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Myrella;
+			productName = Myrella;
+			productReference = A61CD60B1991015200D5E07E /* Myrella.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A61CD6311991015200D5E07E /* MyrellaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A61CD6461991015200D5E07E /* Build configuration list for PBXNativeTarget "MyrellaTests" */;
+			buildPhases = (
+				A61CD62E1991015200D5E07E /* Sources */,
+				A61CD62F1991015200D5E07E /* Frameworks */,
+				A61CD6301991015200D5E07E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A61CD6381991015200D5E07E /* PBXTargetDependency */,
+			);
+			name = MyrellaTests;
+			productName = MyrellaTests;
+			productReference = A61CD6321991015200D5E07E /* MyrellaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A61CD6031991015200D5E07E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = MainVC;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = edu;
+				TargetAttributes = {
+					A61CD6311991015200D5E07E = {
+						TestTargetID = A61CD60A1991015200D5E07E;
+					};
+				};
+			};
+			buildConfigurationList = A61CD6061991015200D5E07E /* Build configuration list for PBXProject "Myrella" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A61CD6021991015200D5E07E;
+			productRefGroup = A61CD60C1991015200D5E07E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A61CD60A1991015200D5E07E /* Myrella */,
+				A61CD6311991015200D5E07E /* MyrellaTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A61CD6091991015200D5E07E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A61CD62D1991015200D5E07E /* Images.xcassets in Resources */,
+				A61CD6191991015200D5E07E /* InfoPlist.strings in Resources */,
+				A61CD62B1991015200D5E07E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A61CD6301991015200D5E07E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A61CD63E1991015200D5E07E /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A61CD6071991015200D5E07E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A61CD6281991015200D5E07E /* MainVCModelController.m in Sources */,
+				A61CD6251991015200D5E07E /* MainVCDataViewController.m in Sources */,
+				A61CD6221991015200D5E07E /* MainVCRootViewController.m in Sources */,
+				A61CD61F1991015200D5E07E /* MainVCAppDelegate.m in Sources */,
+				A61CD61B1991015200D5E07E /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A61CD62E1991015200D5E07E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A61CD6401991015200D5E07E /* MyrellaTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A61CD6381991015200D5E07E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A61CD60A1991015200D5E07E /* Myrella */;
+			targetProxy = A61CD6371991015200D5E07E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A61CD6171991015200D5E07E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A61CD6181991015200D5E07E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A61CD6291991015200D5E07E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A61CD62A1991015200D5E07E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A61CD63C1991015200D5E07E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A61CD63D1991015200D5E07E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A61CD6411991015200D5E07E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A61CD6421991015200D5E07E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A61CD6441991015200D5E07E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Myrella/Myrella-Prefix.pch";
+				INFOPLIST_FILE = "Myrella/Myrella-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A61CD6451991015200D5E07E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Myrella/Myrella-Prefix.pch";
+				INFOPLIST_FILE = "Myrella/Myrella-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		A61CD6471991015200D5E07E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Myrella.app/Myrella";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Myrella/Myrella-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MyrellaTests/MyrellaTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		A61CD6481991015200D5E07E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Myrella.app/Myrella";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Myrella/Myrella-Prefix.pch";
+				INFOPLIST_FILE = "MyrellaTests/MyrellaTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A61CD6061991015200D5E07E /* Build configuration list for PBXProject "Myrella" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A61CD6411991015200D5E07E /* Debug */,
+				A61CD6421991015200D5E07E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A61CD6431991015200D5E07E /* Build configuration list for PBXNativeTarget "Myrella" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A61CD6441991015200D5E07E /* Debug */,
+				A61CD6451991015200D5E07E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A61CD6461991015200D5E07E /* Build configuration list for PBXNativeTarget "MyrellaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A61CD6471991015200D5E07E /* Debug */,
+				A61CD6481991015200D5E07E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A61CD6031991015200D5E07E /* Project object */;
+}
