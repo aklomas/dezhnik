@@ -14,6 +14,5 @@
 
 - (MainVCDataViewController *)viewControllerAtIndex:(NSUInteger)index storyboard:(UIStoryboard *)storyboard;
 - (NSUInteger)indexOfViewController:(MainVCDataViewController *)viewController;
-Burek taratata
 
 @end
