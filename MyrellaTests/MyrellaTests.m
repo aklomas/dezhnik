@@ -2,7 +2,7 @@
 //  MyrellaTests.m
 //  MyrellaTests
 //
-//  Created by Filip Kralj on 05/08/14.
+//  Created by Filip Kralj on 06/08/14.
 //  Copyright (c) 2014 edu. All rights reserved.
 //
 

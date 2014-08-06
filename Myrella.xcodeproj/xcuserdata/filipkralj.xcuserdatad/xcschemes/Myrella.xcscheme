@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A61CD60A1991015200D5E07E"
+               BlueprintIdentifier = "A634C0CD1992407500AD0FEF"
                BuildableName = "Myrella.app"
                BlueprintName = "Myrella"
                ReferencedContainer = "container:Myrella.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A61CD6311991015200D5E07E"
+               BlueprintIdentifier = "A634C0EE1992407500AD0FEF"
                BuildableName = "MyrellaTests.xctest"
                BlueprintName = "MyrellaTests"
                ReferencedContainer = "container:Myrella.xcodeproj">
@@ -42,7 +42,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A61CD60A1991015200D5E07E"
+            BlueprintIdentifier = "A634C0CD1992407500AD0FEF"
             BuildableName = "Myrella.app"
             BlueprintName = "Myrella"
             ReferencedContainer = "container:Myrella.xcodeproj">
@@ -61,7 +61,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A61CD60A1991015200D5E07E"
+            BlueprintIdentifier = "A634C0CD1992407500AD0FEF"
             BuildableName = "Myrella.app"
             BlueprintName = "Myrella"
             ReferencedContainer = "container:Myrella.xcodeproj">
@@ -79,7 +79,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A61CD60A1991015200D5E07E"
+            BlueprintIdentifier = "A634C0CD1992407500AD0FEF"
             BuildableName = "Myrella.app"
             BlueprintName = "Myrella"
             ReferencedContainer = "container:Myrella.xcodeproj">

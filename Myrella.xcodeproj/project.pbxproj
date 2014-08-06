@@ -7,157 +7,147 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A61CD60F1991015200D5E07E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A61CD60E1991015200D5E07E /* Foundation.framework */; };
-		A61CD6111991015200D5E07E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A61CD6101991015200D5E07E /* CoreGraphics.framework */; };
-		A61CD6131991015200D5E07E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A61CD6121991015200D5E07E /* UIKit.framework */; };
-		A61CD6191991015200D5E07E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A61CD6171991015200D5E07E /* InfoPlist.strings */; };
-		A61CD61B1991015200D5E07E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A61CD61A1991015200D5E07E /* main.m */; };
-		A61CD61F1991015200D5E07E /* MainVCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A61CD61E1991015200D5E07E /* MainVCAppDelegate.m */; };
-		A61CD6221991015200D5E07E /* MainVCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A61CD6211991015200D5E07E /* MainVCRootViewController.m */; };
-		A61CD6251991015200D5E07E /* MainVCDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A61CD6241991015200D5E07E /* MainVCDataViewController.m */; };
-		A61CD6281991015200D5E07E /* MainVCModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = A61CD6271991015200D5E07E /* MainVCModelController.m */; };
-		A61CD62B1991015200D5E07E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A61CD6291991015200D5E07E /* Main.storyboard */; };
-		A61CD62D1991015200D5E07E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A61CD62C1991015200D5E07E /* Images.xcassets */; };
-		A61CD6341991015200D5E07E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A61CD6331991015200D5E07E /* XCTest.framework */; };
-		A61CD6351991015200D5E07E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A61CD60E1991015200D5E07E /* Foundation.framework */; };
-		A61CD6361991015200D5E07E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A61CD6121991015200D5E07E /* UIKit.framework */; };
-		A61CD63E1991015200D5E07E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A61CD63C1991015200D5E07E /* InfoPlist.strings */; };
-		A61CD6401991015200D5E07E /* MyrellaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A61CD63F1991015200D5E07E /* MyrellaTests.m */; };
+		A634C0D21992407500AD0FEF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A634C0D11992407500AD0FEF /* Foundation.framework */; };
+		A634C0D41992407500AD0FEF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A634C0D31992407500AD0FEF /* CoreGraphics.framework */; };
+		A634C0D61992407500AD0FEF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A634C0D51992407500AD0FEF /* UIKit.framework */; };
+		A634C0DC1992407500AD0FEF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A634C0DA1992407500AD0FEF /* InfoPlist.strings */; };
+		A634C0DE1992407500AD0FEF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A634C0DD1992407500AD0FEF /* main.m */; };
+		A634C0E21992407500AD0FEF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A634C0E11992407500AD0FEF /* AppDelegate.m */; };
+		A634C0E51992407500AD0FEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A634C0E31992407500AD0FEF /* Main.storyboard */; };
+		A634C0E81992407500AD0FEF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A634C0E71992407500AD0FEF /* ViewController.m */; };
+		A634C0EA1992407500AD0FEF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A634C0E91992407500AD0FEF /* Images.xcassets */; };
+		A634C0F11992407500AD0FEF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A634C0F01992407500AD0FEF /* XCTest.framework */; };
+		A634C0F21992407500AD0FEF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A634C0D11992407500AD0FEF /* Foundation.framework */; };
+		A634C0F31992407500AD0FEF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A634C0D51992407500AD0FEF /* UIKit.framework */; };
+		A634C0FB1992407500AD0FEF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A634C0F91992407500AD0FEF /* InfoPlist.strings */; };
+		A634C0FD1992407500AD0FEF /* MyrellaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A634C0FC1992407500AD0FEF /* MyrellaTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A61CD6371991015200D5E07E /* PBXContainerItemProxy */ = {
+		A634C0F41992407500AD0FEF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = A61CD6031991015200D5E07E /* Project object */;
+			containerPortal = A634C0C61992407500AD0FEF /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = A61CD60A1991015200D5E07E;
+			remoteGlobalIDString = A634C0CD1992407500AD0FEF;
 			remoteInfo = Myrella;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A61CD60B1991015200D5E07E /* Myrella.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Myrella.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A61CD60E1991015200D5E07E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		A61CD6101991015200D5E07E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		A61CD6121991015200D5E07E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		A61CD6161991015200D5E07E /* Myrella-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Myrella-Info.plist"; sourceTree = "<group>"; };
-		A61CD6181991015200D5E07E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		A61CD61A1991015200D5E07E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A61CD61C1991015200D5E07E /* Myrella-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Myrella-Prefix.pch"; sourceTree = "<group>"; };
-		A61CD61D1991015200D5E07E /* MainVCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainVCAppDelegate.h; sourceTree = "<group>"; };
-		A61CD61E1991015200D5E07E /* MainVCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainVCAppDelegate.m; sourceTree = "<group>"; };
-		A61CD6201991015200D5E07E /* MainVCRootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainVCRootViewController.h; sourceTree = "<group>"; };
-		A61CD6211991015200D5E07E /* MainVCRootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainVCRootViewController.m; sourceTree = "<group>"; };
-		A61CD6231991015200D5E07E /* MainVCDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainVCDataViewController.h; sourceTree = "<group>"; };
-		A61CD6241991015200D5E07E /* MainVCDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainVCDataViewController.m; sourceTree = "<group>"; };
-		A61CD6261991015200D5E07E /* MainVCModelController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainVCModelController.h; sourceTree = "<group>"; };
-		A61CD6271991015200D5E07E /* MainVCModelController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainVCModelController.m; sourceTree = "<group>"; };
-		A61CD62A1991015200D5E07E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A61CD62C1991015200D5E07E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		A61CD6321991015200D5E07E /* MyrellaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyrellaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A61CD6331991015200D5E07E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		A61CD63B1991015200D5E07E /* MyrellaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyrellaTests-Info.plist"; sourceTree = "<group>"; };
-		A61CD63D1991015200D5E07E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		A61CD63F1991015200D5E07E /* MyrellaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyrellaTests.m; sourceTree = "<group>"; };
+		A634C0CE1992407500AD0FEF /* Myrella.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Myrella.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A634C0D11992407500AD0FEF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A634C0D31992407500AD0FEF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A634C0D51992407500AD0FEF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A634C0D91992407500AD0FEF /* Myrella-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Myrella-Info.plist"; sourceTree = "<group>"; };
+		A634C0DB1992407500AD0FEF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A634C0DD1992407500AD0FEF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A634C0DF1992407500AD0FEF /* Myrella-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Myrella-Prefix.pch"; sourceTree = "<group>"; };
+		A634C0E01992407500AD0FEF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A634C0E11992407500AD0FEF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A634C0E41992407500AD0FEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A634C0E61992407500AD0FEF /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		A634C0E71992407500AD0FEF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A634C0E91992407500AD0FEF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A634C0EF1992407500AD0FEF /* MyrellaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyrellaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A634C0F01992407500AD0FEF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		A634C0F81992407500AD0FEF /* MyrellaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyrellaTests-Info.plist"; sourceTree = "<group>"; };
+		A634C0FA1992407500AD0FEF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A634C0FC1992407500AD0FEF /* MyrellaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyrellaTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		A61CD6081991015200D5E07E /* Frameworks */ = {
+		A634C0CB1992407500AD0FEF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A61CD6111991015200D5E07E /* CoreGraphics.framework in Frameworks */,
-				A61CD6131991015200D5E07E /* UIKit.framework in Frameworks */,
-				A61CD60F1991015200D5E07E /* Foundation.framework in Frameworks */,
+				A634C0D41992407500AD0FEF /* CoreGraphics.framework in Frameworks */,
+				A634C0D61992407500AD0FEF /* UIKit.framework in Frameworks */,
+				A634C0D21992407500AD0FEF /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A61CD62F1991015200D5E07E /* Frameworks */ = {
+		A634C0EC1992407500AD0FEF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A61CD6341991015200D5E07E /* XCTest.framework in Frameworks */,
-				A61CD6361991015200D5E07E /* UIKit.framework in Frameworks */,
-				A61CD6351991015200D5E07E /* Foundation.framework in Frameworks */,
+				A634C0F11992407500AD0FEF /* XCTest.framework in Frameworks */,
+				A634C0F31992407500AD0FEF /* UIKit.framework in Frameworks */,
+				A634C0F21992407500AD0FEF /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A61CD6021991015200D5E07E = {
+		A634C0C51992407500AD0FEF = {
 			isa = PBXGroup;
 			children = (
-				A61CD6141991015200D5E07E /* Myrella */,
-				A61CD6391991015200D5E07E /* MyrellaTests */,
-				A61CD60D1991015200D5E07E /* Frameworks */,
-				A61CD60C1991015200D5E07E /* Products */,
+				A634C0D71992407500AD0FEF /* Myrella */,
+				A634C0F61992407500AD0FEF /* MyrellaTests */,
+				A634C0D01992407500AD0FEF /* Frameworks */,
+				A634C0CF1992407500AD0FEF /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		A61CD60C1991015200D5E07E /* Products */ = {
+		A634C0CF1992407500AD0FEF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A61CD60B1991015200D5E07E /* Myrella.app */,
-				A61CD6321991015200D5E07E /* MyrellaTests.xctest */,
+				A634C0CE1992407500AD0FEF /* Myrella.app */,
+				A634C0EF1992407500AD0FEF /* MyrellaTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A61CD60D1991015200D5E07E /* Frameworks */ = {
+		A634C0D01992407500AD0FEF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A61CD60E1991015200D5E07E /* Foundation.framework */,
-				A61CD6101991015200D5E07E /* CoreGraphics.framework */,
-				A61CD6121991015200D5E07E /* UIKit.framework */,
-				A61CD6331991015200D5E07E /* XCTest.framework */,
+				A634C0D11992407500AD0FEF /* Foundation.framework */,
+				A634C0D31992407500AD0FEF /* CoreGraphics.framework */,
+				A634C0D51992407500AD0FEF /* UIKit.framework */,
+				A634C0F01992407500AD0FEF /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A61CD6141991015200D5E07E /* Myrella */ = {
+		A634C0D71992407500AD0FEF /* Myrella */ = {
 			isa = PBXGroup;
 			children = (
-				A61CD61D1991015200D5E07E /* MainVCAppDelegate.h */,
-				A61CD61E1991015200D5E07E /* MainVCAppDelegate.m */,
-				A61CD6201991015200D5E07E /* MainVCRootViewController.h */,
-				A61CD6211991015200D5E07E /* MainVCRootViewController.m */,
-				A61CD6231991015200D5E07E /* MainVCDataViewController.h */,
-				A61CD6241991015200D5E07E /* MainVCDataViewController.m */,
-				A61CD6261991015200D5E07E /* MainVCModelController.h */,
-				A61CD6271991015200D5E07E /* MainVCModelController.m */,
-				A61CD6291991015200D5E07E /* Main.storyboard */,
-				A61CD62C1991015200D5E07E /* Images.xcassets */,
-				A61CD6151991015200D5E07E /* Supporting Files */,
+				A634C0E01992407500AD0FEF /* AppDelegate.h */,
+				A634C0E11992407500AD0FEF /* AppDelegate.m */,
+				A634C0E31992407500AD0FEF /* Main.storyboard */,
+				A634C0E61992407500AD0FEF /* ViewController.h */,
+				A634C0E71992407500AD0FEF /* ViewController.m */,
+				A634C0E91992407500AD0FEF /* Images.xcassets */,
+				A634C0D81992407500AD0FEF /* Supporting Files */,
 			);
 			path = Myrella;
 			sourceTree = "<group>";
 		};
-		A61CD6151991015200D5E07E /* Supporting Files */ = {
+		A634C0D81992407500AD0FEF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A61CD6161991015200D5E07E /* Myrella-Info.plist */,
-				A61CD6171991015200D5E07E /* InfoPlist.strings */,
-				A61CD61A1991015200D5E07E /* main.m */,
-				A61CD61C1991015200D5E07E /* Myrella-Prefix.pch */,
+				A634C0D91992407500AD0FEF /* Myrella-Info.plist */,
+				A634C0DA1992407500AD0FEF /* InfoPlist.strings */,
+				A634C0DD1992407500AD0FEF /* main.m */,
+				A634C0DF1992407500AD0FEF /* Myrella-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		A61CD6391991015200D5E07E /* MyrellaTests */ = {
+		A634C0F61992407500AD0FEF /* MyrellaTests */ = {
 			isa = PBXGroup;
 			children = (
-				A61CD63F1991015200D5E07E /* MyrellaTests.m */,
-				A61CD63A1991015200D5E07E /* Supporting Files */,
+				A634C0FC1992407500AD0FEF /* MyrellaTests.m */,
+				A634C0F71992407500AD0FEF /* Supporting Files */,
 			);
 			path = MyrellaTests;
 			sourceTree = "<group>";
 		};
-		A61CD63A1991015200D5E07E /* Supporting Files */ = {
+		A634C0F71992407500AD0FEF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A61CD63B1991015200D5E07E /* MyrellaTests-Info.plist */,
-				A61CD63C1991015200D5E07E /* InfoPlist.strings */,
+				A634C0F81992407500AD0FEF /* MyrellaTests-Info.plist */,
+				A634C0F91992407500AD0FEF /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -165,13 +155,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A61CD60A1991015200D5E07E /* Myrella */ = {
+		A634C0CD1992407500AD0FEF /* Myrella */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A61CD6431991015200D5E07E /* Build configuration list for PBXNativeTarget "Myrella" */;
+			buildConfigurationList = A634C1001992407500AD0FEF /* Build configuration list for PBXNativeTarget "Myrella" */;
 			buildPhases = (
-				A61CD6071991015200D5E07E /* Sources */,
-				A61CD6081991015200D5E07E /* Frameworks */,
-				A61CD6091991015200D5E07E /* Resources */,
+				A634C0CA1992407500AD0FEF /* Sources */,
+				A634C0CB1992407500AD0FEF /* Frameworks */,
+				A634C0CC1992407500AD0FEF /* Resources */,
 			);
 			buildRules = (
 			);
@@ -179,43 +169,42 @@
 			);
 			name = Myrella;
 			productName = Myrella;
-			productReference = A61CD60B1991015200D5E07E /* Myrella.app */;
+			productReference = A634C0CE1992407500AD0FEF /* Myrella.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A61CD6311991015200D5E07E /* MyrellaTests */ = {
+		A634C0EE1992407500AD0FEF /* MyrellaTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A61CD6461991015200D5E07E /* Build configuration list for PBXNativeTarget "MyrellaTests" */;
+			buildConfigurationList = A634C1031992407500AD0FEF /* Build configuration list for PBXNativeTarget "MyrellaTests" */;
 			buildPhases = (
-				A61CD62E1991015200D5E07E /* Sources */,
-				A61CD62F1991015200D5E07E /* Frameworks */,
-				A61CD6301991015200D5E07E /* Resources */,
+				A634C0EB1992407500AD0FEF /* Sources */,
+				A634C0EC1992407500AD0FEF /* Frameworks */,
+				A634C0ED1992407500AD0FEF /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				A61CD6381991015200D5E07E /* PBXTargetDependency */,
+				A634C0F51992407500AD0FEF /* PBXTargetDependency */,
 			);
 			name = MyrellaTests;
 			productName = MyrellaTests;
-			productReference = A61CD6321991015200D5E07E /* MyrellaTests.xctest */;
+			productReference = A634C0EF1992407500AD0FEF /* MyrellaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		A61CD6031991015200D5E07E /* Project object */ = {
+		A634C0C61992407500AD0FEF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = MainVC;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = edu;
 				TargetAttributes = {
-					A61CD6311991015200D5E07E = {
-						TestTargetID = A61CD60A1991015200D5E07E;
+					A634C0EE1992407500AD0FEF = {
+						TestTargetID = A634C0CD1992407500AD0FEF;
 					};
 				};
 			};
-			buildConfigurationList = A61CD6061991015200D5E07E /* Build configuration list for PBXProject "Myrella" */;
+			buildConfigurationList = A634C0C91992407500AD0FEF /* Build configuration list for PBXProject "Myrella" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -223,90 +212,88 @@
 				en,
 				Base,
 			);
-			mainGroup = A61CD6021991015200D5E07E;
-			productRefGroup = A61CD60C1991015200D5E07E /* Products */;
+			mainGroup = A634C0C51992407500AD0FEF;
+			productRefGroup = A634C0CF1992407500AD0FEF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A61CD60A1991015200D5E07E /* Myrella */,
-				A61CD6311991015200D5E07E /* MyrellaTests */,
+				A634C0CD1992407500AD0FEF /* Myrella */,
+				A634C0EE1992407500AD0FEF /* MyrellaTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		A61CD6091991015200D5E07E /* Resources */ = {
+		A634C0CC1992407500AD0FEF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A61CD62D1991015200D5E07E /* Images.xcassets in Resources */,
-				A61CD6191991015200D5E07E /* InfoPlist.strings in Resources */,
-				A61CD62B1991015200D5E07E /* Main.storyboard in Resources */,
+				A634C0EA1992407500AD0FEF /* Images.xcassets in Resources */,
+				A634C0DC1992407500AD0FEF /* InfoPlist.strings in Resources */,
+				A634C0E51992407500AD0FEF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A61CD6301991015200D5E07E /* Resources */ = {
+		A634C0ED1992407500AD0FEF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A61CD63E1991015200D5E07E /* InfoPlist.strings in Resources */,
+				A634C0FB1992407500AD0FEF /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		A61CD6071991015200D5E07E /* Sources */ = {
+		A634C0CA1992407500AD0FEF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A61CD6281991015200D5E07E /* MainVCModelController.m in Sources */,
-				A61CD6251991015200D5E07E /* MainVCDataViewController.m in Sources */,
-				A61CD6221991015200D5E07E /* MainVCRootViewController.m in Sources */,
-				A61CD61F1991015200D5E07E /* MainVCAppDelegate.m in Sources */,
-				A61CD61B1991015200D5E07E /* main.m in Sources */,
+				A634C0E81992407500AD0FEF /* ViewController.m in Sources */,
+				A634C0E21992407500AD0FEF /* AppDelegate.m in Sources */,
+				A634C0DE1992407500AD0FEF /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A61CD62E1991015200D5E07E /* Sources */ = {
+		A634C0EB1992407500AD0FEF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A61CD6401991015200D5E07E /* MyrellaTests.m in Sources */,
+				A634C0FD1992407500AD0FEF /* MyrellaTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A61CD6381991015200D5E07E /* PBXTargetDependency */ = {
+		A634C0F51992407500AD0FEF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A61CD60A1991015200D5E07E /* Myrella */;
-			targetProxy = A61CD6371991015200D5E07E /* PBXContainerItemProxy */;
+			target = A634C0CD1992407500AD0FEF /* Myrella */;
+			targetProxy = A634C0F41992407500AD0FEF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A61CD6171991015200D5E07E /* InfoPlist.strings */ = {
+		A634C0DA1992407500AD0FEF /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A61CD6181991015200D5E07E /* en */,
+				A634C0DB1992407500AD0FEF /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		A61CD6291991015200D5E07E /* Main.storyboard */ = {
+		A634C0E31992407500AD0FEF /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A61CD62A1991015200D5E07E /* Base */,
+				A634C0E41992407500AD0FEF /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		A61CD63C1991015200D5E07E /* InfoPlist.strings */ = {
+		A634C0F91992407500AD0FEF /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A61CD63D1991015200D5E07E /* en */,
+				A634C0FA1992407500AD0FEF /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -314,7 +301,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		A61CD6411991015200D5E07E /* Debug */ = {
+		A634C0FE1992407500AD0FEF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -352,7 +339,7 @@
 			};
 			name = Debug;
 		};
-		A61CD6421991015200D5E07E /* Release */ = {
+		A634C0FF1992407500AD0FEF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -384,7 +371,7 @@
 			};
 			name = Release;
 		};
-		A61CD6441991015200D5E07E /* Debug */ = {
+		A634C1011992407500AD0FEF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -397,7 +384,7 @@
 			};
 			name = Debug;
 		};
-		A61CD6451991015200D5E07E /* Release */ = {
+		A634C1021992407500AD0FEF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -410,7 +397,7 @@
 			};
 			name = Release;
 		};
-		A61CD6471991015200D5E07E /* Debug */ = {
+		A634C1041992407500AD0FEF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Myrella.app/Myrella";
@@ -432,7 +419,7 @@
 			};
 			name = Debug;
 		};
-		A61CD6481991015200D5E07E /* Release */ = {
+		A634C1051992407500AD0FEF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Myrella.app/Myrella";
@@ -453,32 +440,32 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A61CD6061991015200D5E07E /* Build configuration list for PBXProject "Myrella" */ = {
+		A634C0C91992407500AD0FEF /* Build configuration list for PBXProject "Myrella" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A61CD6411991015200D5E07E /* Debug */,
-				A61CD6421991015200D5E07E /* Release */,
+				A634C0FE1992407500AD0FEF /* Debug */,
+				A634C0FF1992407500AD0FEF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A61CD6431991015200D5E07E /* Build configuration list for PBXNativeTarget "Myrella" */ = {
+		A634C1001992407500AD0FEF /* Build configuration list for PBXNativeTarget "Myrella" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A61CD6441991015200D5E07E /* Debug */,
-				A61CD6451991015200D5E07E /* Release */,
+				A634C1011992407500AD0FEF /* Debug */,
+				A634C1021992407500AD0FEF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		A61CD6461991015200D5E07E /* Build configuration list for PBXNativeTarget "MyrellaTests" */ = {
+		A634C1031992407500AD0FEF /* Build configuration list for PBXNativeTarget "MyrellaTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A61CD6471991015200D5E07E /* Debug */,
-				A61CD6481991015200D5E07E /* Release */,
+				A634C1041992407500AD0FEF /* Debug */,
+				A634C1051992407500AD0FEF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = A61CD6031991015200D5E07E /* Project object */;
+	rootObject = A634C0C61992407500AD0FEF /* Project object */;
 }

@@ -1,21 +1,21 @@
 //
-//  MainVCAppDelegate.m
+//  AppDelegate.m
 //  Myrella
 //
-//  Created by Filip Kralj on 05/08/14.
+//  Created by Filip Kralj on 06/08/14.
 //  Copyright (c) 2014 edu. All rights reserved.
 //
 
-#import "MainVCAppDelegate.h"
+#import "AppDelegate.h"
 
-@implementation MainVCAppDelegate
+@implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
     return YES;
 }
-
+							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

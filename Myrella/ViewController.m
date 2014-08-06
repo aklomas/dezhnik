@@ -1,18 +1,18 @@
 //
-//  MainVCDataViewController.m
+//  ViewController.m
 //  Myrella
 //
-//  Created by Filip Kralj on 05/08/14.
+//  Created by Filip Kralj on 06/08/14.
 //  Copyright (c) 2014 edu. All rights reserved.
 //
 
-#import "MainVCDataViewController.h"
+#import "ViewController.h"
 
-@interface MainVCDataViewController ()
+@interface ViewController ()
 
 @end
 
-@implementation MainVCDataViewController
+@implementation ViewController
 
 - (void)viewDidLoad
 {
@@ -24,12 +24,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    self.dataLabel.text = [self.dataObject description];
 }
 
 @end
