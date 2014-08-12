@@ -21,6 +21,7 @@
 		A634C0F31992407500AD0FEF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A634C0D51992407500AD0FEF /* UIKit.framework */; };
 		A634C0FB1992407500AD0FEF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A634C0F91992407500AD0FEF /* InfoPlist.strings */; };
 		A634C0FD1992407500AD0FEF /* MyrellaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A634C0FC1992407500AD0FEF /* MyrellaTests.m */; };
+		A634C108199246AB00AD0FEF /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A634C107199246AB00AD0FEF /* PageContentViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		A634C0F81992407500AD0FEF /* MyrellaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyrellaTests-Info.plist"; sourceTree = "<group>"; };
 		A634C0FA1992407500AD0FEF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A634C0FC1992407500AD0FEF /* MyrellaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyrellaTests.m; sourceTree = "<group>"; };
+		A634C106199246AB00AD0FEF /* PageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageContentViewController.h; sourceTree = "<group>"; };
+		A634C107199246AB00AD0FEF /* PageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageContentViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,9 +117,11 @@
 			children = (
 				A634C0E01992407500AD0FEF /* AppDelegate.h */,
 				A634C0E11992407500AD0FEF /* AppDelegate.m */,
-				A634C0E31992407500AD0FEF /* Main.storyboard */,
 				A634C0E61992407500AD0FEF /* ViewController.h */,
 				A634C0E71992407500AD0FEF /* ViewController.m */,
+				A634C106199246AB00AD0FEF /* PageContentViewController.h */,
+				A634C107199246AB00AD0FEF /* PageContentViewController.m */,
+				A634C0E31992407500AD0FEF /* Main.storyboard */,
 				A634C0E91992407500AD0FEF /* Images.xcassets */,
 				A634C0D81992407500AD0FEF /* Supporting Files */,
 			);
@@ -199,6 +204,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = edu;
 				TargetAttributes = {
+					A634C0CD1992407500AD0FEF = {
+						DevelopmentTeam = J8978KGJ83;
+					};
 					A634C0EE1992407500AD0FEF = {
 						TestTargetID = A634C0CD1992407500AD0FEF;
 					};
@@ -250,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A634C0E81992407500AD0FEF /* ViewController.m in Sources */,
+				A634C108199246AB00AD0FEF /* PageContentViewController.m in Sources */,
 				A634C0E21992407500AD0FEF /* AppDelegate.m in Sources */,
 				A634C0DE1992407500AD0FEF /* main.m in Sources */,
 			);
@@ -376,6 +385,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Myrella/Myrella-Prefix.pch";
 				INFOPLIST_FILE = "Myrella/Myrella-Info.plist";
@@ -389,6 +399,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Myrella/Myrella-Prefix.pch";
 				INFOPLIST_FILE = "Myrella/Myrella-Info.plist";
@@ -456,6 +467,7 @@
 				A634C1021992407500AD0FEF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A634C1031992407500AD0FEF /* Build configuration list for PBXNativeTarget "MyrellaTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +476,7 @@
 				A634C1051992407500AD0FEF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
