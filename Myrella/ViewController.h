@@ -7,12 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PageContentViewController.h"
+#import "SVGKit.h"
+#import "PageONEViewController.h"
+#import "PageTWOViewController.h"
+#import "PageTHREEViewController.h"
+#import "PageFOURViewController.h"
 
-@interface ViewController : UIViewController <UIPageViewControllerDataSource>
+@interface ViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
-- (IBAction)startWalkthrough:(id)sender;
+
 @property (strong, nonatomic) UIPageViewController *pageViewController;
-@property (strong, nonatomic) NSArray *pageTitles;
+@property (nonatomic, retain) IBOutlet UIPageControl *pageControl;
 
 @end
