@@ -18,13 +18,15 @@
 {
     [super viewDidLoad];
     
-    self.pageControl.numberOfPages = 4;
-    self.pageControl.currentPage = 0;
-    
     // Create page view controller
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
     self.pageViewController.dataSource = self;
     self.pageViewController.delegate = self;
+    
+    self.views = [[NSMutableArray alloc] initWithCapacity:3];
+    [self.views addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"PageONE"]];
+    [self.views addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"PageTWO"]];
+    [self.views addObject:[[PageTHREEViewController alloc] initWithStyle:UITableViewStyleGrouped]];
     
     UIViewController *startingViewController = [self viewControllerAtIndex:0];
     NSArray *viewControllers = @[startingViewController];
@@ -36,7 +38,14 @@
     [self addChildViewController:_pageViewController];
     [self.view addSubview:_pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
-    
+     
+     self.pageControl.numberOfPages = [self.views count];
+     self.pageControl.currentPage = 0;
+
+}
+
+-(void)viewDidDisappear:(BOOL)animated {
+    [[self.views objectAtIndex:2] deinit];
 }
 
 
@@ -49,26 +58,11 @@
 
 - (UIViewController *)viewControllerAtIndex:(NSUInteger)index
 {
-    // Create a new view controller and pass suitable data.
-    if (index == 0) {
-        PageONEViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageONE"];
-        return pageContentViewController;
-    }
-    else if (index == 1) {
-        PageTWOViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageTWO"];
-        return pageContentViewController;
-    }
-    else if (index == 2) {
-        PageTHREEViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageTHREE"];
-        return pageContentViewController;
-    }
-    else if (index == 3) {
-        PageFOURViewController *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageFOUR"];
-        return pageContentViewController;
-    }
-    else {
+    if (([self.views count] == 0) || (index >= [self.views count])) {
         return nil;
     }
+    else
+        return [self.views objectAtIndex:index];
 }
 
 
