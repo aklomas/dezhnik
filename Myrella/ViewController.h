@@ -11,13 +11,13 @@
 #import "PageONEViewController.h"
 #import "PageTWOViewController.h"
 #import "PageTHREEViewController.h"
-#import "PageFOURViewController.h"
 
 @interface ViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 @property (nonatomic, retain) IBOutlet UIPageControl *pageControl;
+@property (strong,nonatomic) SensorTag *sensorTag;
 @property NSMutableArray *views;
 
 @end

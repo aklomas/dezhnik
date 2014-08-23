@@ -58,7 +58,23 @@
         <!--PageTHREE-->
         <scene sceneID="q17-fK-86h">
             <objects>
-                <viewController storyboardIdentifier="PageTHREE" title="PageTHREE" id="lFv-Ob-ctC" userLabel="PageTHREE" customClass="PageTHREEViewController" sceneMemberID="viewController"/>
+                <viewController storyboardIdentifier="PageTHREE" title="PageTHREE" id="lFv-Ob-ctC" userLabel="PageTHREE" customClass="PageTHREEViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IQO-dW-Tjj"/>
+                        <viewControllerLayoutGuide type="bottom" id="9yf-tM-9Cm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wqv-j7-2Hn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="SensorTableContainer" translatesAutoresizingMaskIntoConstraints="NO" id="LEx-i4-bLH" userLabel="SensorTableContainer">
+                                <rect key="frame" x="0.0" y="65" width="320" height="441"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </containerView>
+                        </subviews>
+                    </view>
+                </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Mb-33-2o8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="854" y="1083"/>
@@ -70,31 +86,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9KP-IU-Rrw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="756" y="206"/>
-        </scene>
-        <!--PageFOUR-->
-        <scene sceneID="0vb-HC-U06">
-            <objects>
-                <viewController storyboardIdentifier="PageFOUR" title="PageFOUR" id="rRU-1c-37V" userLabel="PageFOUR" customClass="PageFOURViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ISQ-xa-75Z"/>
-                        <viewControllerLayoutGuide type="bottom" id="LiB-fe-Lqx"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Oum-Vs-ohy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OA2-2w-4CU">
-                                <rect key="frame" x="80" y="91" width="160" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sme-08-mQ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1650" y="1083"/>
         </scene>
         <!--PageONE-->
         <scene sceneID="K4y-cL-9fT">

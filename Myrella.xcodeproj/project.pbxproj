@@ -23,8 +23,8 @@
 		A634C0FD1992407500AD0FEF /* MyrellaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A634C0FC1992407500AD0FEF /* MyrellaTests.m */; };
 		A6B34EE9199A60D8009AF950 /* PageONEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B34EE8199A60D8009AF950 /* PageONEViewController.m */; };
 		A6B34EEC199A60E7009AF950 /* PageTWOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B34EEB199A60E7009AF950 /* PageTWOViewController.m */; };
-		A6B34EEF199A60F4009AF950 /* PageTHREEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B34EEE199A60F4009AF950 /* PageTHREEViewController.m */; };
-		A6B34EF2199A6102009AF950 /* PageFOURViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B34EF1199A6102009AF950 /* PageFOURViewController.m */; };
+		A6B34EEF199A60F4009AF950 /* SensorTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B34EEE199A60F4009AF950 /* SensorTableView.m */; };
+		A6B34EF2199A6102009AF950 /* PageTHREEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B34EF1199A6102009AF950 /* PageTHREEViewController.m */; };
 		A6B34F79199B78A6009AF950 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B34F78199B78A6009AF950 /* CoreText.framework */; };
 		A6B34F7B199B78B2009AF950 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B34F7A199B78B2009AF950 /* CoreImage.framework */; };
 		A6B34F7D199B78C0009AF950 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B34F7C199B78C0009AF950 /* libxml2.dylib */; };
@@ -354,10 +354,10 @@
 		A6B34EE8199A60D8009AF950 /* PageONEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageONEViewController.m; sourceTree = "<group>"; };
 		A6B34EEA199A60E7009AF950 /* PageTWOViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageTWOViewController.h; sourceTree = "<group>"; };
 		A6B34EEB199A60E7009AF950 /* PageTWOViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageTWOViewController.m; sourceTree = "<group>"; };
-		A6B34EED199A60F4009AF950 /* PageTHREEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageTHREEViewController.h; sourceTree = "<group>"; };
-		A6B34EEE199A60F4009AF950 /* PageTHREEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageTHREEViewController.m; sourceTree = "<group>"; };
-		A6B34EF0199A6102009AF950 /* PageFOURViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageFOURViewController.h; sourceTree = "<group>"; };
-		A6B34EF1199A6102009AF950 /* PageFOURViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageFOURViewController.m; sourceTree = "<group>"; };
+		A6B34EED199A60F4009AF950 /* SensorTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorTableView.h; sourceTree = "<group>"; };
+		A6B34EEE199A60F4009AF950 /* SensorTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorTableView.m; sourceTree = "<group>"; };
+		A6B34EF0199A6102009AF950 /* PageTHREEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageTHREEViewController.h; sourceTree = "<group>"; };
+		A6B34EF1199A6102009AF950 /* PageTHREEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageTHREEViewController.m; sourceTree = "<group>"; };
 		A6B34F78199B78A6009AF950 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		A6B34F7A199B78B2009AF950 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		A6B34F7C199B78C0009AF950 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -872,6 +872,7 @@
 				A634C0E61992407500AD0FEF /* ViewController.h */,
 				A634C0E71992407500AD0FEF /* ViewController.m */,
 				A634C0E91992407500AD0FEF /* Images.xcassets */,
+				A6E0244519A3B60900AB1762 /* Views */,
 				A6E0243119A227F500AB1762 /* Logic */,
 				A6B34EF3199A6121009AF950 /* ViewControllers */,
 				A6B34F81199B841E009AF950 /* SVG */,
@@ -918,10 +919,8 @@
 				A6B34EE8199A60D8009AF950 /* PageONEViewController.m */,
 				A6B34EEA199A60E7009AF950 /* PageTWOViewController.h */,
 				A6B34EEB199A60E7009AF950 /* PageTWOViewController.m */,
-				A6B34EED199A60F4009AF950 /* PageTHREEViewController.h */,
-				A6B34EEE199A60F4009AF950 /* PageTHREEViewController.m */,
-				A6B34EF0199A6102009AF950 /* PageFOURViewController.h */,
-				A6B34EF1199A6102009AF950 /* PageFOURViewController.m */,
+				A6B34EF0199A6102009AF950 /* PageTHREEViewController.h */,
+				A6B34EF1199A6102009AF950 /* PageTHREEViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1431,6 +1430,15 @@
 			name = SensorTag;
 			sourceTree = "<group>";
 		};
+		A6E0244519A3B60900AB1762 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A6B34EED199A60F4009AF950 /* SensorTableView.h */,
+				A6B34EEE199A60F4009AF950 /* SensorTableView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1814,7 +1822,7 @@
 				A6B34EEC199A60E7009AF950 /* PageTWOViewController.m in Sources */,
 				A634C0E81992407500AD0FEF /* ViewController.m in Sources */,
 				A6E0242B199CEDA000AB1762 /* AFJSONRequestOperation.m in Sources */,
-				A6B34EF2199A6102009AF950 /* PageFOURViewController.m in Sources */,
+				A6B34EF2199A6102009AF950 /* PageTHREEViewController.m in Sources */,
 				A6E02430199CEDA000AB1762 /* UIImageView+AFNetworking.m in Sources */,
 				A6E0244119A2398C00AB1762 /* SensorTag.m in Sources */,
 				A6E02203199CDE9400AB1762 /* WeatherShader.m in Sources */,
@@ -1824,7 +1832,7 @@
 				A6E0242D199CEDA000AB1762 /* AFPropertyListRequestOperation.m in Sources */,
 				A6B34EE9199A60D8009AF950 /* PageONEViewController.m in Sources */,
 				A634C0E21992407500AD0FEF /* AppDelegate.m in Sources */,
-				A6B34EEF199A60F4009AF950 /* PageTHREEViewController.m in Sources */,
+				A6B34EEF199A60F4009AF950 /* SensorTableView.m in Sources */,
 				A634C0DE1992407500AD0FEF /* main.m in Sources */,
 				A6E0242C199CEDA000AB1762 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				A6E02429199CEDA000AB1762 /* AFHTTPRequestOperation.m in Sources */,

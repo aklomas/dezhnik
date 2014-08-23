@@ -23,10 +23,15 @@
     self.pageViewController.dataSource = self;
     self.pageViewController.delegate = self;
     
+    self.sensorTag = [[SensorTag alloc] init];
+    
     self.views = [[NSMutableArray alloc] initWithCapacity:3];
     [self.views addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"PageONE"]];
     [self.views addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"PageTWO"]];
-    [self.views addObject:[[PageTHREEViewController alloc] initWithStyle:UITableViewStyleGrouped]];
+    [self.views addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"PageTHREE"]];
+    
+
+    ((PageTHREEViewController *)[self.views objectAtIndex:2]).sensorTag = self.sensorTag;
     
     UIViewController *startingViewController = [self viewControllerAtIndex:0];
     NSArray *viewControllers = @[startingViewController];
@@ -80,9 +85,6 @@
     else if ([viewController isKindOfClass:[PageTHREEViewController class]]) {
         index = 2;
     }
-    else if ([viewController isKindOfClass:[PageFOURViewController class]]) {
-        index = 3;
-    }
     
     if ((index == 0) || (index == NSNotFound)) {
         return nil;
@@ -103,9 +105,6 @@
     }
     else if ([viewController isKindOfClass:[PageTHREEViewController class]]) {
         index = 2;
-    }
-    else if ([viewController isKindOfClass:[PageFOURViewController class]]) {
-        index = 3;
     }
     
     if (index == NSNotFound) {
@@ -130,9 +129,6 @@
     }
     else if ([currentViewController isKindOfClass:[PageTHREEViewController class]]) {
         index = 2;
-    }
-    else if ([currentViewController isKindOfClass:[PageFOURViewController class]]) {
-        index = 3;
     }
     
     self.pageControl.currentPage = index;
