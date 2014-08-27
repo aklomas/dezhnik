@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>82AB59F8-D049-42E9-98EA-D48B93B939B4</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Myrella</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E73DA4FB-83F7-4FCB-8C01-A45F57619DC3</key>
+		<string>ssh://github.com/aklomas/dezhnik.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Myrella.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E73DA4FB-83F7-4FCB-8C01-A45F57619DC3</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/aklomas/dezhnik.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E73DA4FB-83F7-4FCB-8C01-A45F57619DC3</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E73DA4FB-83F7-4FCB-8C01-A45F57619DC3</string>
+			<key>IDESourceControlWCCName</key>
+			<string>dezhnik</string>
+		</dict>
+	</array>
+</dict>
+</plist>

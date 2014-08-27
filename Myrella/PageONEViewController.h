@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface PageONEViewController : UIViewController <UIWebViewDelegate>
+@interface PageONEViewController : UIViewController <UIWebViewDelegate, CLLocationManagerDelegate>
 
 @property (nonatomic, retain) IBOutlet UIWebView *settingsSVGweb;
+
+@property (weak, nonatomic) IBOutlet UILabel *AddressLable;
+@property CLLocationManager *locationManager;
+@property CLGeocoder *geocoder;
+@property CLPlacemark *placemark;
 
 @end

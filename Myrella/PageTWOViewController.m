@@ -8,7 +8,8 @@
 
 #import "PageTWOViewController.h"
 #import <QuartzCore/QuartzCore.h>
-#import "AFJSONRequestOperation.h"
+
+#import "AFHTTPRequestOperation.h"
 #import "WeatherShader.h"
 
 
@@ -134,7 +135,7 @@
 #pragma mark - Data Display
 
 // Add country outlines.  Pass in the names of the geoJSON files
-- (void)addCountries:(NSArray *)names stride:(int)stride
+/*- (void)addCountries:(NSArray *)names stride:(int)stride
 {
     // Parsing the JSON can take a while, so let's hand that over to another queue
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0),
@@ -163,7 +164,7 @@
                                        if ([wgVecObj centroid:&center])
                                        {
                                            screenLabel.loc = center;
-                                           screenLabel.size = CGSizeMake(0, 20);
+                                           //screenLabel.size = CGSizeMake(0, 20);
                                            screenLabel.layoutImportance = 1.0;
                                            screenLabel.text = vecName;
                                            screenLabel.userObject = screenLabel.text;
@@ -199,7 +200,7 @@
                    }
                    );
 }
-
+*/
 
 // Set this to reload the base layer ever so often.  Purely for testing
 //#define RELOADTEST 1
@@ -236,28 +237,52 @@
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(reloadLayer:) object:nil];
 #endif
     
-    
-    self.title = @"MapBox Tiles Regular - Remote";
-    jsonTileSpec = @"http://a.tiles.mapbox.com/v3/examples.map-zswgei2n.json";
-    thisCacheDir = [NSString stringWithFormat:@"%@/mbtilesregular1/",cacheDir];
-    screenLabelColor = [UIColor whiteColor];
-    screenLabelBackColor = [UIColor whiteColor];
-    labelColor = [UIColor blackColor];
-    labelBackColor = [UIColor whiteColor];
-    vecColor = [UIColor blackColor];
-    vecWidth = 4.0;
-    
+    if (true)
+    {
+        self.title = @"Stamen Water Color - Remote";
+        // These are the Stamen Watercolor tiles.
+        // They're beautiful, but the server isn't so great.
+        thisCacheDir = [NSString stringWithFormat:@"%@/stamentiles/",cacheDir];
+        int maxZoom = 10;
+        MaplyRemoteTileSource *tileSource = [[MaplyRemoteTileSource alloc] initWithBaseURL:@"http://tile.stamen.com/watercolor/" ext:@"png" minZoom:0 maxZoom:maxZoom];
+        tileSource.cacheDir = thisCacheDir;
+        MaplyQuadImageTilesLayer *layer = [[MaplyQuadImageTilesLayer alloc] initWithCoordSystem:tileSource.coordSys tileSource:tileSource];
+        layer.handleEdges = true;
+        layer.requireElev = false;
+        [baseViewC addLayer:layer];
+        layer.drawPriority = 0;
+        layer.waitLoad = false;
+        layer.singleLevelLoading = false;
+        baseLayer = layer;
+        screenLabelColor = [UIColor whiteColor];
+        screenLabelBackColor = [UIColor whiteColor];
+        labelColor = [UIColor blackColor];
+        labelBackColor = [UIColor blackColor];
+        vecColor = [UIColor grayColor];
+        vecWidth = 4.0;
+    }  else if (false)
+    {
+        self.title = @"MapBox Tiles Regular - Remote";
+        jsonTileSpec = @"http://a.tiles.mapbox.com/v3/examples.map-zswgei2n.json";
+        thisCacheDir = [NSString stringWithFormat:@"%@/mbtilesregular1/",cacheDir];
+        screenLabelColor = [UIColor whiteColor];
+        screenLabelBackColor = [UIColor whiteColor];
+        labelColor = [UIColor blackColor];
+        labelBackColor = [UIColor whiteColor];
+        vecColor = [UIColor blackColor];
+        vecWidth = 4.0;
+    }
     // If we're fetching one of the JSON tile specs, kick that off
     if (jsonTileSpec)
     {
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:jsonTileSpec]];
         
-        AFJSONRequestOperation *operation =
-        [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-                                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
+        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+        operation.responseSerializer = [AFJSONResponseSerializer serializer];
+        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
          {
              // Add a quad earth paging layer based on the tile spec we just fetched
-             MaplyRemoteTileSource *tileSource = [[MaplyRemoteTileSource alloc] initWithTilespec:JSON];
+             MaplyRemoteTileSource *tileSource = [[MaplyRemoteTileSource alloc] initWithTilespec:responseObject];
              tileSource.cacheDir = thisCacheDir;
              MaplyQuadImageTilesLayer *layer = [[MaplyQuadImageTilesLayer alloc] initWithCoordSystem:tileSource.coordSys tileSource:tileSource];
              layer.handleEdges = true;
@@ -272,7 +297,7 @@
              [self performSelector:@selector(reloadLayer:) withObject:nil afterDelay:10.0];
 #endif
          }
-                                                        failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON)
+                                         failure:^(AFHTTPRequestOperation *operation, NSError *error)
          {
              NSLog(@"Failed to reach JSON tile spec at: %@",jsonTileSpec);
          }
@@ -293,8 +318,8 @@
                   kMaplyFade: @(1.0)};
     vectorDesc = @{kMaplyColor: vecColor,
                    kMaplyVecWidth: @(vecWidth),
-                   kMaplyFade: @(1.0)};
-    
+                   kMaplyFade: @(1.0),
+                   kMaplySelectable: @(true)};
 }
 
 // Reload testing
@@ -313,7 +338,7 @@
 // Run through the overlays the user wants turned on
 - (void)setupOverlays
 {
-    // For network paging layers, where we'll store temp files
+    /*// For network paging layers, where we'll store temp files
     NSString *cacheDir = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)  objectAtIndex:0];
     NSString *layerName = @"Forecast.IO Snapshot - Remote";
     MaplyViewControllerLayer *layer = ovlLayers[layerName];
@@ -351,7 +376,7 @@
         // Get rid of the layer
         [baseViewC removeLayer:layer];
         [ovlLayers removeObjectForKey:layerName];
-    }
+    }*/
 }
 
 // Look at the configuration controller and decide what to turn off or on

@@ -158,6 +158,7 @@ for some rainy fun today.</string>
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="AddressLable" destination="G1Y-05-UdB" id="POD-oi-hoV"/>
                         <outlet property="settingsSVGweb" destination="F5i-L5-Nyv" id="ZQi-Vw-ElG"/>
                     </connections>
                 </viewController>
