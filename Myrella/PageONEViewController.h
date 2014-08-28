@@ -14,7 +14,10 @@
 @interface PageONEViewController : UIViewController <UIWebViewDelegate>
 
 @property (nonatomic, retain) IBOutlet UIWebView *settingsSVGweb;
-@property (weak, nonatomic) IBOutlet UILabel *AddressLable;
+@property (weak, nonatomic) IBOutlet UILabel *LocationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *ForecastTempLabel;
+@property (weak, nonatomic) IBOutlet UILabel *SensorTempLabel;
+@property (weak, nonatomic) IBOutlet UILabel *SummaryLabel;
 @property (strong,nonatomic) SensorTag *sensorTag;
 @property (strong,nonatomic) ForecastKit *forecastKit;
 

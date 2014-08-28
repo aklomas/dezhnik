@@ -562,8 +562,6 @@
 				A6E0243319A2285700AB1762 /* BLEDevice.m */,
 				A6E0243419A2285700AB1762 /* BLEUtility.h */,
 				A6E0243519A2285700AB1762 /* BLEUtility.m */,
-				A6E0243619A2285700AB1762 /* deviceCellTemplate.h */,
-				A6E0243719A2285700AB1762 /* deviceCellTemplate.m */,
 				A6E0243819A2285700AB1762 /* Sensors.h */,
 				A6E0243919A2285700AB1762 /* Sensors.m */,
 				A6E0243F19A2398C00AB1762 /* SensorTag.h */,
@@ -575,6 +573,8 @@
 		A6E0244519A3B60900AB1762 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A6E0243619A2285700AB1762 /* deviceCellTemplate.h */,
+				A6E0243719A2285700AB1762 /* deviceCellTemplate.m */,
 				A6B34EED199A60F4009AF950 /* SensorTableView.h */,
 				A6B34EEE199A60F4009AF950 /* SensorTableView.m */,
 			);

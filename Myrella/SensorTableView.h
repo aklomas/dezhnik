@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SensorTag.h"
 #import <MessageUI/MessageUI.h>
+#import "deviceCellTemplate.h"
 
 #define MIN_ALPHA_FADE 0.2f
 #define ALPHA_FADE_STEP 0.05f

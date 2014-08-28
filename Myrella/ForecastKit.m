@@ -36,14 +36,14 @@
 
 -(void)updateDictionary {
     NSLog(@"Updating weather dictionary");
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.forecast.io/forecast/%@/%.6f,%.6f?units=auto", self.apiKey, self.location.coordinate.latitude, self.location.coordinate.longitude]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.forecast.io/forecast/%@/%.6f,%.6f?units=auto", self.apiKey, 51.58865810, -0.23059906 /*self.location.coordinate.latitude, self.location.coordinate.longitude*/]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         self.forecastDict = [NSMutableDictionary dictionaryWithDictionary:responseObject];
-        NSLog(@"%@", self.forecastDict);
+        //NSLog(@"%@", self.forecastDict);
         
     }                               failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -51,6 +51,33 @@
         
     }];
     [operation start];
+    
+    NSLog(@"Updating weather dictionary");
+    NSURL *url1 = [NSURL URLWithString:@"http://datapoint.metoffice.gov.uk/public/data/layer/wxobs/all/json/capabilities?key=496cb704-5e2d-4ccc-ae32-8a7bfe7fe5a2"];
+    NSURLRequest *request1 = [NSURLRequest requestWithURL:url1];
+    AFHTTPRequestOperation *operation1 = [[AFHTTPRequestOperation alloc] initWithRequest:request1];
+    operation1.responseSerializer = [AFJSONResponseSerializer serializer];
+    [operation1 setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSMutableDictionary *dez = [NSMutableDictionary dictionaryWithDictionary:responseObject];
+        //NSLog(@"%@", dez);
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Currently %@", error.description);
+        
+    }];
+    [operation1 start];
+}
+
+-(NSString *)getCurTemperature {
+    /*NSString *r = [NSString stringWithFormat:@"%d", (int)([[[self.forecastDict valueForKey:@"currently"] valueForKey:@"temperature"] floatValue] + 0.5)];
+    NSLog(@"%@",r);*/
+    return [NSString stringWithFormat:@"%d", (int)([[[self.forecastDict valueForKey:@"currently"] valueForKey:@"temperature"] floatValue] + 0.5)];
+}
+
+-(NSString *)getCurSummary {
+    return [NSString stringWithFormat:@"%@", [[self.forecastDict valueForKey:@"currently"] valueForKey:@"summary"]];
 }
 
 -(void)updateLocation {

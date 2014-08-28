@@ -65,7 +65,13 @@
 }
 
 -(void)updateView:(NSTimer *)timer {
-    self.AddressLable.text = self.forecastKit.curLocName;
+    if(self.forecastKit.forecastDict){
+        self.LocationLabel.text = self.forecastKit.curLocName;
+        self.ForecastTempLabel.text = self.forecastKit.getCurTemperature;
+        self.SummaryLabel.text = self.forecastKit.getCurSummary;
+    }
+    self.SensorTempLabel.text = [NSString stringWithFormat:@"Myrella: %@", self.sensorTag.isConnected ? [NSString stringWithFormat:@"%.1f°C",self.sensorTag.currentVal.tAmb] : @"N/A"];
+
 }
 
 /*

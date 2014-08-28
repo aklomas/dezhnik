@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "BLEDevice.h"
 #import "BLEUtility.h"
-#import "deviceCellTemplate.h"
+//#import "deviceCellTemplate.h"
 #import "Sensors.h"
 
 #define MIN_ALPHA_FADE 0.2f
@@ -36,6 +36,7 @@
 @property (strong,nonatomic) NSMutableArray *nDevices;
 @property (strong,nonatomic) NSMutableArray *sensorTags;
 
+@property BOOL isConnected;
 
 -(NSMutableDictionary *) makeSensorTagConfiguration;
 

@@ -20,11 +20,12 @@
 
 @property NSString *curLocName;
 
-
 -(id)initWithAPIKey:(NSString*)api_key;
 
 -(void)updateLocation;
 -(void)updateDictionary;
 
+-(NSString *)getCurTemperature;
+-(NSString *)getCurSummary;
 
 @end

@@ -18,7 +18,7 @@
         self.magSensor = [[sensorMAG3110 alloc] init];        
         self.gyroSensor = [[sensorIMU3000 alloc] init];
 
-        self.currentVal = [[sensorTagValues alloc]init];
+        self.currentVal = [[sensorTagValues alloc] init];
         self.vals = [[NSMutableArray alloc]init];
         
         self.logInterval = 1.0; //1000 ms
@@ -30,6 +30,7 @@
         self.sensorTags = [[NSMutableArray alloc]init];
         
         self.sensorsEnabled = [[NSMutableArray alloc] init];
+        self.isConnected = false;
     }
     return self;
 }
@@ -199,6 +200,7 @@
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
     NSLog(@"Disconnected from SensorTag");
+    self.isConnected = false;
     [central scanForPeripheralsWithServices:nil options:nil];
 }
 
@@ -206,6 +208,7 @@
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
     NSLog(@"Failed to connect to SensorTag");
+    self.isConnected = false;
     [central scanForPeripheralsWithServices:nil options:nil];
 }
 
@@ -375,6 +378,7 @@
                 [self calibrateGyro];
 
                 [self.device.manager stopScan];
+                self.isConnected = true;
                 //NSLog(@"%lu %lu", (unsigned long)self.nDevices.count, (unsigned long)self.sensorTags.count);
             }
         }
