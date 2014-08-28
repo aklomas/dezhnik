@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "ForecastKit.h"
 
 @interface ViewController ()
 
@@ -24,13 +25,16 @@
     self.pageViewController.delegate = self;
     
     self.sensorTag = [[SensorTag alloc] init];
+    self.forecastKit = [[ForecastKit alloc] initWithAPIKey:@"c2187ef6c54f0f5eebaeb77582873b0d"];
     
     self.views = [[NSMutableArray alloc] initWithCapacity:3];
     [self.views addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"PageONE"]];
     [self.views addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"PageTWO"]];
     [self.views addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"PageTHREE"]];
     
-
+    ((PageONEViewController *)[self.views objectAtIndex:0]).forecastKit = self.forecastKit;
+    ((PageTHREEViewController *)[self.views objectAtIndex:2]).forecastKit = self.forecastKit;
+    ((PageONEViewController *)[self.views objectAtIndex:0]).sensorTag = self.sensorTag;
     ((PageTHREEViewController *)[self.views objectAtIndex:2]).sensorTag = self.sensorTag;
     
     UIViewController *startingViewController = [self viewControllerAtIndex:0];

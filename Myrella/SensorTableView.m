@@ -102,8 +102,8 @@
     }
     
     
-
-    [NSTimer scheduledTimerWithTimeInterval:0.1f target:self selector:@selector(updateView:) userInfo:nil repeats:YES];
+    NSTimer* timer = [NSTimer timerWithTimeInterval:.1f target:self selector:@selector(updateView:) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 
 
     // Uncomment the following line to preserve selection between presentations.

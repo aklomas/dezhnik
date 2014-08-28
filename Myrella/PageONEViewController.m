@@ -28,14 +28,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    //Location init
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.geocoder = [[CLGeocoder alloc] init];
-    self.locationManager.delegate = self;
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [self.locationManager startUpdatingLocation];
-    
-    
     //svg init
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"settings-button" ofType:@"svg"];
     
@@ -48,6 +40,10 @@
     self.settingsSVGweb.scrollView.scrollEnabled = NO;
     self.settingsSVGweb.scrollView.bounces = NO;
     [self.settingsSVGweb loadRequest:req];
+    
+    
+    NSTimer* timer = [NSTimer timerWithTimeInterval:0.1f target:self selector:@selector(updateView:) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
@@ -68,29 +64,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - CLLocationManagerDelegate
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
-{
-    NSLog(@"didUpdateToLocation: %@", locations);
-    CLLocation *currentLocation = [locations objectAtIndex:[locations count]-1];
-    
-    // Stop Location Manager
-    [self.locationManager stopUpdatingLocation];
-    
-    //NSLog(@"Resolving the Address");
-    [self.geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
-        NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
-        if (error == nil && [placemarks count] > 0) {
-            self.placemark = [placemarks lastObject];
-            self.AddressLable.text = [NSString stringWithFormat:@"%@",
-                                      self.placemark.locality];
-        } else {
-            NSLog(@"%@", error.debugDescription);
-        }
-    } ];
-    
+-(void)updateView:(NSTimer *)timer {
+    self.AddressLable.text = self.forecastKit.curLocName;
 }
-
 
 /*
 #pragma mark - Navigation

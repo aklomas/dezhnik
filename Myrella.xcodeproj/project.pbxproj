@@ -22,6 +22,7 @@
 		A634C0FB1992407500AD0FEF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A634C0F91992407500AD0FEF /* InfoPlist.strings */; };
 		A634C0FD1992407500AD0FEF /* MyrellaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A634C0FC1992407500AD0FEF /* MyrellaTests.m */; };
 		A64939BC19AE25C2000A5604 /* WhirlyGlobeMaplyComponent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A64939BB19AE25C2000A5604 /* WhirlyGlobeMaplyComponent.framework */; };
+		A6493A1319AF7540000A5604 /* ForecastKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A6493A1219AF7540000A5604 /* ForecastKit.m */; };
 		A6B34EE9199A60D8009AF950 /* PageONEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B34EE8199A60D8009AF950 /* PageONEViewController.m */; };
 		A6B34EEC199A60E7009AF950 /* PageTWOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B34EEB199A60E7009AF950 /* PageTWOViewController.m */; };
 		A6B34EEF199A60F4009AF950 /* SensorTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B34EEE199A60F4009AF950 /* SensorTableView.m */; };
@@ -75,6 +76,8 @@
 		A634C0FA1992407500AD0FEF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A634C0FC1992407500AD0FEF /* MyrellaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyrellaTests.m; sourceTree = "<group>"; };
 		A64939BB19AE25C2000A5604 /* WhirlyGlobeMaplyComponent.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WhirlyGlobeMaplyComponent.framework; path = libs/WhirlyGlobeMaplyComponent.framework; sourceTree = "<group>"; };
+		A6493A1119AF7540000A5604 /* ForecastKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForecastKit.h; sourceTree = "<group>"; };
+		A6493A1219AF7540000A5604 /* ForecastKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForecastKit.m; sourceTree = "<group>"; };
 		A6B34EE7199A60D8009AF950 /* PageONEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageONEViewController.h; sourceTree = "<group>"; };
 		A6B34EE8199A60D8009AF950 /* PageONEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageONEViewController.m; sourceTree = "<group>"; };
 		A6B34EEA199A60E7009AF950 /* PageTWOViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageTWOViewController.h; sourceTree = "<group>"; };
@@ -355,6 +358,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		A6493A1419AF7589000A5604 /* Forecast */ = {
+			isa = PBXGroup;
+			children = (
+				A6493A1119AF7540000A5604 /* ForecastKit.h */,
+				A6493A1219AF7540000A5604 /* ForecastKit.m */,
+			);
+			name = Forecast;
+			sourceTree = "<group>";
+		};
 		A6B34EF3199A6121009AF950 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -535,6 +547,7 @@
 		A6E0243119A227F500AB1762 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				A6493A1419AF7589000A5604 /* Forecast */,
 				A6E0243E19A2396000AB1762 /* SensorTag */,
 				A6E02200199CDE9400AB1762 /* WeatherShader.h */,
 				A6E02201199CDE9400AB1762 /* WeatherShader.m */,
@@ -676,6 +689,7 @@
 				A6E0244119A2398C00AB1762 /* SensorTag.m in Sources */,
 				A6E02203199CDE9400AB1762 /* WeatherShader.m in Sources */,
 				A6E0243A19A2285700AB1762 /* BLEDevice.m in Sources */,
+				A6493A1319AF7540000A5604 /* ForecastKit.m in Sources */,
 				A6E0243D19A2285700AB1762 /* Sensors.m in Sources */,
 				A6B34EE9199A60D8009AF950 /* PageONEViewController.m in Sources */,
 				A634C0E21992407500AD0FEF /* AppDelegate.m in Sources */,

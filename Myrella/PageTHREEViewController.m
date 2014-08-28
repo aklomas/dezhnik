@@ -17,7 +17,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"dela1");
     if(!self.sensorTable)
         self.sensorTable = [[SensorTableView alloc] init];
     self.sensorTable.sensorTag = self.sensorTag;

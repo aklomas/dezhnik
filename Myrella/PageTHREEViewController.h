@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ForecastKit.h"
 #import "SensorTag.h"
 #import "SensorTableView.h"
 
@@ -15,6 +16,7 @@
 @property (strong,nonatomic) SensorTableView *sensorTable;
 @property (strong,nonatomic) IBOutlet UIView *sensorTableContainer;
 @property (strong,nonatomic) SensorTag *sensorTag;
+@property (strong,nonatomic) ForecastKit *forecastKit;
 
 //- (void) setTag:(SensorTag *)sensorTag;
 

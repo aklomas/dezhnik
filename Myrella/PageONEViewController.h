@@ -8,14 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "SensorTag.h"
+#import "ForecastKit.h"
 
-@interface PageONEViewController : UIViewController <UIWebViewDelegate, CLLocationManagerDelegate>
+@interface PageONEViewController : UIViewController <UIWebViewDelegate>
 
 @property (nonatomic, retain) IBOutlet UIWebView *settingsSVGweb;
-
 @property (weak, nonatomic) IBOutlet UILabel *AddressLable;
-@property CLLocationManager *locationManager;
-@property CLGeocoder *geocoder;
-@property CLPlacemark *placemark;
+@property (strong,nonatomic) SensorTag *sensorTag;
+@property (strong,nonatomic) ForecastKit *forecastKit;
+
+-(void)updateView:(NSTimer *)timer;
 
 @end
