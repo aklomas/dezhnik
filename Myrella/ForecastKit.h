@@ -18,6 +18,8 @@
 @property CLPlacemark *placemark;
 @property CLLocation *location;
 
+@property BOOL changed;
+
 @property NSString *curLocName;
 
 -(id)initWithAPIKey:(NSString*)api_key;
@@ -26,9 +28,15 @@
 -(void)updateDictionary;
 
 -(NSString *)getCurTemperature;
+-(NSString *)getDailyMinTemperature;
+-(NSString *)getDailyMaxTemperature;
+-(NSString *)getCurPercipIntensity;
 -(NSString *)getCurSummary;
 -(NSString *)getCurIcon;
+-(NSString *)getDailyMessage;
 
 -(NSString *)getIconForNextHour:(int)hour;
+-(NSString *)getTempForNextHour:(int)hour;
+-(NSString *)getPercipIntensityForNextHour:(int)hour;
 
 @end

@@ -10,4 +10,9 @@
 
 @interface ScreenONEGraph : UIView
 
+@property (strong, nonatomic) NSMutableArray *tempData;
+@property (strong, nonatomic) NSMutableArray *percipData;
+
+-(void)update;
+
 @end

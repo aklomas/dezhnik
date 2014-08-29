@@ -42,7 +42,7 @@
     [self.settingsSVGweb loadRequest:req];
     
     
-    NSTimer* timer = [NSTimer timerWithTimeInterval:0.04f target:self selector:@selector(updateView:) userInfo:nil repeats:YES];
+    NSTimer* timer = [NSTimer timerWithTimeInterval:0.03f target:self selector:@selector(updateView:) userInfo:nil repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 }
 
@@ -65,12 +65,44 @@
 }
 
 -(void)updateView:(NSTimer *)timer {
-    if(self.forecastKit.forecastDict){
+    if(self.forecastKit.changed && self.forecastKit.forecastDict){
         self.LocationLabel.text = self.forecastKit.curLocName;
-        self.ForecastTempLabel.text = self.forecastKit.getCurTemperature;
+        self.ForecastTempLabel.text = [NSString stringWithFormat:@"%d",(int)([self.forecastKit.getCurTemperature floatValue] + 0.5)];
         self.SummaryLabel.text = self.forecastKit.getCurSummary;
+        self.LeftImageExtended.image = [UIImage imageNamed:[self.forecastKit getCurIcon]];
         self.CenterImageExtended.image = [UIImage imageNamed:[self.forecastKit getIconForNextHour:4]];
-
+        self.RightImageExtended.image = [UIImage imageNamed:[self.forecastKit getIconForNextHour:8]];
+        
+        self.DailyHigh.text = [NSString stringWithFormat:@"%d",(int)([self.forecastKit.getDailyMaxTemperature floatValue] + 0.5)];
+        self.DailyLow.text = [NSString stringWithFormat:@"%d",(int)([self.forecastKit.getDailyMinTemperature floatValue] + 0.5)];
+        self.DailyMessage.text = self.forecastKit.getDailyMessage;
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"HH"];
+        int curTime = [[formatter stringFromDate:[NSDate date]] intValue];
+        self.Plus4Label.text = curTime+4 < 12 ? [NSString stringWithFormat:@"%dam",curTime+4] :
+                               curTime+4 < 24 ? [NSString stringWithFormat:@"%dpm",curTime-12+4] :
+                                                [NSString stringWithFormat:@"%dam",curTime-24+4];
+        
+        self.Plus8Label.text = curTime+8 < 12 ? [NSString stringWithFormat:@"%dam",curTime+8] :
+                               curTime+8 < 24 ? [NSString stringWithFormat:@"%dpm",curTime-12+8] :
+                                                [NSString stringWithFormat:@"%dam",curTime-24+8];
+        
+        NSMutableArray *data = [[NSMutableArray alloc] init];
+        [data addObject:self.forecastKit.getCurTemperature];
+        for (int i = 1 ; i < 12 ; i++)
+            [data addObject:[self.forecastKit getTempForNextHour:i]];
+        self.GraphView.tempData = data;
+        [self.GraphView update];
+        
+        data = [[NSMutableArray alloc] init];
+        [data addObject:self.forecastKit.getCurPercipIntensity];
+        for (int i = 1 ; i < 12 ; i++)
+            [data addObject:[self.forecastKit getPercipIntensityForNextHour:i]];
+        self.GraphView.percipData = data;
+        [self.GraphView update];
+        
+        self.forecastKit.changed = false;
     }
     self.SensorTempLabel.text = [NSString stringWithFormat:@" Myrella: %@", self.sensorTag.isConnected ? [NSString stringWithFormat:@"%.1f°C",self.sensorTag.currentVal.tAmb] : @"N/A"];
     

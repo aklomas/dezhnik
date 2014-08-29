@@ -19,6 +19,10 @@
     return self;
 }
 
+-(void) update {
+    [self setNeedsDisplay];
+}
+
 - (void)drawRect:(CGRect)rect
 {
     CGFloat height = (self.frame.size.height-20)/3;
@@ -26,7 +30,7 @@
     
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     
-    UIColor *baseColor = [UIColor colorWithRed:69/255 green:81/255 blue:87/255 alpha:1.0];
+    UIColor *baseColor = [UIColor colorWithRed:69/255.0 green:81/255.0 blue:87/255.0 alpha:1.0];
     
     [baseColor setStroke];
     CGFloat dashPattern[] = {4,4};
@@ -36,34 +40,34 @@
     [path setLineDash:dashPattern count:2 phase:0];
     [path moveToPoint:CGPointMake(40, height)];
     [path addLineToPoint:CGPointMake(width*11+40, height)];
-    [path strokeWithBlendMode:kCGBlendModeNormal alpha:0.5];
+    [path strokeWithBlendMode:kCGBlendModeNormal alpha:0.7];
 
     path = [UIBezierPath bezierPath];
     path.lineWidth = 1;
     [path setLineDash:dashPattern count:2 phase:0];
     [path moveToPoint:CGPointMake(40, height*2)];
     [path addLineToPoint:CGPointMake(width*11+40, height*2)];
-    [path strokeWithBlendMode:kCGBlendModeNormal alpha:0.5];
+    [path strokeWithBlendMode:kCGBlendModeNormal alpha:0.7];
 
     path = [UIBezierPath bezierPath];
     path.lineWidth = 2;
     [path moveToPoint:CGPointMake(40, height*3)];
     [path addLineToPoint:CGPointMake(width*11+40, height*3)];
-    [path strokeWithBlendMode:kCGBlendModeNormal alpha:0.7];
+    [path strokeWithBlendMode:kCGBlendModeNormal alpha:1.0];
     
     for (int i = 1; i < 11; i++) {
         path = [UIBezierPath bezierPath];
         path.lineWidth = 1;
         [path moveToPoint:CGPointMake(40 + i*width, height*3)];
         [path addLineToPoint:CGPointMake(40 + i*width, height*3-5)];
-        [path strokeWithBlendMode:kCGBlendModeNormal alpha:0.7];
+        [path strokeWithBlendMode:kCGBlendModeNormal alpha:1.0];
     }
     
     UIFont* font = [UIFont fontWithName:@"Helvetica" size:10];
     NSMutableParagraphStyle* p = [NSMutableParagraphStyle new];
     p.alignment = NSTextAlignmentCenter;
     NSDictionary* stringAttrs = @{ NSFontAttributeName : font,
-                                   NSForegroundColorAttributeName : [baseColor colorWithAlphaComponent:0.5],
+                                   NSForegroundColorAttributeName : [baseColor colorWithAlphaComponent:0.7],
                                    NSParagraphStyleAttributeName: p};
     
     NSAttributedString* attrStr = [[NSAttributedString alloc] initWithString:@"HEAVY" attributes:stringAttrs];
@@ -79,7 +83,89 @@
         attrStr = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%dh",i] attributes:stringAttrs];
         [attrStr drawInRect:CGRectMake(40 + i*width - 20, height*3+3, 40, 12)];
     }
+    
+    if(self.tempData && self.percipData) {
+        /////////////////////////
+        ////RAIN
+        ////////////////////////
+        path = [UIBezierPath bezierPath];
+        CGFloat point = [self percipPoint:0 heightOfSection:height];
+        //NSLog(@"%f",[[self.percipData objectAtIndex:0] floatValue]);
+        CGFloat diff1 = point + ([self percipPoint:1 heightOfSection:height] - point)*0.5;
+        CGFloat diff2 = 0;
+        
+        [path moveToPoint:CGPointMake(40, height*3)];
+        [path addLineToPoint:CGPointMake(40, point)];
+        for (int i = 1; i < 12; i++) {
+            point = [self percipPoint:i heightOfSection:height];
+            if (i != 11)
+                diff2 = point - ([self percipPoint:i+1 heightOfSection:height] - point)*0.5;
+            if (point == 72.0)
+                diff2 = 72.0;
+            [path addCurveToPoint:CGPointMake(40 + i*width, point)
+                    controlPoint1:CGPointMake(40 + (i-0.5)*width, diff1)
+                    controlPoint2:CGPointMake(40 + (i-0.5)*width, diff2)];
+            
+            //NSLog(@"%f %f",[[self.percipData objectAtIndex:i] floatValue], point);
+            if (i == 11)
+                break;
+            diff1 = point + ([self percipPoint:i+1 heightOfSection:height] - point)*0.5;
+        }
+        [path addLineToPoint:CGPointMake(40 + 11*width, 3*height)];
+        [path closePath];
+        [[UIColor colorWithRed:81/255.0 green:114/255.0 blue:129/255.0 alpha:1.0] setStroke];
+        [path fillWithBlendMode:kCGBlendModeNormal alpha:0.5];
 
+        
+        /////////////////////////
+        ////TEMP
+        ////////////////////////
+        font = [UIFont fontWithName:@"Helvetica" size:9];
+        [[UIColor colorWithRed:243/255.0 green:210/255.0 blue:122/255.0 alpha:1.0] setStroke];
+        stringAttrs = @{ NSFontAttributeName : font,
+                         NSForegroundColorAttributeName : [UIColor colorWithRed:243/255.0 green:210/255.0 blue:122/255.0 alpha:0.6],
+                         NSParagraphStyleAttributeName: p};
+        
+        path = [UIBezierPath bezierPath];
+        path.lineWidth = 2;
+        CGFloat min = [[self.tempData valueForKeyPath:@"@min.self"] floatValue];
+        CGFloat space = 3*height*0.3;
+        CGFloat unit = 3*height*0.4 / ([[self.tempData valueForKeyPath:@"@max.self"] floatValue] - min);
+        point = 3*height - (([[self.tempData objectAtIndex:0] floatValue] - min)*unit + space);
+        diff1 = point + ((3*height - (([[self.tempData objectAtIndex:1] floatValue] - min)*unit + space)) - point)*0.5;
+        diff2 = 0;
+        
+        [path moveToPoint:CGPointMake(40, 3*height - (([[self.tempData objectAtIndex:0] floatValue] - min)*unit + space))];
+        for (int i = 1; i < 12; i++) {
+            point = 3*height - (([[self.tempData objectAtIndex:i] floatValue] - min)*unit + space);
+            if (i != 11)
+                diff2 = point - ((3*height - (([[self.tempData objectAtIndex:i+1] floatValue] - min)*unit + space)) - point)*0.5;
+            [path addCurveToPoint:CGPointMake(40 + i*width, point)
+                  controlPoint1:CGPointMake(40 + (i-0.5)*width, diff1)
+                  controlPoint2:CGPointMake(40 + (i-0.5)*width, diff2)];
+            if (i == 11)
+                break;
+            diff1 = point + ((3*height - (([[self.tempData objectAtIndex:i+1] floatValue] - min)*unit + space)) - point)*0.5;
+            
+            attrStr = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%d°", (int)([[self.tempData objectAtIndex:i] floatValue] + 0.5)] attributes:stringAttrs];
+            [attrStr drawInRect:CGRectMake(40 + i*width - 10, point - 12, 20, 10)];
+        }
+        
+        [path strokeWithBlendMode:kCGBlendModeNormal alpha:0.6];
+    }
+    
+}
+
+-(CGFloat) percipPoint:(int)index heightOfSection:(CGFloat)height{
+    CGFloat rain = [[self.percipData objectAtIndex:index] floatValue];
+    if(rain < 2.5)
+        return 3*height - rain/2.5 * height;
+    else if (rain < 10.0)
+        return 2*height - (rain-2.5)/7.5*height;
+    else if (rain < 50.0)
+        return height - (rain-10.0)/40.0*height;
+    else
+        return 3*height;
 }
 
 @end

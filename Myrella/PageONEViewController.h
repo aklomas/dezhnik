@@ -25,7 +25,12 @@
 @property (weak, nonatomic) IBOutlet UIView *TempContainerExtended;
 @property (weak, nonatomic) IBOutlet UIImageView *LeftImageExtended;
 @property (weak, nonatomic) IBOutlet UIImageView *CenterImageExtended;
+@property (weak, nonatomic) IBOutlet UILabel *Plus4Label;
 @property (weak, nonatomic) IBOutlet UIImageView *RightImageExtended;
+@property (weak, nonatomic) IBOutlet UILabel *Plus8Label;
+@property (weak, nonatomic) IBOutlet UILabel *DailyHigh;
+@property (weak, nonatomic) IBOutlet UILabel *DailyLow;
+@property (weak, nonatomic) IBOutlet UILabel *DailyMessage;
 
 @property (weak, nonatomic) IBOutlet ScreenONEGraph *GraphView;
 
