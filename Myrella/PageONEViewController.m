@@ -42,7 +42,7 @@
     [self.settingsSVGweb loadRequest:req];
     
     
-    NSTimer* timer = [NSTimer timerWithTimeInterval:0.1f target:self selector:@selector(updateView:) userInfo:nil repeats:YES];
+    NSTimer* timer = [NSTimer timerWithTimeInterval:0.04f target:self selector:@selector(updateView:) userInfo:nil repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 }
 
@@ -69,9 +69,34 @@
         self.LocationLabel.text = self.forecastKit.curLocName;
         self.ForecastTempLabel.text = self.forecastKit.getCurTemperature;
         self.SummaryLabel.text = self.forecastKit.getCurSummary;
-    }
-    self.SensorTempLabel.text = [NSString stringWithFormat:@"Myrella: %@", self.sensorTag.isConnected ? [NSString stringWithFormat:@"%.1f°C",self.sensorTag.currentVal.tAmb] : @"N/A"];
+        self.CenterImageExtended.image = [UIImage imageNamed:[self.forecastKit getIconForNextHour:4]];
 
+    }
+    self.SensorTempLabel.text = [NSString stringWithFormat:@" Myrella: %@", self.sensorTag.isConnected ? [NSString stringWithFormat:@"%.1f°C",self.sensorTag.currentVal.tAmb] : @"N/A"];
+    
+    if(self.TempCircle){
+        [self.TempCircle update];
+        if(self.TempCircle.extend == 0 && self.TempCircle.extended == 1.0) {
+            self.TempContainer.alpha = 0.0;
+            self.TempContainerExtended.alpha = 1.0;
+        }
+        else if(self.TempCircle.extend == 0 && self.TempCircle.extended == 0.0){
+            self.TempContainer.alpha = 1.0;
+            self.TempContainerExtended.alpha = 0.0;
+        }
+        else
+            self.TempContainerExtended.alpha = 0.0;
+    }
+
+}
+
+- (IBAction)temperatureTap:(UITapGestureRecognizer *)sender {
+    if(self.TempContainer.alpha == 1.0) {
+        self.TempCircle.extend = 1;
+    }
+    else {
+        self.TempCircle.extend = -1;
+    }
 }
 
 /*

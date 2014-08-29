@@ -27,5 +27,8 @@
 
 -(NSString *)getCurTemperature;
 -(NSString *)getCurSummary;
+-(NSString *)getCurIcon;
+
+-(NSString *)getIconForNextHour:(int)hour;
 
 @end

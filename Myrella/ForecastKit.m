@@ -80,6 +80,14 @@
     return [NSString stringWithFormat:@"%@", [[self.forecastDict valueForKey:@"currently"] valueForKey:@"summary"]];
 }
 
+-(NSString *)getCurIcon {
+    return [NSString stringWithFormat:@"%@", [[self.forecastDict valueForKey:@"currently"] valueForKey:@"icon"]];
+}
+
+-(NSString *)getIconForNextHour:(int)hour {
+    return [NSString stringWithFormat:@"%@", [[[[self.forecastDict valueForKey:@"hourly"] valueForKey:@"data"] objectAtIndex:hour] objectForKey:@"icon"]];
+}
+
 -(void)updateLocation {
     [self.locationManager startUpdatingLocation];
 }

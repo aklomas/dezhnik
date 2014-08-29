@@ -23,6 +23,8 @@
 		A634C0FD1992407500AD0FEF /* MyrellaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A634C0FC1992407500AD0FEF /* MyrellaTests.m */; };
 		A64939BC19AE25C2000A5604 /* WhirlyGlobeMaplyComponent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A64939BB19AE25C2000A5604 /* WhirlyGlobeMaplyComponent.framework */; };
 		A6493A1319AF7540000A5604 /* ForecastKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A6493A1219AF7540000A5604 /* ForecastKit.m */; };
+		A6493A1719AFB108000A5604 /* ScreenONETempCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = A6493A1619AFB108000A5604 /* ScreenONETempCircle.m */; };
+		A6493A1A19B09E25000A5604 /* ScreenONEGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = A6493A1919B09E25000A5604 /* ScreenONEGraph.m */; };
 		A6B34EE9199A60D8009AF950 /* PageONEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B34EE8199A60D8009AF950 /* PageONEViewController.m */; };
 		A6B34EEC199A60E7009AF950 /* PageTWOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B34EEB199A60E7009AF950 /* PageTWOViewController.m */; };
 		A6B34EEF199A60F4009AF950 /* SensorTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B34EEE199A60F4009AF950 /* SensorTableView.m */; };
@@ -78,6 +80,10 @@
 		A64939BB19AE25C2000A5604 /* WhirlyGlobeMaplyComponent.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WhirlyGlobeMaplyComponent.framework; path = libs/WhirlyGlobeMaplyComponent.framework; sourceTree = "<group>"; };
 		A6493A1119AF7540000A5604 /* ForecastKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForecastKit.h; sourceTree = "<group>"; };
 		A6493A1219AF7540000A5604 /* ForecastKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForecastKit.m; sourceTree = "<group>"; };
+		A6493A1519AFB108000A5604 /* ScreenONETempCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenONETempCircle.h; sourceTree = "<group>"; };
+		A6493A1619AFB108000A5604 /* ScreenONETempCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenONETempCircle.m; sourceTree = "<group>"; };
+		A6493A1819B09E25000A5604 /* ScreenONEGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenONEGraph.h; sourceTree = "<group>"; };
+		A6493A1919B09E25000A5604 /* ScreenONEGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenONEGraph.m; sourceTree = "<group>"; };
 		A6B34EE7199A60D8009AF950 /* PageONEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageONEViewController.h; sourceTree = "<group>"; };
 		A6B34EE8199A60D8009AF950 /* PageONEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageONEViewController.m; sourceTree = "<group>"; };
 		A6B34EEA199A60E7009AF950 /* PageTWOViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageTWOViewController.h; sourceTree = "<group>"; };
@@ -577,6 +583,10 @@
 				A6E0243719A2285700AB1762 /* deviceCellTemplate.m */,
 				A6B34EED199A60F4009AF950 /* SensorTableView.h */,
 				A6B34EEE199A60F4009AF950 /* SensorTableView.m */,
+				A6493A1519AFB108000A5604 /* ScreenONETempCircle.h */,
+				A6493A1619AFB108000A5604 /* ScreenONETempCircle.m */,
+				A6493A1819B09E25000A5604 /* ScreenONEGraph.h */,
+				A6493A1919B09E25000A5604 /* ScreenONEGraph.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -696,6 +706,8 @@
 				A6B34EEF199A60F4009AF950 /* SensorTableView.m in Sources */,
 				A634C0DE1992407500AD0FEF /* main.m in Sources */,
 				A6E0243C19A2285700AB1762 /* deviceCellTemplate.m in Sources */,
+				A6493A1719AFB108000A5604 /* ScreenONETempCircle.m in Sources */,
+				A6493A1A19B09E25000A5604 /* ScreenONEGraph.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

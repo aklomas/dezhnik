@@ -40,7 +40,7 @@
     
     long long tempTemp = (long long)temp;
     // Temperature calculation
-    long temperature = ((((long)self.c1 * (long)tempTemp)/(long)1024) + (long)((self.c2) / (long)4 - (long)16384));
+    //long temperature = ((((long)self.c1 * (long)tempTemp)/(long)1024) + (long)((self.c2) / (long)4 - (long)16384));
     //NSLog(@"Calculation of Barometer Temperature : temperature = %ld(%lx)",temperature,temperature);
     // Barometer calculation
     

@@ -24,6 +24,9 @@
     self.sensorTable.view.frame = self.sensorTableContainer.frame;
     [self.view addSubview:self.sensorTable.view];
     [self.sensorTable didMoveToParentViewController:self];
+    
+    self.sensorTable.view.frame = self.view.frame;
+
     //self.sensorTable = [self.childViewControllers objectAtIndex:0];
     // Do any additional setup after loading the view.
 }
