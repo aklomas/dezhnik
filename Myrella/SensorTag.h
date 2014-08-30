@@ -37,6 +37,7 @@
 @property (strong,nonatomic) NSMutableArray *sensorTags;
 
 @property BOOL isConnected;
+@property NSTimer* rssiTimer;
 
 -(NSMutableDictionary *) makeSensorTagConfiguration;
 

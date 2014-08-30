@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A6316D7D19B21C43009B757D /* ScreenTHREEDottedCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = A6316D7C19B21C43009B757D /* ScreenTHREEDottedCircle.m */; };
 		A634C0D21992407500AD0FEF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A634C0D11992407500AD0FEF /* Foundation.framework */; };
 		A634C0D41992407500AD0FEF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A634C0D31992407500AD0FEF /* CoreGraphics.framework */; };
 		A634C0D61992407500AD0FEF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A634C0D51992407500AD0FEF /* UIKit.framework */; };
@@ -25,6 +26,7 @@
 		A6493A1319AF7540000A5604 /* ForecastKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A6493A1219AF7540000A5604 /* ForecastKit.m */; };
 		A6493A1719AFB108000A5604 /* ScreenONETempCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = A6493A1619AFB108000A5604 /* ScreenONETempCircle.m */; };
 		A6493A1A19B09E25000A5604 /* ScreenONEGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = A6493A1919B09E25000A5604 /* ScreenONEGraph.m */; };
+		A6493A1D19B1DF40000A5604 /* ScreenTHREESignal.m in Sources */ = {isa = PBXBuildFile; fileRef = A6493A1C19B1DF40000A5604 /* ScreenTHREESignal.m */; };
 		A6B34EE9199A60D8009AF950 /* PageONEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B34EE8199A60D8009AF950 /* PageONEViewController.m */; };
 		A6B34EEC199A60E7009AF950 /* PageTWOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B34EEB199A60E7009AF950 /* PageTWOViewController.m */; };
 		A6B34EEF199A60F4009AF950 /* SensorTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B34EEE199A60F4009AF950 /* SensorTableView.m */; };
@@ -58,6 +60,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A6316D7B19B21C43009B757D /* ScreenTHREEDottedCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenTHREEDottedCircle.h; sourceTree = "<group>"; };
+		A6316D7C19B21C43009B757D /* ScreenTHREEDottedCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenTHREEDottedCircle.m; sourceTree = "<group>"; };
 		A634C0CE1992407500AD0FEF /* Myrella.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Myrella.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A634C0D11992407500AD0FEF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A634C0D31992407500AD0FEF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -84,6 +88,8 @@
 		A6493A1619AFB108000A5604 /* ScreenONETempCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenONETempCircle.m; sourceTree = "<group>"; };
 		A6493A1819B09E25000A5604 /* ScreenONEGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenONEGraph.h; sourceTree = "<group>"; };
 		A6493A1919B09E25000A5604 /* ScreenONEGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenONEGraph.m; sourceTree = "<group>"; };
+		A6493A1B19B1DF40000A5604 /* ScreenTHREESignal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenTHREESignal.h; sourceTree = "<group>"; };
+		A6493A1C19B1DF40000A5604 /* ScreenTHREESignal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenTHREESignal.m; sourceTree = "<group>"; };
 		A6B34EE7199A60D8009AF950 /* PageONEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageONEViewController.h; sourceTree = "<group>"; };
 		A6B34EE8199A60D8009AF950 /* PageONEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageONEViewController.m; sourceTree = "<group>"; };
 		A6B34EEA199A60E7009AF950 /* PageTWOViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageTWOViewController.h; sourceTree = "<group>"; };
@@ -587,6 +593,10 @@
 				A6493A1619AFB108000A5604 /* ScreenONETempCircle.m */,
 				A6493A1819B09E25000A5604 /* ScreenONEGraph.h */,
 				A6493A1919B09E25000A5604 /* ScreenONEGraph.m */,
+				A6493A1B19B1DF40000A5604 /* ScreenTHREESignal.h */,
+				A6493A1C19B1DF40000A5604 /* ScreenTHREESignal.m */,
+				A6316D7B19B21C43009B757D /* ScreenTHREEDottedCircle.h */,
+				A6316D7C19B21C43009B757D /* ScreenTHREEDottedCircle.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -699,8 +709,10 @@
 				A6E0244119A2398C00AB1762 /* SensorTag.m in Sources */,
 				A6E02203199CDE9400AB1762 /* WeatherShader.m in Sources */,
 				A6E0243A19A2285700AB1762 /* BLEDevice.m in Sources */,
+				A6493A1D19B1DF40000A5604 /* ScreenTHREESignal.m in Sources */,
 				A6493A1319AF7540000A5604 /* ForecastKit.m in Sources */,
 				A6E0243D19A2285700AB1762 /* Sensors.m in Sources */,
+				A6316D7D19B21C43009B757D /* ScreenTHREEDottedCircle.m in Sources */,
 				A6B34EE9199A60D8009AF950 /* PageONEViewController.m in Sources */,
 				A634C0E21992407500AD0FEF /* AppDelegate.m in Sources */,
 				A6B34EEF199A60F4009AF950 /* SensorTableView.m in Sources */,

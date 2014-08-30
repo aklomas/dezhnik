@@ -33,13 +33,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *DailyMessage;
 
 @property (weak, nonatomic) IBOutlet ScreenONEGraph *GraphView;
-
 @property (weak, nonatomic) IBOutlet UILabel *SummaryLabel;
 
 @property (strong,nonatomic) SensorTag *sensorTag;
 @property (strong,nonatomic) ForecastKit *forecastKit;
 
--(void)updateView:(NSTimer *)timer;
 - (IBAction)temperatureTap:(UITapGestureRecognizer *)sender;
+
+-(void)updateView:(NSTimer *)timer;
 
 @end

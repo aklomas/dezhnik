@@ -23,8 +23,6 @@
         
         self.logInterval = 1.0; //1000 ms
         
-        self.logTimer = [NSTimer scheduledTimerWithTimeInterval:self.logInterval target:self selector:@selector(logValues:) userInfo:nil repeats:YES];
-        
         self.m = [[CBCentralManager alloc]initWithDelegate:self queue:nil];
         self.nDevices = [[NSMutableArray alloc]init];
         self.sensorTags = [[NSMutableArray alloc]init];
@@ -201,6 +199,9 @@
 {
     NSLog(@"Disconnected from SensorTag");
     self.isConnected = false;
+    self.sensorsEnabled = [[NSMutableArray alloc] init];
+    [self.rssiTimer invalidate];
+    [self.logTimer invalidate];
     [central scanForPeripheralsWithServices:nil options:nil];
 }
 
@@ -209,6 +210,9 @@
 {
     NSLog(@"Failed to connect to SensorTag");
     self.isConnected = false;
+    [self.rssiTimer invalidate];
+    [self.logTimer invalidate];
+    self.sensorsEnabled = [[NSMutableArray alloc] init];
     [central scanForPeripheralsWithServices:nil options:nil];
 }
 
@@ -378,19 +382,26 @@
                 [self calibrateGyro];
 
                 [self.device.manager stopScan];
-                self.isConnected = true;
                 //NSLog(@"%lu %lu", (unsigned long)self.nDevices.count, (unsigned long)self.sensorTags.count);
             }
         }
     }
 }
 
-
+- (void)peripheralDidUpdateRSSI:(CBPeripheral *)peripheral error:(NSError *)error_
+{
+    self.currentVal.RSSI = fabs(self.device.p.RSSI.doubleValue);
+}
 
 -(void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error {
     if ([service.UUID isEqual:[CBUUID UUIDWithString:[self.device.setupData valueForKey:@"Accelerometer service UUID"]]]) {
         //NSLog(@"found gyro service");
         [self configureSensorTag];
+        self.isConnected = true;
+        self.rssiTimer = [NSTimer timerWithTimeInterval:0.3f target:self selector:@selector(rssiTimer:) userInfo:nil repeats:YES];
+        [[NSRunLoop mainRunLoop] addTimer:self.rssiTimer forMode:NSRunLoopCommonModes];
+        self.logTimer = [NSTimer scheduledTimerWithTimeInterval:self.logInterval target:self selector:@selector(logValues:) userInfo:nil repeats:YES];
+        [[NSRunLoop mainRunLoop] addTimer:self.logTimer forMode:NSRunLoopCommonModes];
     }
 }
 
@@ -461,6 +472,11 @@
 }
 - (void) calibrateGyro {
     [self.gyroSensor calibrate];
+}
+
+- (void)rssiTimer:(NSTimer *)timer_
+{
+    [self.device.p readRSSI];
 }
 
 -(void) logValues:(NSTimer *)timer {

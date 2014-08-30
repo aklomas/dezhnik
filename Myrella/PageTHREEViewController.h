@@ -10,14 +10,22 @@
 #import "ForecastKit.h"
 #import "SensorTag.h"
 #import "SensorTableView.h"
+#import "ScreenTHREESignal.h"
+#import "ScreenTHREEDottedCircle.h"
 
 @interface PageTHREEViewController : UIViewController
 
-@property (strong,nonatomic) SensorTableView *sensorTable;
-@property (strong,nonatomic) IBOutlet UIView *sensorTableContainer;
 @property (strong,nonatomic) SensorTag *sensorTag;
 @property (strong,nonatomic) ForecastKit *forecastKit;
+@property (strong,nonatomic) SensorTableView *sensorTable;
 
-//- (void) setTag:(SensorTag *)sensorTag;
+
+@property (weak, nonatomic) IBOutlet ScreenTHREESignal *signal;
+@property (weak, nonatomic) IBOutlet ScreenTHREEDottedCircle * timesReconnected;
+@property (weak, nonatomic) IBOutlet ScreenTHREEDottedCircle *timesOpened;
+@property (strong,nonatomic) IBOutlet UIScrollView *graphsContainer;
+
+
+-(void)updateView:(NSTimer *)timer;
 
 @end

@@ -81,10 +81,12 @@
         [formatter setDateFormat:@"HH"];
         int curTime = [[formatter stringFromDate:[NSDate date]] intValue];
         self.Plus4Label.text = curTime+4 < 12 ? [NSString stringWithFormat:@"%dam",curTime+4] :
+                               curTime+4 == 12 ? [NSString stringWithFormat:@"%dpm",curTime+4] :
                                curTime+4 < 24 ? [NSString stringWithFormat:@"%dpm",curTime-12+4] :
                                                 [NSString stringWithFormat:@"%dam",curTime-24+4];
         
         self.Plus8Label.text = curTime+8 < 12 ? [NSString stringWithFormat:@"%dam",curTime+8] :
+                               curTime+8 == 12 ? [NSString stringWithFormat:@"%dpm",curTime+8] :
                                curTime+8 < 24 ? [NSString stringWithFormat:@"%dpm",curTime-12+8] :
                                                 [NSString stringWithFormat:@"%dam",curTime-24+8];
         
@@ -104,9 +106,12 @@
         
         self.forecastKit.changed = false;
     }
-    self.SensorTempLabel.text = [NSString stringWithFormat:@" Myrella: %@", self.sensorTag.isConnected ? [NSString stringWithFormat:@"%.1f°C",self.sensorTag.currentVal.tAmb] : @"N/A"];
     
-    if(self.TempCircle){
+    NSString *str = [NSString stringWithFormat:@" Myrella: %@", self.sensorTag.isConnected ? [NSString stringWithFormat:@"%.1f°C",self.sensorTag.currentVal.tAmb] : @"N/A"];
+    if (![self.SensorTempLabel.text isEqualToString:str])
+        self.SensorTempLabel.text = str;
+    
+    if(self.TempCircle && self.TempCircle.extend != 0){
         [self.TempCircle update];
         if(self.TempCircle.extend == 0 && self.TempCircle.extended == 1.0) {
             self.TempContainer.alpha = 0.0;

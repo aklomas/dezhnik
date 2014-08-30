@@ -101,6 +101,7 @@
 @property float magX;
 @property float magY;
 @property float magZ;
+@property float RSSI;
 @property NSString *timeStamp;
 
 @end

@@ -58,12 +58,12 @@
     for (int i = 1; i < 11; i++) {
         path = [UIBezierPath bezierPath];
         path.lineWidth = 1;
-        [path moveToPoint:CGPointMake(40 + i*width, height*3)];
-        [path addLineToPoint:CGPointMake(40 + i*width, height*3-5)];
+        [path moveToPoint:CGPointMake(30 + i*width*1.1, height*3)];
+        [path addLineToPoint:CGPointMake(30 + i*width*1.1, height*3-5)];
         [path strokeWithBlendMode:kCGBlendModeNormal alpha:1.0];
     }
     
-    UIFont* font = [UIFont fontWithName:@"Helvetica" size:10];
+    UIFont* font = [UIFont fontWithName:@"Helvetica" size:9];
     NSMutableParagraphStyle* p = [NSMutableParagraphStyle new];
     p.alignment = NSTextAlignmentCenter;
     NSDictionary* stringAttrs = @{ NSFontAttributeName : font,
@@ -79,9 +79,17 @@
     attrStr = [[NSAttributedString alloc] initWithString:@"LIGHT" attributes:stringAttrs];
     [attrStr drawAtPoint:CGPointMake(0.0f, height*2.f + (height-10)*0.5f)];
     
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"HH"];
+    int curTime = [[formatter stringFromDate:[NSDate date]] intValue];
+    
     for (int i = 1; i < 11; i++) {
-        attrStr = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%dh",i] attributes:stringAttrs];
-        [attrStr drawInRect:CGRectMake(40 + i*width - 20, height*3+3, 40, 12)];
+        NSString *str = curTime+i < 12 ? [NSString stringWithFormat:@"%dam",curTime+i] :
+                       curTime+i == 12 ? [NSString stringWithFormat:@"%dpm",curTime+i] :
+                       curTime+i < 24 ? [NSString stringWithFormat:@"%dpm",curTime-12+i] :
+                                        [NSString stringWithFormat:@"%dam",curTime-24+i];
+        attrStr = [[NSAttributedString alloc] initWithString:str attributes:stringAttrs];
+        [attrStr drawInRect:CGRectMake(30 + i*width*1.1 - 20, height*3+3, 40, 12)];
     }
     
     if(self.tempData && self.percipData) {
@@ -102,9 +110,9 @@
                 diff2 = point - ([self percipPoint:i+1 heightOfSection:height] - point)*0.5;
             if (point == 72.0)
                 diff2 = 72.0;
-            [path addCurveToPoint:CGPointMake(40 + i*width, point)
-                    controlPoint1:CGPointMake(40 + (i-0.5)*width, diff1)
-                    controlPoint2:CGPointMake(40 + (i-0.5)*width, diff2)];
+            [path addCurveToPoint:CGPointMake(30 + i*width*1.1, point)
+                    controlPoint1:CGPointMake(30 + (i-0.5)*width*1.1, diff1)
+                    controlPoint2:CGPointMake(30 + (i-0.5)*width*1.1, diff2)];
             
             //NSLog(@"%f %f",[[self.percipData objectAtIndex:i] floatValue], point);
             if (i == 11)
@@ -140,15 +148,15 @@
             point = 3*height - (([[self.tempData objectAtIndex:i] floatValue] - min)*unit + space);
             if (i != 11)
                 diff2 = point - ((3*height - (([[self.tempData objectAtIndex:i+1] floatValue] - min)*unit + space)) - point)*0.5;
-            [path addCurveToPoint:CGPointMake(40 + i*width, point)
-                  controlPoint1:CGPointMake(40 + (i-0.5)*width, diff1)
-                  controlPoint2:CGPointMake(40 + (i-0.5)*width, diff2)];
+            [path addCurveToPoint:CGPointMake(30 + i*width*1.1, point)
+                  controlPoint1:CGPointMake(30 + (i-0.5)*width*1.1, diff1)
+                  controlPoint2:CGPointMake(30 + (i-0.5)*width*1.1, diff2)];
             if (i == 11)
                 break;
             diff1 = point + ((3*height - (([[self.tempData objectAtIndex:i+1] floatValue] - min)*unit + space)) - point)*0.5;
             
             attrStr = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%d°", (int)([[self.tempData objectAtIndex:i] floatValue] + 0.5)] attributes:stringAttrs];
-            [attrStr drawInRect:CGRectMake(40 + i*width - 10, point - 12, 20, 10)];
+            [attrStr drawInRect:CGRectMake(30 + i*width*1.1 - 10, point - 12, 20, 10)];
         }
         
         [path strokeWithBlendMode:kCGBlendModeNormal alpha:0.6];
