@@ -24,6 +24,8 @@
 
 -(id)initWithAPIKey:(NSString*)api_key;
 
+-(void)update;
+
 -(void)updateLocation;
 -(void)updateDictionary;
 

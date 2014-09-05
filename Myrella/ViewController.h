@@ -21,4 +21,6 @@
 @property (strong,nonatomic) ForecastKit *forecastKit;
 @property NSMutableArray *views;
 
+-(void) update;
+
 @end

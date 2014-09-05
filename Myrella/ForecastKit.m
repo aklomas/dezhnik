@@ -35,6 +35,10 @@
     return self;
 }
 
+-(void)update {
+    [self updateLocation];
+}
+
 -(void)updateDictionary {
     NSLog(@"Updating weather dictionary");
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.forecast.io/forecast/%@/%.6f,%.6f?units=si", self.apiKey, self.location.coordinate.latitude, self.location.coordinate.longitude]];
@@ -74,8 +78,6 @@
 }
 
 -(NSString *)getCurTemperature {
-    /*NSString *r = [NSString stringWithFormat:@"%d", (int)([[[self.forecastDict valueForKey:@"currently"] valueForKey:@"temperature"] floatValue] + 0.5)];
-    NSLog(@"%@",r);*/
     return [NSString stringWithFormat:@"%f", [[[self.forecastDict valueForKey:@"currently"] valueForKey:@"temperature"] floatValue]];
 }
 
@@ -132,8 +134,9 @@
     [self.geocoder reverseGeocodeLocation:self.location completionHandler:^(NSArray *placemarks, NSError *error) {
         if (error == nil && [placemarks count] > 0) {
             self.placemark = [placemarks lastObject];
-            self.curLocName = [NSString stringWithFormat:@"%@", self.placemark.locality];
-            NSLog(@"Found locality: %@", self.placemark.locality);
+            self.curLocName = self.placemark.areasOfInterest ? [NSString stringWithFormat:@"%@", self.placemark.areasOfInterest] : [NSString stringWithFormat:@"%@", self.placemark.locality];
+            NSLog(@"Found locality: %@, %@", self.placemark.locality
+                                           , self.placemark.areasOfInterest);
             [self updateDictionary];
         } else {
             NSLog(@"%@", error.debugDescription);

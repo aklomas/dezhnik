@@ -33,7 +33,7 @@
     CGContextSetRGBFillColor(ctx, 1.0, 1.0, 1.0, 1.0);
     CGFloat angle = -M_PI/2;
     
-    int nrOfDots = 40;
+    int nrOfDots = 50;
     int dotSize = 5;
     
     CGFloat centerX = self.frame.size.height/2;

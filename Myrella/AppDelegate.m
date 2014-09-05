@@ -12,14 +12,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    /*
-    UIPageControl *pageControl = [UIPageControl appearance];
-    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
-    pageControl.currentPageIndicatorTintColor = [UIColor darkGrayColor];
-    pageControl.backgroundColor = [UIColor blackColor];
-    pageControl.hidden = YES;*/
-    
+    if (application.applicationState == UIApplicationStateInactive) {
+        self.vC = (ViewController*)self.window.rootViewController;
+    }
     
     return YES;
 }
@@ -44,6 +39,8 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    [self.vC update];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

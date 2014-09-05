@@ -64,6 +64,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)update {
+    [self.forecastKit update];
+}
+
 
 - (UIViewController *)viewControllerAtIndex:(NSUInteger)index
 {

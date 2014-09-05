@@ -202,7 +202,7 @@
     self.sensorsEnabled = [[NSMutableArray alloc] init];
     [self.rssiTimer invalidate];
     [self.logTimer invalidate];
-    [central scanForPeripheralsWithServices:nil options:nil];
+    [central scanForPeripheralsWithServices:self.device.p.services options:nil];
 }
 
 
@@ -213,7 +213,7 @@
     [self.rssiTimer invalidate];
     [self.logTimer invalidate];
     self.sensorsEnabled = [[NSMutableArray alloc] init];
-    [central scanForPeripheralsWithServices:nil options:nil];
+    [central scanForPeripheralsWithServices:self.device.p.services options:nil];
 }
 
 
@@ -391,6 +391,7 @@
 - (void)peripheralDidUpdateRSSI:(CBPeripheral *)peripheral error:(NSError *)error_
 {
     self.currentVal.RSSI = fabs(self.device.p.RSSI.doubleValue);
+    //NSLog(@"%f", self.currentVal.RSSI);
 }
 
 -(void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error {
