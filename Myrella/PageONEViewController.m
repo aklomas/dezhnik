@@ -124,7 +124,6 @@
         else
             self.TempContainerExtended.alpha = 0.0;
     }
-
 }
 
 - (IBAction)temperatureTap:(UITapGestureRecognizer *)sender {

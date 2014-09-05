@@ -17,11 +17,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0PZ-MA-UAU">
-                                <rect key="frame" x="0.0" y="65" width="320" height="503"/>
+                                <rect key="frame" x="0.0" y="50" width="320" height="518"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="KWl-6C-z5d">
-                                        <rect key="frame" x="140" y="453" width="39" height="37"/>
+                                        <rect key="frame" x="140" y="468" width="39" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </pageControl>
                                 </subviews>
@@ -83,10 +83,60 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lew-Je-Fza" userLabel="Graphs" customClass="UIScrollView">
+                                    <view alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ExM-dc-35p" userLabel="pressureGraph" customClass="GraphView">
+                                        <rect key="frame" x="10" y="150" width="300" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Cy-CJ-JrG" userLabel="humidityGraph" customClass="GraphView">
+                                        <rect key="frame" x="10" y="150" width="300" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ude-Vi-mei" userLabel="temperatureGraph" customClass="GraphView">
+                                        <rect key="frame" x="10" y="150" width="300" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lew-Je-Fza" userLabel="sensors">
                                         <rect key="frame" x="0.0" y="135" width="320" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b2p-Jo-NbJ" userLabel="Pressure">
+                                                <rect key="frame" x="20" y="15" width="80" height="80"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OeF-hQ-AGw" userLabel="Humidity">
+                                                <rect key="frame" x="120" y="15" width="80" height="80"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uHF-oW-UaW" userLabel="Temperature">
+                                                <rect key="frame" x="220" y="15" width="80" height="80"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7NL-3a-9jQ" userLabel="Pressure Label">
+                                                <rect key="frame" x="20" y="103" width="80" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sso-9r-UQ0" userLabel="Humidity Label">
+                                                <rect key="frame" x="139" y="103" width="42" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8v-Bc-vBY" userLabel="Temperature Label">
+                                                <rect key="frame" x="239" y="103" width="42" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="66W-br-puz" userLabel="TimesOpened" customClass="ScreenTHREEDottedCircle">
                                         <rect key="frame" x="20" y="295" width="130" height="130"/>
@@ -115,16 +165,85 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lXh-KQ-ma2" userLabel="Pressure Gesture">
+                                <rect key="frame" x="0.0" y="185" width="106" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="SZz-xN-0yw" appends="YES" id="gQE-L9-SBg"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PvV-Oo-ZmC" userLabel="Humidity Gesture">
+                                <rect key="frame" x="106" y="185" width="106" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Xuw-U9-kEf" appends="YES" id="8Gj-8W-5z2"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Jt-gh-vjY" userLabel="Temperature Gesture">
+                                <rect key="frame" x="212" y="185" width="108" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="qis-Ac-GGW" appends="YES" id="bKV-3b-fvj"/>
+                                </connections>
+                            </view>
+                            <view alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AYy-bD-tRF" userLabel="Back Gesture">
+                                <rect key="frame" x="0.0" y="185" width="320" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="cPv-11-mjF" appends="YES" id="z3S-BI-DD1"/>
+                                </connections>
+                            </view>
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="graphsContainer" destination="lew-Je-Fza" id="1MT-Ko-bLY"/>
+                        <outlet property="backGesture" destination="AYy-bD-tRF" id="f0B-Ob-mym"/>
+                        <outlet property="humidity" destination="OeF-hQ-AGw" id="p9P-6b-uVZ"/>
+                        <outlet property="humidityGesture" destination="PvV-Oo-ZmC" id="cRC-Ic-J9d"/>
+                        <outlet property="humidityGraph" destination="2Cy-CJ-JrG" id="FsW-DX-Wkl"/>
+                        <outlet property="humidityLabel" destination="sso-9r-UQ0" id="tFv-2P-nXq"/>
+                        <outlet property="pressure" destination="b2p-Jo-NbJ" id="JtQ-hK-s8A"/>
+                        <outlet property="pressureGesture" destination="lXh-KQ-ma2" id="fDf-Sk-Yfx"/>
+                        <outlet property="pressureGraph" destination="ExM-dc-35p" id="JmZ-fE-iQA"/>
+                        <outlet property="pressureLabel" destination="7NL-3a-9jQ" id="9HV-O5-4lt"/>
+                        <outlet property="sensorsView" destination="lew-Je-Fza" id="UJs-yi-DAG"/>
                         <outlet property="signal" destination="A0T-na-Hq5" id="Y7C-AJ-Ou0"/>
+                        <outlet property="temperature" destination="uHF-oW-UaW" id="Y4F-B1-rkQ"/>
+                        <outlet property="temperatureGesture" destination="0Jt-gh-vjY" id="Cm2-yj-Jth"/>
+                        <outlet property="temperatureGraph" destination="Ude-Vi-mei" id="Y2i-vb-Bwc"/>
+                        <outlet property="temperatureLabel" destination="I8v-Bc-vBY" id="rqD-Cz-q4F"/>
                         <outlet property="timesOpened" destination="66W-br-puz" id="Ifx-7G-tXY"/>
                         <outlet property="timesReconnected" destination="3gY-lH-7Kd" id="KBa-c5-DuW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Mb-33-2o8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="SZz-xN-0yw" userLabel="pressure gesture recognizer">
+                    <connections>
+                        <action selector="showPressureGraph:" destination="lFv-Ob-ctC" id="puS-o2-Pxy"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Xuw-U9-kEf" userLabel="humidity gesture recognizer">
+                    <connections>
+                        <action selector="showHumidityGraph:" destination="lFv-Ob-ctC" id="3Wx-a0-M0l"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="qis-Ac-GGW" userLabel="temperature gesture recognizer">
+                    <connections>
+                        <action selector="showTemperatureGraph:" destination="lFv-Ob-ctC" id="Svn-DD-EHn"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="cPv-11-mjF" userLabel="Back Gesture Recognizer">
+                    <connections>
+                        <action selector="showSensors:" destination="lFv-Ob-ctC" id="3hF-ow-Mz5"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="854" y="1083"/>
         </scene>
@@ -148,7 +267,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="London, UK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1Y-05-UdB" userLabel="Location">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="London, UK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="G1Y-05-UdB" userLabel="Location">
                                 <rect key="frame" x="20" y="21" width="280" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="19"/>
@@ -314,6 +433,23 @@ for some rainy fun today.</string>
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-646" y="1083"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ZoO-MP-cGS">
+            <objects>
+                <viewController id="vIW-mc-k3f" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fDL-Oz-SMU"/>
+                        <viewControllerLayoutGuide type="bottom" id="3SO-Dt-wwF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1Ia-8g-lik">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4fV-Lv-exT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

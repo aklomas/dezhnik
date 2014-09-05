@@ -27,6 +27,7 @@
 		A6493A1719AFB108000A5604 /* ScreenONETempCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = A6493A1619AFB108000A5604 /* ScreenONETempCircle.m */; };
 		A6493A1A19B09E25000A5604 /* ScreenONEGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = A6493A1919B09E25000A5604 /* ScreenONEGraph.m */; };
 		A6493A1D19B1DF40000A5604 /* ScreenTHREESignal.m in Sources */ = {isa = PBXBuildFile; fileRef = A6493A1C19B1DF40000A5604 /* ScreenTHREESignal.m */; };
+		A6AA415219B9E62300EEF9B2 /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AA415119B9E62300EEF9B2 /* GraphView.m */; };
 		A6B34EE9199A60D8009AF950 /* PageONEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B34EE8199A60D8009AF950 /* PageONEViewController.m */; };
 		A6B34EEC199A60E7009AF950 /* PageTWOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B34EEB199A60E7009AF950 /* PageTWOViewController.m */; };
 		A6B34EEF199A60F4009AF950 /* SensorTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B34EEE199A60F4009AF950 /* SensorTableView.m */; };
@@ -90,6 +91,8 @@
 		A6493A1919B09E25000A5604 /* ScreenONEGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenONEGraph.m; sourceTree = "<group>"; };
 		A6493A1B19B1DF40000A5604 /* ScreenTHREESignal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenTHREESignal.h; sourceTree = "<group>"; };
 		A6493A1C19B1DF40000A5604 /* ScreenTHREESignal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenTHREESignal.m; sourceTree = "<group>"; };
+		A6AA415019B9E62300EEF9B2 /* GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphView.h; sourceTree = "<group>"; };
+		A6AA415119B9E62300EEF9B2 /* GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphView.m; sourceTree = "<group>"; };
 		A6B34EE7199A60D8009AF950 /* PageONEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageONEViewController.h; sourceTree = "<group>"; };
 		A6B34EE8199A60D8009AF950 /* PageONEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageONEViewController.m; sourceTree = "<group>"; };
 		A6B34EEA199A60E7009AF950 /* PageTWOViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageTWOViewController.h; sourceTree = "<group>"; };
@@ -585,6 +588,8 @@
 		A6E0244519A3B60900AB1762 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A6AA415019B9E62300EEF9B2 /* GraphView.h */,
+				A6AA415119B9E62300EEF9B2 /* GraphView.m */,
 				A6E0243619A2285700AB1762 /* deviceCellTemplate.h */,
 				A6E0243719A2285700AB1762 /* deviceCellTemplate.m */,
 				A6B34EED199A60F4009AF950 /* SensorTableView.h */,
@@ -707,6 +712,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6AA415219B9E62300EEF9B2 /* GraphView.m in Sources */,
 				A6E0243B19A2285700AB1762 /* BLEUtility.m in Sources */,
 				A6B34EEC199A60E7009AF950 /* PageTWOViewController.m in Sources */,
 				A634C0E81992407500AD0FEF /* ViewController.m in Sources */,

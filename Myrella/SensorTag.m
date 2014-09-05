@@ -434,6 +434,7 @@
     
     if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:[self.device.setupData valueForKey:@"Humidity data UUID"]]]) {
         self.currentVal.humidity = [sensorSHT21 calcPress:characteristic.value];
+        //NSLog(@"%f", self.currentVal.humidity);
     }
     
     if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:[self.device.setupData valueForKey:@"Magnetometer data UUID"]]]) {

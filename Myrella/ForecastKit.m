@@ -134,7 +134,12 @@
     [self.geocoder reverseGeocodeLocation:self.location completionHandler:^(NSArray *placemarks, NSError *error) {
         if (error == nil && [placemarks count] > 0) {
             self.placemark = [placemarks lastObject];
-            self.curLocName = self.placemark.areasOfInterest ? [NSString stringWithFormat:@"%@", self.placemark.areasOfInterest] : [NSString stringWithFormat:@"%@", self.placemark.locality];
+            self.curLocName = self.placemark.areasOfInterest ?
+                                            [NSString stringWithFormat:@"%@, %@",
+                                                [NSString stringWithFormat:@"%@", self.placemark.locality],
+                                                [self.placemark.areasOfInterest objectAtIndex:[self.placemark.areasOfInterest count] - 1]]
+                                          : [NSString stringWithFormat:@"%@", self.placemark.locality];
+            
             NSLog(@"Found locality: %@, %@", self.placemark.locality
                                            , self.placemark.areasOfInterest);
             [self updateDictionary];
