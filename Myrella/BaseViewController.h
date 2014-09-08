@@ -12,8 +12,7 @@
 #import "PageTWOViewController.h"
 #import "PageTHREEViewController.h"
 
-@interface ViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
-
+@interface BaseViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 @property (nonatomic, retain) IBOutlet UIPageControl *pageControl;
@@ -21,6 +20,10 @@
 @property (strong,nonatomic) ForecastKit *forecastKit;
 @property NSMutableArray *views;
 
+@property (weak, nonatomic) IBOutlet UIImageView *connectionImage;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navItem;
+
 -(void) update;
+
 
 @end

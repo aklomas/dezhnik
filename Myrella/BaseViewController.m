@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 edu. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "BaseViewController.h"
 #import "ForecastKit.h"
 
-@interface ViewController ()
+@interface BaseViewController ()
 
 @end
 
-@implementation ViewController
+@implementation BaseViewController
 
 - (void)viewDidLoad
 {
@@ -37,24 +37,26 @@
     ((PageONEViewController *)[self.views objectAtIndex:0]).sensorTag = self.sensorTag;
     ((PageTHREEViewController *)[self.views objectAtIndex:2]).sensorTag = self.sensorTag;
     
+    ((PageONEViewController *)[self.views objectAtIndex:0]).connectionImage = self.connectionImage;
+    
     UIViewController *startingViewController = [self viewControllerAtIndex:0];
     NSArray *viewControllers = @[startingViewController];
     [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     // Change the size of page view controller
-    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 54);
     
     [self addChildViewController:_pageViewController];
     [self.view addSubview:_pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
-     
-     self.pageControl.numberOfPages = [self.views count];
-     self.pageControl.currentPage = 0;
-
+    
+    self.pageControl.numberOfPages = [self.views count];
+    self.pageControl.currentPage = 0;
+    
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
-    [[self.views objectAtIndex:2] deinit];
+    //[[self.views objectAtIndex:2] deinit];
 }
 
 
@@ -131,14 +133,19 @@
     NSUInteger index = 0;
     if ([currentViewController isKindOfClass:[PageONEViewController class]]) {
         index = 0;
+        [self.navItem setTitle:((PageONEViewController*)currentViewController).pageTitle];
     }
     else if ([currentViewController isKindOfClass:[PageTWOViewController class]]) {
         index = 1;
+        [self.navItem setTitle:@"Weather Map"];
     }
     else if ([currentViewController isKindOfClass:[PageTHREEViewController class]]) {
         index = 2;
+        [self.navItem setTitle:@"Myrella Data"];
     }
     
     self.pageControl.currentPage = index;
 }
+
+
 @end

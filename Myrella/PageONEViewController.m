@@ -28,35 +28,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    //svg init
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"settings-button" ofType:@"svg"];
-    
-    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:filePath];
-    NSURLRequest *req = [NSURLRequest requestWithURL:fileURL];
-    self.settingsSVGweb.opaque = NO;
-    self.settingsSVGweb.backgroundColor = [UIColor clearColor];
-    [self.settingsSVGweb setScalesPageToFit:NO];
-    self.settingsSVGweb.delegate = self;
-    self.settingsSVGweb.scrollView.scrollEnabled = NO;
-    self.settingsSVGweb.scrollView.bounces = NO;
-    [self.settingsSVGweb loadRequest:req];
-    
-    
     NSTimer* timer = [NSTimer timerWithTimeInterval:0.03f target:self selector:@selector(updateView:) userInfo:nil repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 }
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-    CGSize contentSize = webView.scrollView.contentSize;
-    CGSize webViewSize = webView.bounds.size;
-    CGFloat scaleFactor = webViewSize.width / contentSize.width;
-    
-    webView.scrollView.minimumZoomScale = scaleFactor;
-    webView.scrollView.maximumZoomScale = scaleFactor;
-    webView.scrollView.zoomScale = scaleFactor;
-}
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -66,10 +40,11 @@
 
 -(void)updateView:(NSTimer *)timer {
     if(self.forecastKit.changed && self.forecastKit.forecastDict){
-        self.LocationLabel.text = self.forecastKit.curLocName;
+        self.pageTitle = self.forecastKit.curLocName;
         self.ForecastTempLabel.text = [NSString stringWithFormat:@"%d",(int)([self.forecastKit.getCurTemperature floatValue] + 0.5)];
         self.SummaryLabel.text = self.forecastKit.getCurSummary;
         self.LeftImageExtended.image = [UIImage imageNamed:[self.forecastKit getCurIcon]];
+        NSLog(@"%@",[self.forecastKit getCurIcon]);
         self.CenterImageExtended.image = [UIImage imageNamed:[self.forecastKit getIconForNextHour:4]];
         self.RightImageExtended.image = [UIImage imageNamed:[self.forecastKit getIconForNextHour:8]];
         
@@ -110,6 +85,12 @@
     NSString *str = [NSString stringWithFormat:@" Myrella: %@", self.sensorTag.isConnected ? [NSString stringWithFormat:@"%.1f°C",self.sensorTag.currentVal.tAmb] : @"N/A"];
     if (![self.SensorTempLabel.text isEqualToString:str])
         self.SensorTempLabel.text = str;
+    
+    if(self.sensorTag.isConnected){
+        self.connectionImage.image = [UIImage imageNamed:@"connected"];
+    }
+    else
+        self.connectionImage.image = [UIImage imageNamed:@"disconnected"];
     
     if(self.TempCircle && self.TempCircle.extend != 0){
         [self.TempCircle update];

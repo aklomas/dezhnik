@@ -15,7 +15,7 @@
 		A634C0DE1992407500AD0FEF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A634C0DD1992407500AD0FEF /* main.m */; };
 		A634C0E21992407500AD0FEF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A634C0E11992407500AD0FEF /* AppDelegate.m */; };
 		A634C0E51992407500AD0FEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A634C0E31992407500AD0FEF /* Main.storyboard */; };
-		A634C0E81992407500AD0FEF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A634C0E71992407500AD0FEF /* ViewController.m */; };
+		A634C0E81992407500AD0FEF /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A634C0E71992407500AD0FEF /* BaseViewController.m */; };
 		A634C0EA1992407500AD0FEF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A634C0E91992407500AD0FEF /* Images.xcassets */; };
 		A634C0F11992407500AD0FEF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A634C0F01992407500AD0FEF /* XCTest.framework */; };
 		A634C0F21992407500AD0FEF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A634C0D11992407500AD0FEF /* Foundation.framework */; };
@@ -27,6 +27,9 @@
 		A6493A1719AFB108000A5604 /* ScreenONETempCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = A6493A1619AFB108000A5604 /* ScreenONETempCircle.m */; };
 		A6493A1A19B09E25000A5604 /* ScreenONEGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = A6493A1919B09E25000A5604 /* ScreenONEGraph.m */; };
 		A6493A1D19B1DF40000A5604 /* ScreenTHREESignal.m in Sources */ = {isa = PBXBuildFile; fileRef = A6493A1C19B1DF40000A5604 /* ScreenTHREESignal.m */; };
+		A68ADC4619BD1DBF0043A616 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68ADC4519BD1DBF0043A616 /* SettingsViewController.m */; };
+		A68ADC4C19BD2DC80043A616 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68ADC4B19BD2DC80043A616 /* RootViewController.m */; };
+		A68ADC4F19BD33BE0043A616 /* SettingsBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68ADC4E19BD33BE0043A616 /* SettingsBaseViewController.m */; };
 		A6AA415219B9E62300EEF9B2 /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AA415119B9E62300EEF9B2 /* GraphView.m */; };
 		A6B34EE9199A60D8009AF950 /* PageONEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B34EE8199A60D8009AF950 /* PageONEViewController.m */; };
 		A6B34EEC199A60E7009AF950 /* PageTWOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B34EEB199A60E7009AF950 /* PageTWOViewController.m */; };
@@ -74,8 +77,8 @@
 		A634C0E01992407500AD0FEF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A634C0E11992407500AD0FEF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A634C0E41992407500AD0FEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A634C0E61992407500AD0FEF /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		A634C0E71992407500AD0FEF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A634C0E61992407500AD0FEF /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		A634C0E71992407500AD0FEF /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		A634C0E91992407500AD0FEF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A634C0EF1992407500AD0FEF /* MyrellaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyrellaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A634C0F01992407500AD0FEF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -91,6 +94,12 @@
 		A6493A1919B09E25000A5604 /* ScreenONEGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenONEGraph.m; sourceTree = "<group>"; };
 		A6493A1B19B1DF40000A5604 /* ScreenTHREESignal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenTHREESignal.h; sourceTree = "<group>"; };
 		A6493A1C19B1DF40000A5604 /* ScreenTHREESignal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenTHREESignal.m; sourceTree = "<group>"; };
+		A68ADC4419BD1DBF0043A616 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		A68ADC4519BD1DBF0043A616 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		A68ADC4A19BD2DC80043A616 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		A68ADC4B19BD2DC80043A616 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		A68ADC4D19BD33BE0043A616 /* SettingsBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsBaseViewController.h; sourceTree = "<group>"; };
+		A68ADC4E19BD33BE0043A616 /* SettingsBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsBaseViewController.m; sourceTree = "<group>"; };
 		A6AA415019B9E62300EEF9B2 /* GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphView.h; sourceTree = "<group>"; };
 		A6AA415119B9E62300EEF9B2 /* GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphView.m; sourceTree = "<group>"; };
 		A6B34EE7199A60D8009AF950 /* PageONEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageONEViewController.h; sourceTree = "<group>"; };
@@ -331,8 +340,8 @@
 				A634C0E31992407500AD0FEF /* Main.storyboard */,
 				A634C0E01992407500AD0FEF /* AppDelegate.h */,
 				A634C0E11992407500AD0FEF /* AppDelegate.m */,
-				A634C0E61992407500AD0FEF /* ViewController.h */,
-				A634C0E71992407500AD0FEF /* ViewController.m */,
+				A68ADC4A19BD2DC80043A616 /* RootViewController.h */,
+				A68ADC4B19BD2DC80043A616 /* RootViewController.m */,
 				A634C0E91992407500AD0FEF /* Images.xcassets */,
 				A6E0244519A3B60900AB1762 /* Views */,
 				A6E0243119A227F500AB1762 /* Logic */,
@@ -385,12 +394,18 @@
 		A6B34EF3199A6121009AF950 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				A634C0E61992407500AD0FEF /* BaseViewController.h */,
+				A634C0E71992407500AD0FEF /* BaseViewController.m */,
+				A68ADC4D19BD33BE0043A616 /* SettingsBaseViewController.h */,
+				A68ADC4E19BD33BE0043A616 /* SettingsBaseViewController.m */,
 				A6B34EE7199A60D8009AF950 /* PageONEViewController.h */,
 				A6B34EE8199A60D8009AF950 /* PageONEViewController.m */,
 				A6B34EEA199A60E7009AF950 /* PageTWOViewController.h */,
 				A6B34EEB199A60E7009AF950 /* PageTWOViewController.m */,
 				A6B34EF0199A6102009AF950 /* PageTHREEViewController.h */,
 				A6B34EF1199A6102009AF950 /* PageTHREEViewController.m */,
+				A68ADC4419BD1DBF0043A616 /* SettingsViewController.h */,
+				A68ADC4519BD1DBF0043A616 /* SettingsViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -713,10 +728,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6AA415219B9E62300EEF9B2 /* GraphView.m in Sources */,
+				A68ADC4C19BD2DC80043A616 /* RootViewController.m in Sources */,
 				A6E0243B19A2285700AB1762 /* BLEUtility.m in Sources */,
 				A6B34EEC199A60E7009AF950 /* PageTWOViewController.m in Sources */,
-				A634C0E81992407500AD0FEF /* ViewController.m in Sources */,
+				A634C0E81992407500AD0FEF /* BaseViewController.m in Sources */,
 				A6B34EF2199A6102009AF950 /* PageTHREEViewController.m in Sources */,
+				A68ADC4619BD1DBF0043A616 /* SettingsViewController.m in Sources */,
 				A6E0244119A2398C00AB1762 /* SensorTag.m in Sources */,
 				A6E02203199CDE9400AB1762 /* WeatherShader.m in Sources */,
 				A6E0243A19A2285700AB1762 /* BLEDevice.m in Sources */,
@@ -727,6 +744,7 @@
 				A6B34EE9199A60D8009AF950 /* PageONEViewController.m in Sources */,
 				A634C0E21992407500AD0FEF /* AppDelegate.m in Sources */,
 				A6B34EEF199A60F4009AF950 /* SensorTableView.m in Sources */,
+				A68ADC4F19BD33BE0043A616 /* SettingsBaseViewController.m in Sources */,
 				A634C0DE1992407500AD0FEF /* main.m in Sources */,
 				A6E0243C19A2285700AB1762 /* deviceCellTemplate.m in Sources */,
 				A6493A1719AFB108000A5604 /* ScreenONETempCircle.m in Sources */,

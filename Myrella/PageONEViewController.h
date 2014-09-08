@@ -13,10 +13,8 @@
 #import "ScreenONETempCircle.h"
 #import "ScreenONEGraph.h"
 
-@interface PageONEViewController : UIViewController <UIWebViewDelegate>
+@interface PageONEViewController : UIViewController
 
-@property (nonatomic, retain) IBOutlet UIWebView *settingsSVGweb;
-@property (weak, nonatomic) IBOutlet UILabel *LocationLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *ForecastTempLabel;
 @property (weak, nonatomic) IBOutlet UILabel *SensorTempLabel;
@@ -25,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIView *TempContainerExtended;
 @property (weak, nonatomic) IBOutlet UIImageView *LeftImageExtended;
 @property (weak, nonatomic) IBOutlet UIImageView *CenterImageExtended;
+@property (weak, nonatomic) UIImageView *connectionImage;
 @property (weak, nonatomic) IBOutlet UILabel *Plus4Label;
 @property (weak, nonatomic) IBOutlet UIImageView *RightImageExtended;
 @property (weak, nonatomic) IBOutlet UILabel *Plus8Label;
@@ -37,6 +36,8 @@
 
 @property (strong,nonatomic) SensorTag *sensorTag;
 @property (strong,nonatomic) ForecastKit *forecastKit;
+
+@property (strong,nonatomic) NSString *pageTitle;
 
 - (IBAction)temperatureTap:(UITapGestureRecognizer *)sender;
 

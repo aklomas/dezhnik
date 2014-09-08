@@ -13,7 +13,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     if (application.applicationState == UIApplicationStateInactive) {
-        self.vC = (ViewController*)self.window.rootViewController;
+        self.vC = ((RootViewController*)self.window.rootViewController).vC;
     }
     
     return YES;
