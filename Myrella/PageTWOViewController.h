@@ -2,28 +2,32 @@
 //  PageTWOViewController.h
 //  Myrella
 //
-//  Created by Filip Kralj on 12/08/14.
+//  Created by Filip Kralj on 16/09/14.
 //  Copyright (c) 2014 edu. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "WhirlyGlobeComponent.h"
+#import <MapKit/MapKit.h>
+#import <GoogleMaps/GoogleMaps.h>
+#import "MBProgressHUD.h"
 
-// Map or globe or startup
-typedef enum {MaplyGlobe,MaplyGlobeWithElevation,Maply3DMap,Maply2DMap,MaplyNumTypes} MapType;
-
-/** The Test View Controller brings up the WhirlyGlobe Component
- and allows the user to test various functionality.
- */
-@interface PageTWOViewController : UIViewController <WhirlyGlobeViewControllerDelegate,MaplyViewControllerDelegate,UIPopoverControllerDelegate>
-{
-    /// This is the base class shared between the MaplyViewController and the WhirlyGlobeViewController
-    MaplyBaseViewController *baseViewC;
-    /// If we're displaying a globe, this is set
-    WhirlyGlobeViewController *globeViewC;
+@interface PageTWOViewController : UIViewController <MKMapViewDelegate> {
+    NSMutableArray *overlayArray;
+    GMSMapView *mapView;
+    
+    NSMutableArray *overlayObjectArray;
+    
+    NSTimer *checkDownloads;
+    NSNumber *imagesExpected;
+    NSNumber *currentLayerIndex;
+    NSString *layerName;
+    
+    MBProgressHUD *HUD;
 }
+@property (weak, nonatomic) IBOutlet UIView *mView;
+@property (nonatomic, retain) MKUserLocation *userLocation;
+@property (nonatomic, retain) NSString *layerName_;
 
-// Fire it up with a particular base layer and map or globe display
-- (id)initWithMapType:(MapType)mapType;
+
 
 @end

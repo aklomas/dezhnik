@@ -2,439 +2,297 @@
 //  PageTWOViewController.m
 //  Myrella
 //
-//  Created by Filip Kralj on 12/08/14.
+//  Created by Filip Kralj on 16/09/14.
 //  Copyright (c) 2014 edu. All rights reserved.
 //
 
 #import "PageTWOViewController.h"
-#import <QuartzCore/QuartzCore.h>
-
 #import "AFHTTPRequestOperation.h"
-//#import "WeatherShader.h"
+#import "SGMetOfficeForecastImage.h"
 
-
-// Local interface for PageTWOViewController
-// We'll hide a few things here
 @interface PageTWOViewController ()
-{
-    
-    // Base layer
-    NSString *baseLayerName;
-    MaplyViewControllerLayer *baseLayer;
-    
-    // Overlay layers
-    NSMutableDictionary *ovlLayers;
-    
-    // These represent a group of objects we've added to the globe.
-    // This is how we track them for removal
-    MaplyComponentObject *autoLabels;
-    NSArray *vecObjects;
-    NSMutableDictionary *loftPolyDict;
-    
-    // The view we're using to track a selected object
-    MaplyViewTracker *selectedViewTrack;
-    
-    NSDictionary *screenLabelDesc,*labelDesc,*vectorDesc;
-    
-    int maxLayerTiles;
-}
 
-// Change what we're showing based on the Configuration
-- (void)changeMapContents;
 @end
 
 @implementation PageTWOViewController
+
+NSString* const api_forecast_layers_cap = @"http://datapoint.metoffice.gov.uk/public/data/layer/wxfcs/all/json/capabilities?key=%@";
+NSString* const MET_OFFICE_API_KEY = @"496cb704-5e2d-4ccc-ae32-8a7bfe7fe5a2";
+//NSString* const GOOGLE_MAPS_SDK_KEY = @"AIzaSyAUyP1Z4_o-PglTitSntW5Cj1RhvillPOs";
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        ovlLayers = [NSMutableDictionary dictionary];
+        // Custom initialization
     }
     return self;
-}
-
-- (id)initWithMapType:(MapType)mapType
-{
-    self = [super init];
-    if (self) {
-        ovlLayers = [NSMutableDictionary dictionary];
-    }
-    return self;
-}
-
-- (void)dealloc
-{
-    [NSObject cancelPreviousPerformRequestsWithTarget:self];
-    
-    // This should release the globe view
-    if (baseViewC)
-    {
-        [baseViewC.view removeFromSuperview];
-        [baseViewC removeFromParentViewController];
-        baseViewC = nil;
-        globeViewC = nil;
-    }
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    // Create an empty globe or map controller
-    maxLayerTiles = 256;
-    globeViewC = [[WhirlyGlobeViewController alloc] init];
-    globeViewC.delegate = self;
-    baseViewC = globeViewC;
-    maxLayerTiles = 128;
-    [self.view addSubview:baseViewC.view];
-    baseViewC.view.frame = CGRectMake(0, 65, self.view.frame.size.width, 441);
-    [self addChildViewController:baseViewC];
+    //self.mapView.delegate = self;
+    //self.userLocation = self.mapView.userLocation;
+    self.layerName_ = @"Precipitation_Rate";
     
-    // Note: Debugging
-    baseViewC.frameInterval = 2;  // 30fps
+    UIImage *_maskingImage = [UIImage imageNamed:@"mask"];
+    CALayer *_maskingLayer = [CALayer layer];
+    _maskingLayer.frame = self.mView.bounds;
+    [_maskingLayer setContents:(id)[_maskingImage CGImage]];
+    [self.mView.layer setMask:_maskingLayer];
     
-    // Set the background color for the globe
-    baseViewC.clearColor = [UIColor clearColor];
+    [self loadMapView];
     
-    // We'll let the toolkit create a thread per image layer.
-    baseViewC.threadPerLayer = true;
-    
-    if (globeViewC)
-    {
-        // Start up over San Francisco
-        globeViewC.height = 0.8;
-        [globeViewC animateToPosition:MaplyCoordinateMakeWithDegrees(-122.4192, 37.7793) time:1.0];
-    }
-    
-    // Maximum number of objects for the layout engine to display
-    [baseViewC setMaxLayoutObjects:1000];
-    
-    // Bring up things based on what's turned on
-    [self performSelector:@selector(changeMapContents) withObject:nil afterDelay:0.0];
+    // Do any additional setup after loading the view.
 }
 
-- (void)viewDidUnload
+- (void)didReceiveMemoryWarning
 {
-    [super viewDidUnload];
-    
-    // This should release the globe view
-    if (baseViewC)
-    {
-        [baseViewC.view removeFromSuperview];
-        [baseViewC removeFromParentViewController];
-        baseViewC = nil;
-    }
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-	return YES;
+-(void) loadMapView {
+    /////////////////////////////////////////////////////////////////////////
+    // Met Office Website
+    // The map layer is provided without a map, the boundary box for this image is 48° to 61° north and 12° west to 5° east.
+    
+    //Set Extent of UK Met Office Image
+    //    CLLocationCoordinate2D UKSouthWest = CLLocationCoordinate2DMake(48.00, -12.00);
+    //    CLLocationCoordinate2D UKNorthEast = CLLocationCoordinate2DMake(61.00, 5.00);
+    
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude: 55.559323
+                                                            longitude: -3.774805
+                                                                 zoom: 5];
+    
+    mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+    mapView.myLocationEnabled = NO;
+    
+    mapView.frame = self.mView.bounds;
+    [self.mView addSubview:mapView];
+    // Use Tileset stored on remote server.
+    GMSTileURLConstructor urls = ^(NSUInteger x, NSUInteger y, NSUInteger zoom) {
+        NSString *url = [NSString stringWithFormat:@"http://media.stevenjamesgray.com/weather/%d/%d/%d.png", zoom, x, y];
+        return [NSURL URLWithString:url];
+    };
+    
+    GMSURLTileLayer *layer = [GMSURLTileLayer tileLayerWithURLConstructor:urls];
+    
+    //Display on the map at a specific zIndex
+    layer.zIndex = 5;
+    layer.map = mapView;
+    
+    [mapView.settings setAllGesturesEnabled:NO];
+    
+    
+    mapView.mapType = kGMSTypeNone;
+    currentLayerIndex = @0;
+    
+    //Call UIEdgeInsets so that we're not covering the Copyright information (which would be a TOS violation)
+    UIEdgeInsets insets = UIEdgeInsetsMake(0, 5, 58.0, 0);
+    mapView.padding = insets;
+    
+    //Make new call
+    overlayArray = [[NSMutableArray alloc] init];
+    overlayObjectArray = [[NSMutableArray alloc] init];
+    
+    // Call to get the Sets
+    NSURL *layers_url = [NSURL URLWithString: [NSString stringWithFormat: api_forecast_layers_cap, MET_OFFICE_API_KEY]];
+    NSURLRequest *layers_request = [NSURLRequest requestWithURL: layers_url];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:layers_request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSMutableArray *layer_array_api = [(NSMutableArray *)[responseObject valueForKeyPath:@"Layers"] valueForKey: @"Layer"];
+        for(NSMutableDictionary *layers in layer_array_api){
+            if([[[layers objectForKey: @"Service"] objectForKey: @"LayerName"] isEqualToString: self.layerName_]){
+                //NSLog(@"LayerName: %@",[[layers objectForKey: @"Service"] objectForKey: @"LayerName"]);
+                //NSLog(@"TimeSteps: %@",[[[layers objectForKey: @"Service"] objectForKey: @"Timesteps"] objectForKey: @"Timestep"]);
+                //NSLog(@"Time: %@",[[[layers objectForKey: @"Service"] objectForKey: @"Timesteps"] objectForKey: @"@defaultTime"]);
+                
+                NSString *passedLayerName = [[layers objectForKey: @"Service"] objectForKey: @"LayerName"];
+                NSArray *timeStep = [[[layers objectForKey: @"Service"] objectForKey: @"Timesteps"] objectForKey: @"Timestep"];
+                NSString *timeStamp = (NSString*)[[[layers objectForKey: @"Service"] objectForKey: @"Timesteps"] objectForKey: @"@defaultTime"];
+                
+                [self selectLayer: passedLayerName withTimeSteps: timeStep withTimeStamp: timeStamp];
+            }
+        }
+    } failure:nil];
+    [operation start];
+
+    // Spin up a Progress spinner to alert user to async download
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    HUD.labelText = @"Loading";
+    HUD.square = YES;
+    [self.view addSubview:HUD];
+    [HUD show: YES];
+
 }
 
-#pragma mark - Data Display
-
-// Add country outlines.  Pass in the names of the geoJSON files
-/*- (void)addCountries:(NSArray *)names stride:(int)stride
+/*- (void)mapView:(MKMapView *)mapView didUpdateUserLocation: (MKUserLocation *)userLocation
 {
-    // Parsing the JSON can take a while, so let's hand that over to another queue
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0),
-                   ^{
-                       NSMutableArray *locVecObjects = [NSMutableArray array];
-                       NSMutableArray *locAutoLabels = [NSMutableArray array];
-                       
-                       int ii = 0;
-                       for (NSString *name in names)
-                       {
-                           if (ii % stride == 0)
-                           {
-                               NSString *fileName = [[NSBundle mainBundle] pathForResource:name ofType:@"geojson"];
-                               if (fileName)
-                               {
-                                   NSData *jsonData = [NSData dataWithContentsOfFile:fileName];
-                                   if (jsonData)
-                                   {
-                                       MaplyVectorObject *wgVecObj = [MaplyVectorObject VectorObjectFromGeoJSON:jsonData];
-                                       NSString *vecName = [[wgVecObj attributes] objectForKey:@"ADMIN"];
-                                       wgVecObj.userObject = vecName;
-                                       MaplyComponentObject *compObj = [baseViewC addVectors:[NSArray arrayWithObject:wgVecObj] desc:vectorDesc];
-                                       MaplyScreenLabel *screenLabel = [[MaplyScreenLabel alloc] init];
-                                       // Add a label right in the middle
-                                       MaplyCoordinate center;
-                                       if ([wgVecObj centroid:&center])
-                                       {
-                                           screenLabel.loc = center;
-                                           //screenLabel.size = CGSizeMake(0, 20);
-                                           screenLabel.layoutImportance = 1.0;
-                                           screenLabel.text = vecName;
-                                           screenLabel.userObject = screenLabel.text;
-                                           screenLabel.selectable = true;
-                                           if (screenLabel.text)
-                                               [locAutoLabels addObject:screenLabel];
-                                       }
-                                       if (compObj)
-                                           [locVecObjects addObject:compObj];
-                                   }
-                               }
-                           }
-                           ii++;
-                       }
-                       
-                       // Keep track of the created objects
-                       // Note: You could lose track of the objects if you turn the countries on/off quickly
-                       dispatch_async(dispatch_get_main_queue(),
-                                      ^{
-                                          // Toss in all the labels at once, more efficient
-                                          MaplyComponentObject *autoLabelObj = [baseViewC addScreenLabels:locAutoLabels desc:
-                                                                                @{kMaplyTextColor: [UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0],
-                                                                                  kMaplyFont: [UIFont systemFontOfSize:24.0],
-                                                                                  kMaplyTextOutlineColor: [UIColor blackColor],
-                                                                                  kMaplyTextOutlineSize: @(1.0),
-                                                                                  //                                                                               kMaplyShadowSize: @(1.0)
-                                                                                  }];
-                                          
-                                          vecObjects = locVecObjects;
-                                          autoLabels = autoLabelObj;
-                                      });
-                       
-                   }
-                   );
-}
-*/
+    self.userLocation = userLocation;
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance (self.userLocation.location.coordinate, 1000*1000, 1000*1000);
+    [self.mapView setRegion:region animated:NO];
 
-// Set this to reload the base layer ever so often.  Purely for testing
-//#define RELOADTEST 1
+    self.mapView.centerCoordinate = self.userLocation.location.coordinate;
+}*/
 
-// Set up the base layer depending on what they've picked.
-// Also tear down an old one
-- (void)setupBaseLayer
-{
-    
-    // Tear down the old layer
-    if (baseLayer)
-    {
-        baseLayerName = nil;
-        [baseViewC removeLayer:baseLayer];
-        baseLayer = nil;
-    }
-    
-    // For network paging layers, where we'll store temp files
-    NSString *cacheDir = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)  objectAtIndex:0];
-    
-    // We'll pick default colors for the labels
-    UIColor *screenLabelColor = [UIColor whiteColor];
-    UIColor *screenLabelBackColor = [UIColor clearColor];
-    UIColor *labelColor = [UIColor whiteColor];
-    UIColor *labelBackColor = [UIColor clearColor];
-    // And for the vectors to stand out
-    UIColor *vecColor = [UIColor whiteColor];
-    float vecWidth = 4.0;
-    
-    NSString *jsonTileSpec = nil;
-    NSString *thisCacheDir = nil;
-    
-#ifdef RELOADTEST
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(reloadLayer:) object:nil];
-#endif
-    
-    if (true)
-    {
-        self.title = @"Stamen Water Color - Remote";
-        // These are the Stamen Watercolor tiles.
-        // They're beautiful, but the server isn't so great.
-        thisCacheDir = [NSString stringWithFormat:@"%@/stamentiles/",cacheDir];
-        int maxZoom = 10;
-        MaplyRemoteTileSource *tileSource = [[MaplyRemoteTileSource alloc] initWithBaseURL:@"http://tile.stamen.com/watercolor/" ext:@"png" minZoom:0 maxZoom:maxZoom];
-        tileSource.cacheDir = thisCacheDir;
-        MaplyQuadImageTilesLayer *layer = [[MaplyQuadImageTilesLayer alloc] initWithCoordSystem:tileSource.coordSys tileSource:tileSource];
-        layer.handleEdges = true;
-        layer.requireElev = false;
-        [baseViewC addLayer:layer];
-        layer.drawPriority = 0;
-        layer.waitLoad = false;
-        layer.singleLevelLoading = false;
-        baseLayer = layer;
-        screenLabelColor = [UIColor whiteColor];
-        screenLabelBackColor = [UIColor whiteColor];
-        labelColor = [UIColor blackColor];
-        labelBackColor = [UIColor blackColor];
-        vecColor = [UIColor grayColor];
-        vecWidth = 4.0;
-    }  else if (false)
-    {
-        self.title = @"MapBox Tiles Regular - Remote";
-        jsonTileSpec = @"http://a.tiles.mapbox.com/v3/examples.map-zswgei2n.json";
-        thisCacheDir = [NSString stringWithFormat:@"%@/mbtilesregular1/",cacheDir];
-        screenLabelColor = [UIColor whiteColor];
-        screenLabelBackColor = [UIColor whiteColor];
-        labelColor = [UIColor blackColor];
-        labelBackColor = [UIColor whiteColor];
-        vecColor = [UIColor blackColor];
-        vecWidth = 4.0;
-    }
-    // If we're fetching one of the JSON tile specs, kick that off
-    if (jsonTileSpec)
-    {
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:jsonTileSpec]];
+-(void) selectLayer: (NSString*)layerID withTimeSteps: (NSArray *)timestep_set withTimeStamp:(NSString*) timeStamp{
+    for(NSNumber *timestep in timestep_set){
         
+        NSURL *hourlyCall = [NSURL URLWithString: [NSString stringWithFormat: @"http://datapoint.metoffice.gov.uk/public/data/layer/wxfcs/%@/png?RUN=%@Z&FORECAST=%d&key=%@", layerID, timeStamp, [timestep intValue], MET_OFFICE_API_KEY]];
+        
+        //NSLog(@"Calling URL: %@", [hourlyCall absoluteString]);
+        NSURLRequest *request = [NSURLRequest requestWithURL: hourlyCall];
         AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-        operation.responseSerializer = [AFJSONResponseSerializer serializer];
-        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
-         {
-             // Add a quad earth paging layer based on the tile spec we just fetched
-             MaplyRemoteTileSource *tileSource = [[MaplyRemoteTileSource alloc] initWithTilespec:responseObject];
-             tileSource.cacheDir = thisCacheDir;
-             MaplyQuadImageTilesLayer *layer = [[MaplyQuadImageTilesLayer alloc] initWithCoordSystem:tileSource.coordSys tileSource:tileSource];
-             layer.handleEdges = true;
-             layer.waitLoad = false;
-             layer.requireElev = false;
-             layer.maxTiles = maxLayerTiles;
-             [baseViewC addLayer:layer];
-             layer.drawPriority = 0;
-             baseLayer = layer;
-             
-#ifdef RELOADTEST
-             [self performSelector:@selector(reloadLayer:) withObject:nil afterDelay:10.0];
-#endif
-         }
-                                         failure:^(AFHTTPRequestOperation *operation, NSError *error)
-         {
-             NSLog(@"Failed to reach JSON tile spec at: %@",jsonTileSpec);
-         }
-         ];
+        operation.responseSerializer = [AFImageResponseSerializer serializer];
+        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            // NSLog(@"Data:  %@", operation.responseData); // Data
+            // NSLog(@"Class: %@", [responseObject class]); // UIImage
+            
+            //Check for a UIImage before adding it to the array
+            if([responseObject class] == [UIImage class]){
+                
+                // Parse the Query String from the original URL when we get data back from the api
+                NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+                for (NSString *param in [[operation.response.URL query] componentsSeparatedByString:@"&"]) {
+                    NSArray *elts = [param componentsSeparatedByString:@"="];
+                    if([elts count] < 2) continue;
+                    [params setObject:[elts objectAtIndex:1] forKey:[elts objectAtIndex:0]];
+                }
+                
+                //Calculate forcast time from timestep
+                NSString *time = [[params objectForKey: @"RUN"] stringByReplacingOccurrencesOfString:@"T" withString: @" "];
+                time = [time stringByReplacingOccurrencesOfString: @"Z" withString:@""];
+                
+                NSDate *timeStampDate = [self formatDateWithString: time];
+                NSTimeInterval hours = [timestep intValue] * 60 * 60;
+                timeStampDate = [timeStampDate dateByAddingTimeInterval: hours];
+                
+                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+                
+                //Timestep is number of hours from original timeStamp (timeStamp + [TIMESTEP] hours -- max 36 hours);
+                NSString *forcastDate = [formatter stringFromDate: timeStampDate];
+                
+                // Setup our image object and write it to our array
+                SGMetOfficeForecastImage *serverImage = [[SGMetOfficeForecastImage alloc] init];
+                serverImage.image = [UIImage imageWithData: operation.responseData];
+                serverImage.timestamp = forcastDate;
+                serverImage.timeStep = [NSNumber numberWithInt: [[params objectForKey: @"FORECAST"] intValue]];
+                serverImage.layerName = layerID;
+                
+                [overlayArray addObject: serverImage];
+                
+                // Increment our expected count so that we know when to start playing the animation
+                imagesExpected = @([imagesExpected intValue] + 1);
+            }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            //We didn't get the image but that won't stop us!
+            imagesExpected = @([imagesExpected intValue] + 1);
+            NSLog(@"Couldn't download image.");
+        }];
         
         [operation start];
     }
     
-    // Set up some defaults for display
-    screenLabelDesc = @{kMaplyTextColor: screenLabelColor,
-                        //                        kMaplyBackgroundColor: screenLabelBackColor,
-                        kMaplyFade: @(1.0),
-                        kMaplyTextOutlineSize: @(1.5),
-                        kMaplyTextOutlineColor: [UIColor blackColor],
-                        };
-    labelDesc = @{kMaplyTextColor: labelColor,
-                  kMaplyBackgroundColor: labelBackColor,
-                  kMaplyFade: @(1.0)};
-    vectorDesc = @{kMaplyColor: vecColor,
-                   kMaplyVecWidth: @(vecWidth),
-                   kMaplyFade: @(1.0),
-                   kMaplySelectable: @(true)};
+    // Start the Time to check that we have all the images we requested downloaded and stored in the layer array
+    checkDownloads = [NSTimer scheduledTimerWithTimeInterval: 1 target:self selector:@selector(checkAllImagesHaveDownloaded:) userInfo: [NSNumber numberWithInt: [timestep_set count]] repeats: YES];
 }
 
-// Reload testing
-- (void)reloadLayer:(MaplyQuadImageTilesLayer *)layer
-{
-    if (baseLayer && [baseLayer isKindOfClass:[MaplyQuadImageTilesLayer class]])
-    {
-        MaplyQuadImageTilesLayer *layer = (MaplyQuadImageTilesLayer *)baseLayer;
-        NSLog(@"Reloading layer");
-        [layer reload];
+-(void) checkAllImagesHaveDownloaded: (NSTimer*)sender{
+    NSNumber *imageFiles = sender.userInfo;
+    NSLog(@"Checking for %d images downloaded ...", [imageFiles intValue]);
+    
+    // Update the HUD progress
+    HUD.detailsLabelText = [NSString stringWithFormat: @"Fetched %d of %d", [imagesExpected intValue], [imageFiles intValue]];
+    HUD.square = YES;
+    
+    if([imagesExpected isEqualToNumber: imageFiles]){
+        [checkDownloads invalidate];
         
-        [self performSelector:@selector(reloadLayer:) withObject:nil afterDelay:10.0];
+        // Sort the Array by timeSteps
+        NSArray *sortedArray;
+        sortedArray = [overlayArray sortedArrayUsingComparator:^NSComparisonResult(SGMetOfficeForecastImage *a, SGMetOfficeForecastImage *b) {
+            return [a.timeStep compare: b.timeStep];
+        }];
+        
+        overlayArray = [NSMutableArray arrayWithArray: sortedArray];
+        
+        // Draw Timestamp view
+        CGRect deviceBounds = [[UIScreen mainScreen] bounds];
+        UIView *redBack = [[UIView alloc] initWithFrame: CGRectMake(deviceBounds.size.width - 150, deviceBounds.size.height - 84, 150, 25)];
+        redBack.backgroundColor = [UIColor redColor];
+        redBack.alpha = 0.7f;
+        
+        UILabel *timeStampLabel = [[UILabel alloc] initWithFrame: CGRectMake(0,0, 150, 25)];
+        timeStampLabel.tag = 100;
+        timeStampLabel.text = @"";
+        timeStampLabel.textColor = [UIColor whiteColor];
+        timeStampLabel.font = [UIFont boldSystemFontOfSize:16.0];
+        timeStampLabel.textAlignment = NSTextAlignmentCenter;
+        
+        [redBack addSubview: timeStampLabel];
+        [self.view addSubview: redBack];
+        
+        // Remove the loading screen
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        //Start Layer Animation
+        [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateLayer:) userInfo:nil repeats: YES];
     }
 }
 
-// Run through the overlays the user wants turned on
-- (void)setupOverlays
-{
-    /*// For network paging layers, where we'll store temp files
-    NSString *cacheDir = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)  objectAtIndex:0];
-    NSString *layerName = @"Forecast.IO Snapshot - Remote";
-    MaplyViewControllerLayer *layer = ovlLayers[layerName];
+-(void) updateLayer: (id)selector{
+    //Setup the bounds of our layer to place on the map
+    CLLocationCoordinate2D UKSouthWest = CLLocationCoordinate2DMake(48.00, -12.00);
+    CLLocationCoordinate2D UKNorthEast = CLLocationCoordinate2DMake(61.00, 5.00);
     
-    // Need to create the layer
-    if (!layer)
-    {
-        // Collect up the various precipitation sources
-        NSMutableArray *tileSources = [NSMutableArray array];
-        for (unsigned int ii=0;ii<5;ii++)
-        {
-            MaplyRemoteTileSource *precipTileSource = [[MaplyRemoteTileSource alloc] initWithBaseURL:[NSString stringWithFormat:@"http://a.tiles.mapbox.com/v3/mousebird.precip-example-layer%d/",ii] ext:@"png" minZoom:0 maxZoom:6];
-            precipTileSource.cacheDir = [NSString stringWithFormat:@"%@/forecast_io_weather_layer%d/",cacheDir,ii];
-            [tileSources addObject:precipTileSource];
-        }
-        MaplyMultiplexTileSource *precipTileSource = [[MaplyMultiplexTileSource alloc] initWithSources:tileSources];
-        // Create a precipitation layer that animates
-        MaplyQuadImageTilesLayer *precipLayer = [[MaplyQuadImageTilesLayer alloc] initWithCoordSystem:precipTileSource.coordSys tileSource:precipTileSource];
-        precipLayer.imageDepth = (int)[tileSources count];
-        precipLayer.animationPeriod = 6.0;
-        precipLayer.imageFormat = MaplyImageUByteRed;
-        //                precipLayer.texturAtlasSize = 512;
-        precipLayer.numSimultaneousFetches = 4;
-        precipLayer.handleEdges = false;
-        precipLayer.coverPoles = false;
-        precipLayer.shaderProgramName = [WeatherShader setupWeatherShader:baseViewC];
-        [baseViewC addLayer:precipLayer];
-        layer = precipLayer;
+    //Clear the Layers in the MapView
+    for(GMSGroundOverlay *gO in overlayObjectArray){
+        gO.map = nil;
+        [overlayObjectArray removeObject: gO];
+    }
     
-        // And keep track of it
-        if (layer)
-            ovlLayers[layerName] = layer;
-    } else if (layer)
-    {
-        // Get rid of the layer
-        [baseViewC removeLayer:layer];
-        [ovlLayers removeObjectForKey:layerName];
-    }*/
-}
-
-// Look at the configuration controller and decide what to turn off or on
-- (void)changeMapContents
-{
-    [self setupBaseLayer];
-    [self setupOverlays];
+    GMSCoordinateBounds *uk_overlayBounds = [[GMSCoordinateBounds alloc] initWithCoordinate:UKSouthWest
+                                                                                 coordinate:UKNorthEast];
     
-    globeViewC.keepNorthUp = true;
-    globeViewC.pinchGesture = true;
-    //globeViewC.rotateGesture = true;
+    SGMetOfficeForecastImage *layerObject = [overlayArray objectAtIndex: [currentLayerIndex intValue]];
     
-    // Update rendering hints
-    NSMutableDictionary *hintDict = [NSMutableDictionary dictionary];
-    [hintDict setObject:[NSNumber numberWithBool:false] forKey:kMaplyRenderHintCulling];
-    [baseViewC setHints:hintDict];
-}
-
-#pragma mark - Whirly Globe Delegate
-
-// User didn't select anything, but did tap
-- (void)globeViewController:(WhirlyGlobeViewController *)viewC didTapAt:(MaplyCoordinate)coord
-{
-    // Just clear the selection
-    if (selectedViewTrack)
-    {
-        [baseViewC removeViewTrackForView:selectedViewTrack.view];
-        selectedViewTrack = nil;        
+    // Get the UILabel to display the time and change the timestamp
+    NSDate *timestampDate = [self formatDateWithString:  [layerObject.timestamp stringByReplacingOccurrencesOfString:@"T" withString:@" "]];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"EEEE HH:mm"];
+    
+    UILabel *textLabel = (UILabel*)[self.view viewWithTag: 100];
+    textLabel.text = [formatter stringFromDate: timestampDate];
+    
+    //Get next layer and place it on the map
+    GMSGroundOverlay *layerOverlay = [GMSGroundOverlay groundOverlayWithBounds: uk_overlayBounds icon: layerObject.image];
+    
+    layerOverlay.bearing = 0;
+    layerOverlay.zIndex = 5  * ([currentLayerIndex intValue] + 1);
+    layerOverlay.map = mapView;
+    
+    [overlayObjectArray addObject: layerOverlay];
+    
+    // Check if we're at the end of the layerArray and then loop
+    if([currentLayerIndex intValue] < [overlayArray count] - 1){
+        currentLayerIndex = @([currentLayerIndex intValue] + 1);
+    }else{
+        currentLayerIndex = @0;
     }
 }
 
-- (void)globeViewControllerDidTapOutside:(WhirlyGlobeViewController *)viewC
-{
-    //    [self showPopControl];
-}
-
-- (void)globeViewController:(WhirlyGlobeViewController *)viewC layerDidLoad:(MaplyViewControllerLayer *)layer
-{
-    NSLog(@"Spherical Earth Layer loaded.");
-}
-
-#pragma mark - Maply delegate
-
-- (void)maplyViewController:(MaplyViewController *)viewC didTapAt:(MaplyCoordinate)coord
-{
-    // Just clear the selection
-    if (selectedViewTrack)
-    {
-        [baseViewC removeViewTrackForView:selectedViewTrack.view];
-        selectedViewTrack = nil;
-    }    
-}
-
-#pragma mark - Popover Delegate
-
-- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
-{
-    [self changeMapContents];
+-(NSDate *)formatDateWithString:(NSString *)dateString{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    NSDate* date = [dateFormatter dateFromString:dateString];
+    return date;
 }
 
 /*

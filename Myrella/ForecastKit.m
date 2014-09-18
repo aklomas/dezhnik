@@ -28,7 +28,7 @@
         self.geocoder = [[CLGeocoder alloc] init];
         self.locationManager.delegate = self;
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        [self.locationManager startUpdatingLocation];
+        //[self.locationManager startUpdatingLocation];
         self.changed = false;
     }
     

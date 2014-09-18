@@ -23,30 +23,27 @@
 #pragma mark - Array
 - (void)addEntry:(NSNumber*)entry
 {
-    int step = 3;
     if (self.data == nil) {
         self.data = [[NSMutableArray alloc] init];
         self.length = 86400;
-        self.count = 0;
+    }
+    float newEntry = 0.0;
+    if(entry.floatValue < self.mid_value - self.range/2)
+        newEntry = 0.0;
+    if (entry.floatValue > self.mid_value + self.range/2)
+        newEntry = 1.0;
+    else
+        newEntry = (entry.floatValue - (self.mid_value - self.range/2))/self.range;
+    
+    for (int i = 0; i < self.interval; i++) {
+        float last = ((NSNumber*)[self.data lastObject]).floatValue;
+        [self.data addObject:[NSNumber numberWithFloat:last + (newEntry - last)/self.interval]];
     }
     
-    if(self.count == 0) {
-        if(entry.floatValue < self.mid_value - self.range/2)
-            [self.data addObject:[NSNumber numberWithFloat:0.0]];
-        else if (entry.floatValue > self.mid_value + self.range/2)
-            [self.data addObject:[NSNumber numberWithFloat:1.0]];
-        else
-            [self.data addObject:[NSNumber numberWithFloat:(entry.floatValue- (self.mid_value - self.range/2))/self.range]];
-        
-        if ([self.data count] > self.length) {
-            [self.data removeObjectAtIndex:0];
-        }
-        
-        self.count += 1;
-        //[self setNeedsDisplay];
-    }
-    else
-        self.count = (self.count +1)%step;
+    if ([self.data count] > self.length)
+        [self.data removeObjectAtIndex:0];
+    
+    //NSLog(@"%f",self.interval);
 }
 
 
@@ -78,19 +75,43 @@
     
     
     float step = width/[self.data count];
-    for (int i = 0; self.data != nil && i < [self.data count] - 1; i++) {
-        /*CGContextSetRGBStrokeColor(ctx,
-                                   ((NSNumber*)[self.data objectAtIndex:i+1]).floatValue,
-                                   1.0-((NSNumber*)[self.data objectAtIndex:i+1]).floatValue,
-                                   1.0-((NSNumber*)[self.data objectAtIndex:i+1]).floatValue,
-                                   1.0);*/
+//    for (int i = 0; self.data != nil && i < [self.data count] - 1; i++) {
+//        /*CGContextSetRGBStrokeColor(ctx,
+//                                   ((NSNumber*)[self.data objectAtIndex:i+1]).floatValue,
+//                                   1.0-((NSNumber*)[self.data objectAtIndex:i+1]).floatValue,
+//                                   1.0-((NSNumber*)[self.data objectAtIndex:i+1]).floatValue,
+//                                   1.0);*/
+//        
+//        CGContextSetRGBStrokeColor(ctx, 0.1, 0.9,0.9, 1.0);
+//        //NSLog(@"graph: %f",((NSNumber*)[self.data objectAtIndex:i+1]).floatValue);
+//        CGContextMoveToPoint(ctx, step*i, height - (((NSNumber*)[self.data objectAtIndex:i]).floatValue * height ));
+//        CGContextAddLineToPoint(ctx, step*(i+1), height - ((NSNumber*)[self.data objectAtIndex:i+1]).floatValue * height);
+//        CGContextStrokePath(ctx);
+//    }
+    if ([self.data count] > 1) {
+        UIBezierPath *path = [UIBezierPath bezierPath];
+        path.lineWidth = 1;
+        float point = height - ((NSNumber*)[self.data objectAtIndex:0]).floatValue * height;
+        float diff1 = point + ((height - ((NSNumber*)[self.data objectAtIndex:1]).floatValue * height) - point)*0.5;
+        float diff2 = 0;
+        //NSLog(@"%f", ((NSNumber*)[self.data objectAtIndex:0]).floatValue);
         
-        CGContextSetRGBStrokeColor(ctx, 0.1, 0.9,0.9, 1.0);
-        //NSLog(@"graph: %f",((NSNumber*)[self.data objectAtIndex:i+1]).floatValue);
-        CGContextMoveToPoint(ctx, step*i, height - (((NSNumber*)[self.data objectAtIndex:i]).floatValue * height ));
-        CGContextAddLineToPoint(ctx, step*(i+1), height - (((NSNumber*)[self.data objectAtIndex:i+1]).floatValue * height));
-        CGContextStrokePath(ctx);
+        [path moveToPoint:CGPointMake(0, point)];
+        for (int i = 1; i < [self.data count] - 1; i++) {
+            //NSLog(@"%f", ((NSNumber*)[self.data objectAtIndex:i]).floatValue);
+            point = height - ((NSNumber*)[self.data objectAtIndex:i]).floatValue * height;
+            
+            diff2 = point - ((height - ((NSNumber*)[self.data objectAtIndex:i+1]).floatValue * height) - point)*0.5;
+            [path addCurveToPoint:CGPointMake(step*i, point)
+                    controlPoint1:CGPointMake(step*(i-0.5), diff1)
+                    controlPoint2:CGPointMake(step*(i-0.5), diff2)];
+            
+            diff1 = point + ((height - ((NSNumber*)[self.data objectAtIndex:i+1]).floatValue * height) - point)*0.5;;
+        }
+        
+        [path strokeWithBlendMode:kCGBlendModeNormal alpha:0.6];
     }
+    
     
     CGContextSetRGBStrokeColor(ctx, 1.0, 1.0, 1.0, 1.0);
     CGContextMoveToPoint(ctx, 0.0f, 0.0f);

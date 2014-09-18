@@ -16,9 +16,9 @@
 - (void)addEntry:(NSNumber*)entry;
 
 @property (strong, nonatomic) NSMutableArray *data;
-@property int count;
 @property int length;
 @property int mid_value;
 @property int range;
+@property float interval;
 @property NSString* unit;
 @end

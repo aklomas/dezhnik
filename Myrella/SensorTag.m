@@ -186,6 +186,24 @@
     return (int)[val integerValue];
 }
 
+-(void)slowTimers {
+    [self.rssiTimer invalidate];
+    [self.logTimer invalidate];
+    self.rssiTimer = [NSTimer timerWithTimeInterval:1.5f target:self selector:@selector(rssiTimer:) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:self.rssiTimer forMode:NSRunLoopCommonModes];
+    self.logTimer = [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(logValues:) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:self.logTimer forMode:NSRunLoopCommonModes];
+}
+
+-(void)normalTimers {
+    [self.rssiTimer invalidate];
+    [self.logTimer invalidate];
+    self.rssiTimer = [NSTimer timerWithTimeInterval:0.3f target:self selector:@selector(rssiTimer:) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:self.rssiTimer forMode:NSRunLoopCommonModes];
+    self.logTimer = [NSTimer scheduledTimerWithTimeInterval:self.logInterval target:self selector:@selector(logValues:) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:self.logTimer forMode:NSRunLoopCommonModes];
+}
+
 
 
 #pragma mark - CBCentralManager delegate functions

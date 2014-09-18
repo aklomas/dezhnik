@@ -27,9 +27,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    NSTimer* timer = [NSTimer timerWithTimeInterval:0.03f target:self selector:@selector(updateView:) userInfo:nil repeats:YES];
-    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+    self.changedBg = false;
+    //[self resumeTimer];
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,6 +38,11 @@
 }
 
 -(void)updateView:(NSTimer *)timer {
+    if (!self.changedBg) {
+        self.parentViewController.parentViewController.view.backgroundColor = [UIColor colorWithRed:98/255.0 green:139/255.0 blue:173/255.0 alpha:1];
+        self.changedBg = true;
+    }
+    
     if(self.forecastKit.changed && self.forecastKit.forecastDict){
         self.pageTitle = self.forecastKit.curLocName;
         self.ForecastTempLabel.text = [NSString stringWithFormat:@"%d",(int)([self.forecastKit.getCurTemperature floatValue] + 0.5)];
@@ -88,6 +92,21 @@
     
     if(self.sensorTag.isConnected){
         self.connectionImage.image = [UIImage imageNamed:@"connected"];
+        
+        float hum = (self.sensorTag.currentVal.humidity - 55.0)/30.0;
+        if(hum < 0)
+            hum = 0;
+        if (hum > 1)
+            hum = 1;
+        float a = fabsf(self.curHum - hum);
+        if (a > 0.02) {
+            if (hum < self.curHum)
+                self.curHum -= 0.01;
+            else if (hum > self.curHum)
+                self.curHum += 0.01;
+           
+            self.parentViewController.parentViewController.view.backgroundColor = [UIColor colorWithRed:98/255.0 - 34/255.0 * self.curHum green:139/255.0 - 18/255.0 * self.curHum blue:173/255.0 - 4/255.0 * self.curHum alpha:1];
+        }
     }
     else
         self.connectionImage.image = [UIImage imageNamed:@"disconnected"];
@@ -105,6 +124,15 @@
         else
             self.TempContainerExtended.alpha = 0.0;
     }
+}
+
+-(void) pauseTimer {
+    [self.uiTimer invalidate];
+}
+
+-(void) resumeTimer {
+    self.uiTimer = [NSTimer timerWithTimeInterval:0.03f target:self selector:@selector(updateView:) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:self.uiTimer forMode:NSRunLoopCommonModes];
 }
 
 - (IBAction)temperatureTap:(UITapGestureRecognizer *)sender {

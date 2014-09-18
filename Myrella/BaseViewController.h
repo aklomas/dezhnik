@@ -22,8 +22,15 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *connectionImage;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navItem;
+@property (weak, nonatomic) IBOutlet UIView *swipeView;
 
--(void) update;
+
+-(void) didBecomeActive;
+-(void) willEnterBackground;
+- (void)swipeRight:(UISwipeGestureRecognizer *)sender;
+- (void)swipeLeft:(UISwipeGestureRecognizer *)sender;
+
+-(void)didFinishAnimating:(BOOL)finished;
 
 
 @end

@@ -38,9 +38,16 @@
 @property (strong,nonatomic) ForecastKit *forecastKit;
 
 @property (strong,nonatomic) NSString *pageTitle;
+@property NSTimer* uiTimer;
+
+@property float curHum;
+@property BOOL changedBg;
 
 - (IBAction)temperatureTap:(UITapGestureRecognizer *)sender;
 
 -(void)updateView:(NSTimer *)timer;
+
+-(void)pauseTimer;
+-(void)resumeTimer;
 
 @end

@@ -52,7 +52,14 @@
 @property (weak, nonatomic) IBOutlet UIView *temperatureGesture;
 @property (weak, nonatomic) IBOutlet UIView *backGesture;
 
+@property NSTimer *uiTimer;
+@property NSTimer *graphTimer;
+
+-(void)pauseTimer;
+-(void)resumeTimer;
+
 -(void)updateView:(NSTimer *)timer;
+-(void)updateGraphs:(NSTimer *)timer;
 - (IBAction)showPressureGraph:(id)sender;
 - (IBAction)showHumidityGraph:(id)sender;
 - (IBAction)showTemperatureGraph:(id)sender;

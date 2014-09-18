@@ -32,7 +32,6 @@
 		A68ADC4F19BD33BE0043A616 /* SettingsBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A68ADC4E19BD33BE0043A616 /* SettingsBaseViewController.m */; };
 		A6AA415219B9E62300EEF9B2 /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AA415119B9E62300EEF9B2 /* GraphView.m */; };
 		A6B34EE9199A60D8009AF950 /* PageONEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B34EE8199A60D8009AF950 /* PageONEViewController.m */; };
-		A6B34EEC199A60E7009AF950 /* PageTWOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B34EEB199A60E7009AF950 /* PageTWOViewController.m */; };
 		A6B34EEF199A60F4009AF950 /* SensorTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B34EEE199A60F4009AF950 /* SensorTableView.m */; };
 		A6B34EF2199A6102009AF950 /* PageTHREEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B34EF1199A6102009AF950 /* PageTHREEViewController.m */; };
 		A6B34F79199B78A6009AF950 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B34F78199B78A6009AF950 /* CoreText.framework */; };
@@ -45,6 +44,18 @@
 		A6B35020199BDAD1009AF950 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B3501F199BDAD0009AF950 /* libz.dylib */; };
 		A6B35022199BDAE8009AF950 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B35021199BDAE8009AF950 /* libsqlite3.dylib */; };
 		A6B350A7199CA820009AF950 /* libSVGKit-iOS.1.2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B35026199CA820009AF950 /* libSVGKit-iOS.1.2.0.a */; };
+		A6D09A1C19C86BC5009E40AF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D09A1B19C86BC5009E40AF /* MapKit.framework */; };
+		A6D09A1F19C86C6C009E40AF /* PageTWOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D09A1E19C86C6C009E40AF /* PageTWOViewController.m */; };
+		A6D09A2519CAE0DA009E40AF /* SGMetOfficeForecastImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D09A2419CAE0DA009E40AF /* SGMetOfficeForecastImage.m */; };
+		A6D09A2D19CAE3E6009E40AF /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D09A2C19CAE3E6009E40AF /* MBProgressHUD.m */; };
+		A6D09A6919CAF561009E40AF /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D09A6819CAF561009E40AF /* GoogleMaps.framework */; };
+		A6D09A6B19CAF576009E40AF /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A6D09A6A19CAF576009E40AF /* GoogleMaps.bundle */; };
+		A6D09A6D19CAF5A9009E40AF /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D09A6C19CAF5A8009E40AF /* libstdc++.dylib */; };
+		A6D09A6F19CAF5D0009E40AF /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D09A6E19CAF5D0009E40AF /* GLKit.framework */; };
+		A6D09A7119CAF5F0009E40AF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D09A7019CAF5F0009E40AF /* OpenGLES.framework */; };
+		A6D09A7319CAF60E009E40AF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D09A7219CAF60E009E40AF /* AVFoundation.framework */; };
+		A6D09A7519CAF64C009E40AF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D09A7419CAF64C009E40AF /* CoreData.framework */; };
+		A6D09A7719CAF65E009E40AF /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D09A7619CAF65E009E40AF /* ImageIO.framework */; };
 		A6E02203199CDE9400AB1762 /* WeatherShader.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E02201199CDE9400AB1762 /* WeatherShader.m */; };
 		A6E0243A19A2285700AB1762 /* BLEDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E0243319A2285700AB1762 /* BLEDevice.m */; };
 		A6E0243B19A2285700AB1762 /* BLEUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E0243519A2285700AB1762 /* BLEUtility.m */; };
@@ -104,8 +115,6 @@
 		A6AA415119B9E62300EEF9B2 /* GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphView.m; sourceTree = "<group>"; };
 		A6B34EE7199A60D8009AF950 /* PageONEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageONEViewController.h; sourceTree = "<group>"; };
 		A6B34EE8199A60D8009AF950 /* PageONEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageONEViewController.m; sourceTree = "<group>"; };
-		A6B34EEA199A60E7009AF950 /* PageTWOViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageTWOViewController.h; sourceTree = "<group>"; };
-		A6B34EEB199A60E7009AF950 /* PageTWOViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageTWOViewController.m; sourceTree = "<group>"; };
 		A6B34EED199A60F4009AF950 /* SensorTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorTableView.h; sourceTree = "<group>"; };
 		A6B34EEE199A60F4009AF950 /* SensorTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorTableView.m; sourceTree = "<group>"; };
 		A6B34EF0199A6102009AF950 /* PageTHREEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageTHREEViewController.h; sourceTree = "<group>"; };
@@ -245,6 +254,21 @@
 		A6B350A4199CA820009AF950 /* SVGUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGUtils.h; sourceTree = "<group>"; };
 		A6B350A5199CA820009AF950 /* SVGViewSpec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGViewSpec.h; sourceTree = "<group>"; };
 		A6B350A6199CA820009AF950 /* Text.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Text.h; sourceTree = "<group>"; };
+		A6D09A1B19C86BC5009E40AF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		A6D09A1D19C86C6C009E40AF /* PageTWOViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageTWOViewController.h; sourceTree = "<group>"; };
+		A6D09A1E19C86C6C009E40AF /* PageTWOViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageTWOViewController.m; sourceTree = "<group>"; };
+		A6D09A2319CAE0DA009E40AF /* SGMetOfficeForecastImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGMetOfficeForecastImage.h; sourceTree = "<group>"; };
+		A6D09A2419CAE0DA009E40AF /* SGMetOfficeForecastImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGMetOfficeForecastImage.m; sourceTree = "<group>"; };
+		A6D09A2B19CAE3E6009E40AF /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		A6D09A2C19CAE3E6009E40AF /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		A6D09A6819CAF561009E40AF /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = libs/GoogleMaps.framework; sourceTree = "<group>"; };
+		A6D09A6A19CAF576009E40AF /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = libs/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		A6D09A6C19CAF5A8009E40AF /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		A6D09A6E19CAF5D0009E40AF /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		A6D09A7019CAF5F0009E40AF /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		A6D09A7219CAF60E009E40AF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A6D09A7419CAF64C009E40AF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A6D09A7619CAF65E009E40AF /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		A6E02200199CDE9400AB1762 /* WeatherShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherShader.h; sourceTree = "<group>"; };
 		A6E02201199CDE9400AB1762 /* WeatherShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherShader.m; sourceTree = "<group>"; };
 		A6E0243219A2285700AB1762 /* BLEDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEDevice.h; sourceTree = "<group>"; };
@@ -264,11 +288,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6D09A7719CAF65E009E40AF /* ImageIO.framework in Frameworks */,
+				A6D09A7519CAF64C009E40AF /* CoreData.framework in Frameworks */,
+				A6D09A7319CAF60E009E40AF /* AVFoundation.framework in Frameworks */,
+				A6D09A7119CAF5F0009E40AF /* OpenGLES.framework in Frameworks */,
+				A6D09A6F19CAF5D0009E40AF /* GLKit.framework in Frameworks */,
+				A6B35020199BDAD1009AF950 /* libz.dylib in Frameworks */,
+				A6D09A6D19CAF5A9009E40AF /* libstdc++.dylib in Frameworks */,
+				A6D09A1C19C86BC5009E40AF /* MapKit.framework in Frameworks */,
 				A6B3501E199BDAC3009AF950 /* CoreLocation.framework in Frameworks */,
 				A64939BC19AE25C2000A5604 /* WhirlyGlobeMaplyComponent.framework in Frameworks */,
+				A6D09A6919CAF561009E40AF /* GoogleMaps.framework in Frameworks */,
 				A6B35022199BDAE8009AF950 /* libsqlite3.dylib in Frameworks */,
 				A6B34F7D199B78C0009AF950 /* libxml2.dylib in Frameworks */,
-				A6B35020199BDAD1009AF950 /* libz.dylib in Frameworks */,
 				A6B3501C199BDABA009AF950 /* libc++.dylib in Frameworks */,
 				A6B34F7F199B78C9009AF950 /* QuartzCore.framework in Frameworks */,
 				A6B34F7B199B78B2009AF950 /* CoreImage.framework in Frameworks */,
@@ -315,6 +347,15 @@
 		A634C0D01992407500AD0FEF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A6D09A7619CAF65E009E40AF /* ImageIO.framework */,
+				A6D09A7419CAF64C009E40AF /* CoreData.framework */,
+				A6D09A7219CAF60E009E40AF /* AVFoundation.framework */,
+				A6D09A7019CAF5F0009E40AF /* OpenGLES.framework */,
+				A6D09A6E19CAF5D0009E40AF /* GLKit.framework */,
+				A6D09A6C19CAF5A8009E40AF /* libstdc++.dylib */,
+				A6D09A6A19CAF576009E40AF /* GoogleMaps.bundle */,
+				A6D09A6819CAF561009E40AF /* GoogleMaps.framework */,
+				A6D09A1B19C86BC5009E40AF /* MapKit.framework */,
 				A64939BB19AE25C2000A5604 /* WhirlyGlobeMaplyComponent.framework */,
 				A6B35026199CA820009AF950 /* libSVGKit-iOS.1.2.0.a */,
 				A6B35027199CA820009AF950 /* usr */,
@@ -387,6 +428,8 @@
 			children = (
 				A6493A1119AF7540000A5604 /* ForecastKit.h */,
 				A6493A1219AF7540000A5604 /* ForecastKit.m */,
+				A6D09A2319CAE0DA009E40AF /* SGMetOfficeForecastImage.h */,
+				A6D09A2419CAE0DA009E40AF /* SGMetOfficeForecastImage.m */,
 			);
 			name = Forecast;
 			sourceTree = "<group>";
@@ -400,8 +443,8 @@
 				A68ADC4E19BD33BE0043A616 /* SettingsBaseViewController.m */,
 				A6B34EE7199A60D8009AF950 /* PageONEViewController.h */,
 				A6B34EE8199A60D8009AF950 /* PageONEViewController.m */,
-				A6B34EEA199A60E7009AF950 /* PageTWOViewController.h */,
-				A6B34EEB199A60E7009AF950 /* PageTWOViewController.m */,
+				A6D09A1D19C86C6C009E40AF /* PageTWOViewController.h */,
+				A6D09A1E19C86C6C009E40AF /* PageTWOViewController.m */,
 				A6B34EF0199A6102009AF950 /* PageTHREEViewController.h */,
 				A6B34EF1199A6102009AF950 /* PageTHREEViewController.m */,
 				A68ADC4419BD1DBF0043A616 /* SettingsViewController.h */,
@@ -567,9 +610,20 @@
 			path = include;
 			sourceTree = "<group>";
 		};
+		A6D09A2A19CAE3E6009E40AF /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				A6D09A2B19CAE3E6009E40AF /* MBProgressHUD.h */,
+				A6D09A2C19CAE3E6009E40AF /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
+			path = libs/MBProgressHUD;
+			sourceTree = SOURCE_ROOT;
+		};
 		A6E023F7199CDFCA00AB1762 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				A6D09A2A19CAE3E6009E40AF /* MBProgressHUD */,
 			);
 			name = resources;
 			sourceTree = "<group>";
@@ -709,6 +763,7 @@
 				A634C0DC1992407500AD0FEF /* InfoPlist.strings in Resources */,
 				A634C0E51992407500AD0FEF /* Main.storyboard in Resources */,
 				A6B34F83199B841E009AF950 /* settings-button.svg in Resources */,
+				A6D09A6B19CAF576009E40AF /* GoogleMaps.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -730,11 +785,11 @@
 				A6AA415219B9E62300EEF9B2 /* GraphView.m in Sources */,
 				A68ADC4C19BD2DC80043A616 /* RootViewController.m in Sources */,
 				A6E0243B19A2285700AB1762 /* BLEUtility.m in Sources */,
-				A6B34EEC199A60E7009AF950 /* PageTWOViewController.m in Sources */,
 				A634C0E81992407500AD0FEF /* BaseViewController.m in Sources */,
 				A6B34EF2199A6102009AF950 /* PageTHREEViewController.m in Sources */,
 				A68ADC4619BD1DBF0043A616 /* SettingsViewController.m in Sources */,
 				A6E0244119A2398C00AB1762 /* SensorTag.m in Sources */,
+				A6D09A2D19CAE3E6009E40AF /* MBProgressHUD.m in Sources */,
 				A6E02203199CDE9400AB1762 /* WeatherShader.m in Sources */,
 				A6E0243A19A2285700AB1762 /* BLEDevice.m in Sources */,
 				A6493A1D19B1DF40000A5604 /* ScreenTHREESignal.m in Sources */,
@@ -742,7 +797,9 @@
 				A6E0243D19A2285700AB1762 /* Sensors.m in Sources */,
 				A6316D7D19B21C43009B757D /* ScreenTHREEDottedCircle.m in Sources */,
 				A6B34EE9199A60D8009AF950 /* PageONEViewController.m in Sources */,
+				A6D09A1F19C86C6C009E40AF /* PageTWOViewController.m in Sources */,
 				A634C0E21992407500AD0FEF /* AppDelegate.m in Sources */,
+				A6D09A2519CAE0DA009E40AF /* SGMetOfficeForecastImage.m in Sources */,
 				A6B34EEF199A60F4009AF950 /* SensorTableView.m in Sources */,
 				A68ADC4F19BD33BE0043A616 /* SettingsBaseViewController.m in Sources */,
 				A634C0DE1992407500AD0FEF /* main.m in Sources */,
@@ -871,12 +928,14 @@
 		A634C1011992407500AD0FEF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/libs",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Myrella/Myrella-Prefix.pch";
@@ -892,8 +951,10 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/libs",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -901,12 +962,14 @@
 		A634C1021992407500AD0FEF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/libs",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Myrella/Myrella-Prefix.pch";
@@ -922,8 +985,10 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/libs",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

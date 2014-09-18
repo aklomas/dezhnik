@@ -52,4 +52,7 @@
 
 -(void) logValues:(NSTimer *)timer;
 
+-(void) slowTimers;
+-(void) normalTimers;
+
 @end

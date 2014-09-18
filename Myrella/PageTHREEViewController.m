@@ -25,9 +25,6 @@
     //[self.graphsContainer addSubview:self.sensorTable.view];
     [self.sensorTable didMoveToParentViewController:self];
     
-    NSTimer* timer = [NSTimer timerWithTimeInterval:0.03f target:self selector:@selector(updateView:) userInfo:nil repeats:YES];
-    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
-    
     [self.timesReconnected setNr:38];
     [self.timesOpened setNr:157];
 }
@@ -38,12 +35,58 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)pauseTimer {
+    [self.uiTimer invalidate];
+    [self.graphTimer invalidate];
+    self.humidityGraph.interval = 30.0f;
+    self.pressureGraph.interval = 30.0f;
+    self.temperatureGraph.interval = 30.0f;
+    self.graphTimer = [NSTimer timerWithTimeInterval:30.0f target:self selector:@selector(updateGraphs:) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:self.graphTimer forMode:NSRunLoopCommonModes];
+}
+
+-(void)resumeTimer {
+    self.humidityGraph.interval = 1.0f;
+    self.pressureGraph.interval = 1.0f;
+    self.temperatureGraph.interval = 1.0f;
+    if (self.graphTimer)
+        [self.graphTimer invalidate];
+    self.uiTimer = [NSTimer timerWithTimeInterval:0.03f target:self selector:@selector(updateView:) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:self.uiTimer forMode:NSRunLoopCommonModes];
+    self.graphTimer = [NSTimer timerWithTimeInterval:1.0f target:self selector:@selector(updateGraphs:) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:self.graphTimer forMode:NSRunLoopCommonModes];
+}
+
+-(void)updateGraphs:(NSTimer *)timer {
+    if (self.sensorTag.isConnected) {
+        if (self.humidityGraph.interval < 0.1 || self.pressureGraph.interval < 0.1 || self.temperatureGraph.interval < 0.1) {
+            self.humidityGraph.interval = 1.0f;
+            self.pressureGraph.interval = 1.0f;
+            self.temperatureGraph.interval = 1.0f;
+        }
+        self.humidityGraph.range = 100.0;
+        self.humidityGraph.mid_value = 50.0;
+        self.humidityGraph.unit = @"%";
+        [self.humidityGraph addEntry: [NSNumber numberWithFloat:self.sensorTag.currentVal.humidity]];
+        
+        self.pressureGraph.range = 100.0;
+        self.pressureGraph.mid_value = 1000.0;
+        self.pressureGraph.unit = @"";
+        [self.pressureGraph addEntry: [NSNumber numberWithFloat:self.sensorTag.currentVal.press]];
+        
+        self.temperatureGraph.range = 70.0;
+        self.temperatureGraph.mid_value = 20.0;
+        self.temperatureGraph.unit = @"°C";
+        [self.temperatureGraph addEntry: [NSNumber numberWithFloat:self.sensorTag.currentVal.tAmb]];
+    }
+}
+
 -(void)updateView:(NSTimer *)timer {
     if (self.sensorTag.isConnected) {
         self.signal.connected = 1;
         [self.signal updateRSSI:self.sensorTag.currentVal.RSSI];
 
-                if(self.hTemp != self.sensorTag.currentVal.humidity)
+        if(self.hTemp != self.sensorTag.currentVal.humidity)
             self.hTemp = [self.strHum floatValue];
         self.strHum = [NSString stringWithFormat:@"%f", [self.strHum floatValue] + (self.sensorTag.currentVal.humidity - self.hTemp)/33];
         self.humidityLabel.text = [NSString stringWithFormat:@"%d%%",(int)[self.strHum floatValue]];
@@ -68,20 +111,6 @@
                                         @"temperature00" : [self.strTemp floatValue] > 30 ?
                                         @"temperature09" :
                                         [NSString stringWithFormat:@"temperature0%d", (int)(([self.strTemp floatValue] + 15) / 5)]];
-        self.humidityGraph.range = 100.0;
-        self.humidityGraph.mid_value = 50.0;
-        self.humidityGraph.unit = @"%";
-        [self.humidityGraph addEntry: [NSNumber numberWithFloat:[self.strHum floatValue]]];
-        
-        self.pressureGraph.range = 100.0;
-        self.pressureGraph.mid_value = 1000.0;
-        self.pressureGraph.unit = @"";
-        [self.pressureGraph addEntry: [NSNumber numberWithFloat:[self.strPres floatValue]]];
-        
-        self.temperatureGraph.range = 70.0;
-        self.temperatureGraph.mid_value = 20.0;
-        self.temperatureGraph.unit = @"°C";
-        [self.temperatureGraph addEntry: [NSNumber numberWithFloat:[self.strTemp floatValue]]];
     }
     else {
         [self.signal setDisconnected];

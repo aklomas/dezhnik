@@ -20,6 +20,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="overlay" translatesAutoresizingMaskIntoConstraints="NO" id="k1J-bg-Y3F">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="settingsButton" translatesAutoresizingMaskIntoConstraints="NO" id="wFl-zb-cUi" userLabel="Settings">
                                         <rect key="frame" x="10" y="508" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -37,30 +41,40 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </pageControl>
                                 </subviews>
-                                <color key="backgroundColor" red="0.38431372549999998" green="0.5450980392" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
-                                <gestureRecognizers/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZDv-xk-gp3" userLabel="NavGesture">
-                                <rect key="frame" x="0.0" y="512" width="80" height="56"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="LXP-2b-g1c" appends="YES" id="rmn-DI-7e9"/>
-                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x0d-5X-eJC" userLabel="SwipeGesture">
+                                <rect key="frame" x="0.0" y="459" width="320" height="109"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZDv-xk-gp3" userLabel="NavGesture">
+                                        <rect key="frame" x="0.0" y="45" width="80" height="56"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="LXP-2b-g1c" appends="YES" id="rmn-DI-7e9"/>
+                                        </connections>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.85490196080000003" green="0.8862745098" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.38431372549019605" green="0.54509803921568623" blue="0.67843137254901964" alpha="1" colorSpace="deviceRGB"/>
+                        <gestureRecognizers/>
                     </view>
                     <navigationItem key="navigationItem" title="London" id="UJg-WT-nTk"/>
                     <connections>
                         <outlet property="connectionImage" destination="aXa-SG-dvk" id="BaJ-QA-zIF"/>
                         <outlet property="navItem" destination="UJg-WT-nTk" id="hF4-kA-j6j"/>
                         <outlet property="pageControl" destination="KWl-6C-z5d" id="MH0-2K-8Dw"/>
+                        <outlet property="swipeView" destination="x0d-5X-eJC" id="ywn-g9-hjk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="LXP-2b-g1c">
+                <tapGestureRecognizer cancelsTouchesInView="NO" id="LXP-2b-g1c">
                     <connections>
                         <segue destination="fLl-hF-SJQ" kind="push" id="kMZ-oF-oYZ"/>
                     </connections>
@@ -154,7 +168,17 @@
                     <view key="view" contentMode="scaleToFill" id="BqF-ns-lBX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ell-N4-tbT">
+                                <rect key="frame" x="0.0" y="63" width="320" height="447"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                     </view>
+                    <connections>
+                        <outlet property="mView" destination="Ell-N4-tbT" id="3oa-Zc-Oli"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RY8-bo-kxL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -537,6 +561,7 @@ for some rainy fun today.</string>
     </scenes>
     <resources>
         <image name="disconnected" width="661" height="661"/>
+        <image name="overlay" width="640" height="1136"/>
         <image name="settingsButton" width="661" height="661"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
