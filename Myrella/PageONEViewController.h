@@ -34,6 +34,11 @@
 @property (weak, nonatomic) IBOutlet ScreenONEGraph *GraphView;
 @property (weak, nonatomic) IBOutlet UILabel *SummaryLabel;
 
+@property (weak, nonatomic) IBOutlet UIView *AlarmGestureView;
+@property (weak, nonatomic) IBOutlet UIImageView *AlarmView;
+@property (weak, nonatomic) IBOutlet UIImageView *HealthAlarmView;
+@property (weak, nonatomic) IBOutlet UIView *HealthAlarmGestureView;
+
 @property (strong,nonatomic) SensorTag *sensorTag;
 @property (strong,nonatomic) ForecastKit *forecastKit;
 
@@ -42,8 +47,14 @@
 
 @property float curHum;
 @property BOOL changedBg;
+@property BOOL showSevereWeatherAlert;
+@property BOOL showHealthHazardAlert;
+
 
 - (IBAction)temperatureTap:(UITapGestureRecognizer *)sender;
+
+- (IBAction)alarmTap:(UITapGestureRecognizer *)sender;
+- (IBAction)healthTap:(UITapGestureRecognizer *)sender;
 
 -(void)updateView:(NSTimer *)timer;
 

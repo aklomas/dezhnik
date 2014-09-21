@@ -44,6 +44,7 @@
 		A6B35020199BDAD1009AF950 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B3501F199BDAD0009AF950 /* libz.dylib */; };
 		A6B35022199BDAE8009AF950 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B35021199BDAE8009AF950 /* libsqlite3.dylib */; };
 		A6B350A7199CA820009AF950 /* libSVGKit-iOS.1.2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B35026199CA820009AF950 /* libSVGKit-iOS.1.2.0.a */; };
+		A6C1697F19CF3B0500C380CA /* DefaultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C1697E19CF3B0500C380CA /* DefaultViewController.m */; };
 		A6D09A1C19C86BC5009E40AF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D09A1B19C86BC5009E40AF /* MapKit.framework */; };
 		A6D09A1F19C86C6C009E40AF /* PageTWOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D09A1E19C86C6C009E40AF /* PageTWOViewController.m */; };
 		A6D09A2519CAE0DA009E40AF /* SGMetOfficeForecastImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D09A2419CAE0DA009E40AF /* SGMetOfficeForecastImage.m */; };
@@ -254,6 +255,8 @@
 		A6B350A4199CA820009AF950 /* SVGUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGUtils.h; sourceTree = "<group>"; };
 		A6B350A5199CA820009AF950 /* SVGViewSpec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGViewSpec.h; sourceTree = "<group>"; };
 		A6B350A6199CA820009AF950 /* Text.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Text.h; sourceTree = "<group>"; };
+		A6C1697D19CF3B0500C380CA /* DefaultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultViewController.h; sourceTree = "<group>"; };
+		A6C1697E19CF3B0500C380CA /* DefaultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultViewController.m; sourceTree = "<group>"; };
 		A6D09A1B19C86BC5009E40AF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A6D09A1D19C86C6C009E40AF /* PageTWOViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageTWOViewController.h; sourceTree = "<group>"; };
 		A6D09A1E19C86C6C009E40AF /* PageTWOViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageTWOViewController.m; sourceTree = "<group>"; };
@@ -449,6 +452,8 @@
 				A6B34EF1199A6102009AF950 /* PageTHREEViewController.m */,
 				A68ADC4419BD1DBF0043A616 /* SettingsViewController.h */,
 				A68ADC4519BD1DBF0043A616 /* SettingsViewController.m */,
+				A6C1697D19CF3B0500C380CA /* DefaultViewController.h */,
+				A6C1697E19CF3B0500C380CA /* DefaultViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -798,6 +803,7 @@
 				A6316D7D19B21C43009B757D /* ScreenTHREEDottedCircle.m in Sources */,
 				A6B34EE9199A60D8009AF950 /* PageONEViewController.m in Sources */,
 				A6D09A1F19C86C6C009E40AF /* PageTWOViewController.m in Sources */,
+				A6C1697F19CF3B0500C380CA /* DefaultViewController.m in Sources */,
 				A634C0E21992407500AD0FEF /* AppDelegate.m in Sources */,
 				A6D09A2519CAE0DA009E40AF /* SGMetOfficeForecastImage.m in Sources */,
 				A6B34EEF199A60F4009AF950 /* SensorTableView.m in Sources */,

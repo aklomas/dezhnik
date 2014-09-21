@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  BaseViewController.h
 //  Myrella
 //
 //  Created by Filip Kralj on 06/08/14.
@@ -11,6 +11,7 @@
 #import "PageONEViewController.h"
 #import "PageTWOViewController.h"
 #import "PageTHREEViewController.h"
+#import "SettingsViewController.h"
 
 @interface BaseViewController : UIViewController <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
@@ -24,6 +25,14 @@
 @property (weak, nonatomic) IBOutlet UINavigationItem *navItem;
 @property (weak, nonatomic) IBOutlet UIView *swipeView;
 
+@property NSTimer* notificationTimer;
+@property BOOL wasConnected;
+
+@property BOOL weatherAlertOn;
+@property BOOL healthAlertOn;
+
+@property UIAlertView *severeWeatherAlert;
+@property UIAlertView *healthHazardAlert;
 
 -(void) didBecomeActive;
 -(void) willEnterBackground;
@@ -31,6 +40,8 @@
 - (void)swipeLeft:(UISwipeGestureRecognizer *)sender;
 
 -(void)didFinishAnimating:(BOOL)finished;
+
+-(void)notifUpdate:(NSTimer*)timer;
 
 
 @end

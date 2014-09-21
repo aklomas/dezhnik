@@ -19,6 +19,7 @@
 @property CLLocation *location;
 
 @property BOOL changed;
+@property BOOL changedAlerts;
 
 @property NSString *curLocName;
 
@@ -36,6 +37,7 @@
 -(NSString *)getCurSummary;
 -(NSString *)getCurIcon;
 -(NSString *)getDailyMessage;
+-(NSMutableArray *)getAlerts;
 
 -(NSString *)getIconForNextHour:(int)hour;
 -(NSString *)getTempForNextHour:(int)hour;

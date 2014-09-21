@@ -2,7 +2,7 @@
 //  SettingsBaseViewController.m
 //  Myrella
 //
-//  Created by Filip Kralj on 08/09/14.
+//  Created by Filip Kralj on 06/08/14.
 //  Copyright (c) 2014 edu. All rights reserved.
 //
 
@@ -18,16 +18,20 @@
 {
     [super viewDidLoad];
     
-    [super viewDidLoad];
-    // Create the data model
-    self.pageTitles = @[@"Settings", @"Shop", @"About"];
-    
     // Create page view controller
-    self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
+    self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingsPageViewController"];
     self.pageViewController.dataSource = self;
     self.pageViewController.delegate = self;
     
-    SettingsViewController *startingViewController = [self viewControllerAtIndex:0];
+    self.views = [[NSMutableArray alloc] initWithCapacity:3];
+    [self.views addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"SettingsViewController"]];
+    [self.views addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"BuyViewController"]];
+    [self.views addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"AboutViewController"]];
+    
+    ((DefaultViewController *)[self.views objectAtIndex:1]).pageIndex = 1;
+    ((DefaultViewController *)[self.views objectAtIndex:2]).pageIndex = 2;
+    
+    UIViewController *startingViewController = [self viewControllerAtIndex:0];
     NSArray *viewControllers = @[startingViewController];
     [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
@@ -38,12 +42,12 @@
     [self.view addSubview:_pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
     
-    self.pageControl.numberOfPages = 3;
+    self.pageControl.numberOfPages = [self.views count];
     self.pageControl.currentPage = 0;
-    
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
+    //[[self.views objectAtIndex:2] deinit];
 }
 
 
@@ -54,25 +58,26 @@
 }
 
 
-- (SettingsViewController *)viewControllerAtIndex:(NSUInteger)index
+- (UIViewController *)viewControllerAtIndex:(NSUInteger)index
 {
-    if (([self.pageTitles count] == 0) || (index >= [self.pageTitles count])) {
+    if (([self.views count] == 0) || (index >= [self.views count])) {
         return nil;
     }
-    // Create a new view controller and pass suitable data.
-    SettingsViewController *settingsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
-    settingsViewController.titleText = self.pageTitles[index];
-    settingsViewController.pageIndex = index;
-    
-    return settingsViewController;
+    else
+        return [self.views objectAtIndex:index];
 }
-
 
 #pragma mark - Page View Controller Data Source
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
-    NSUInteger index = ((SettingsViewController*) viewController).pageIndex;
+    NSUInteger index = 0;
+    if ([viewController isKindOfClass:[SettingsViewController class]]) {
+        index = 0;
+    }
+    else if ([viewController isKindOfClass:[DefaultViewController class]]) {
+        index = ((DefaultViewController *)viewController).pageIndex;
+    }
     
     if ((index == 0) || (index == NSNotFound)) {
         return nil;
@@ -84,25 +89,47 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
-    NSUInteger index = ((SettingsViewController*) viewController).pageIndex;
+    NSUInteger index = 0;
+    if ([viewController isKindOfClass:[SettingsViewController class]]) {
+        index = 0;
+    }
+    else if ([viewController isKindOfClass:[DefaultViewController class]]) {
+        index = ((DefaultViewController *)viewController).pageIndex;
+    }
     
     if (index == NSNotFound) {
         return nil;
     }
     
     index++;
-    if (index == [self.pageTitles count]) {
-        return nil;
-    }
     return [self viewControllerAtIndex:index];
+}
+
+-(void)didFinishAnimating:(BOOL)finished {
+    UIViewController *currentViewController = (UIViewController *)[self.pageViewController.viewControllers lastObject];
+    NSUInteger index = 0;
+    
+    if ([currentViewController isKindOfClass:[SettingsViewController class]]) {
+        index = 0;
+        [self.navigationItem setTitle:@"Settings"];
+    }
+    else if ([currentViewController isKindOfClass:[DefaultViewController class]]) {
+        index = ((DefaultViewController *)currentViewController).pageIndex;
+        if (index == 1)
+            [self.navigationItem setTitle:@"Buy Myrella"];
+        else
+            [self.navigationItem setTitle:@"About"];
+    }
+    
+    self.pageControl.currentPage = index;
+    
 }
 
 - (void)pageViewController:(UIPageViewController *)viewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed
 {
     if (!completed){return;}
-    UIViewController *currentViewController = (UIViewController *)[self.pageViewController.viewControllers lastObject];
-    [self.navItem setTitle:((SettingsViewController*) currentViewController).titleText];
-    self.pageControl.currentPage = ((SettingsViewController*) currentViewController).pageIndex;
+    
+    [self didFinishAnimating:finished];
 }
 
 @end

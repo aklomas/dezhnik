@@ -1,5 +1,5 @@
 //
-//  ViewController.m
+//  BaseViewController.m
 //  Myrella
 //
 //  Created by Filip Kralj on 06/08/14.
@@ -63,12 +63,31 @@
     [self.swipeView addGestureRecognizer:Swipeleft];
     
     [GMSServices provideAPIKey:@"AIzaSyAUyP1Z4_o-PglTitSntW5Cj1RhvillPOs"];
+    
+    self.wasConnected = false;    
+    self.severeWeatherAlert = [[UIAlertView alloc] initWithTitle:@"Extreme weather warning!"
+                                            message:@""
+                                           delegate:nil
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+    
+    self.healthHazardAlert = [[UIAlertView alloc] initWithTitle:@"Health hazard warning!"
+                                                         message:@""
+                                                        delegate:nil
+                                               cancelButtonTitle:@"OK"
+                                               otherButtonTitles:nil];
+    
+    [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(handleHealthNotification:) name:@"healthChanged" object:nil];
+    [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(handleWeatherNotification:) name:@"weatherChanged" object:nil];
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
     //[[self.views objectAtIndex:2] deinit];
 }
 
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -80,6 +99,114 @@
     [self.sensorTag slowTimers];
     [((PageONEViewController *)[self.views objectAtIndex:0]) pauseTimer];
     [((PageTHREEViewController *)[self.views objectAtIndex:2]) pauseTimer];
+    [self.notificationTimer invalidate];
+    self.notificationTimer= [NSTimer timerWithTimeInterval:5.0f target:self selector:@selector(notifUpdate:) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:self.notificationTimer forMode:NSRunLoopCommonModes];
+}
+
+
+-(void)didBecomeActive {
+    if (self.sensorTag.isConnected)
+        [self.sensorTag normalTimers];
+    
+    [((PageONEViewController *)[self.views objectAtIndex:0]) resumeTimer];
+    [((PageTHREEViewController *)[self.views objectAtIndex:2]) resumeTimer];
+    [self.forecastKit update];
+    
+    self.notificationTimer= [NSTimer timerWithTimeInterval:0.1f target:self selector:@selector(notifUpdate:) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:self.notificationTimer forMode:NSRunLoopCommonModes];
+}
+
+-(void)handleHealthNotification:(NSNotification *)notification
+{
+    if (!self.healthAlertOn) {
+        ((PageONEViewController *)[self.views objectAtIndex:0]).HealthAlarmView.alpha = 1.0;
+        ((PageONEViewController *)[self.views objectAtIndex:0]).HealthAlarmGestureView.alpha = 1.0;
+        self.healthHazardAlert.message = @"Severe storm with thunderstorm and flash floods. Strong winds from NE. Stay inside if you can.";
+        self.healthAlertOn = true;
+    }
+    else {
+        ((PageONEViewController *)[self.views objectAtIndex:0]).HealthAlarmView.alpha = 0.0;
+        ((PageONEViewController *)[self.views objectAtIndex:0]).HealthAlarmGestureView.alpha = 0.0;
+        self.healthAlertOn = false;
+    }
+}
+
+-(void)handleWeatherNotification:(NSNotification *)notification
+{
+    if (!self.weatherAlertOn) {
+        ((PageONEViewController *)[self.views objectAtIndex:0]).AlarmView.alpha = 1.0;
+        ((PageONEViewController *)[self.views objectAtIndex:0]).AlarmGestureView.alpha = 1.0;
+        self.severeWeatherAlert.message = @"Severe storm with thunderstorm and flash floods. Strong winds from NE. Stay inside if you can.";
+        self.weatherAlertOn = true;
+    }
+    else {
+        ((PageONEViewController *)[self.views objectAtIndex:0]).AlarmView.alpha = 0.0;
+        ((PageONEViewController *)[self.views objectAtIndex:0]).AlarmGestureView.alpha = 0.0;
+        self.weatherAlertOn = false;
+    }
+}
+
+-(void)notifUpdate:(NSTimer *)timer {
+    if  (self.sensorTag.isConnected && !self.wasConnected)
+        self.wasConnected = true;
+    else if (self.wasConnected && !self.sensorTag.isConnected) {
+        UILocalNotification *notif = [[UILocalNotification alloc] init];
+        notif.alertBody = @"I can't see your phone anymore. I'm lost, go and get me!";
+        notif.hasAction = YES;
+        notif.fireDate = [NSDate new];
+        [[UIApplication sharedApplication] scheduleLocalNotification:notif];
+        self.wasConnected = false;
+    }
+    
+    if (self.sensorTag.isConnected) {
+        float t = 1.8 *self.sensorTag.currentVal.tAmb + 32;
+        float r = self.sensorTag.currentVal.humidity;
+        
+        float hi = -42.379 +2.049*t + 10.1433*r - 0.2247*t*r - 0.0068*t*t - 0.0548*r*r + 0.0012*t*t*r + 0.0009*t*r*r - 0.000002*t*t*r*r;
+        NSLog(@"%f",hi);
+        
+        if (hi > 100) {
+            ((PageONEViewController *)[self.views objectAtIndex:0]).HealthAlarmView.alpha = 1.0;
+            ((PageONEViewController *)[self.views objectAtIndex:0]).HealthAlarmGestureView.alpha = 1.0;
+            self.healthHazardAlert.message = [self.forecastKit.getAlerts componentsJoinedByString:@" "];
+        }
+        else {
+            ((PageONEViewController *)[self.views objectAtIndex:0]).HealthAlarmView.alpha = 0.0;
+            ((PageONEViewController *)[self.views objectAtIndex:0]).HealthAlarmGestureView.alpha = 0.0;
+        }
+    }
+    
+    if (self.forecastKit.changedAlerts && self.forecastKit.forecastDict) {
+        if (self.forecastKit.getAlerts.count > 0) {
+            ((PageONEViewController *)[self.views objectAtIndex:0]).AlarmView.alpha = 1.0;
+            ((PageONEViewController *)[self.views objectAtIndex:0]).AlarmGestureView.alpha = 1.0;
+            self.severeWeatherAlert.message = [self.forecastKit.getAlerts componentsJoinedByString:@" "];
+            
+            NSLog(@"%@",self.severeWeatherAlert.message);
+            
+            UILocalNotification *notif = [[UILocalNotification alloc] init];
+            notif.alertBody = [self.forecastKit.getAlerts componentsJoinedByString:@" "];
+            notif.hasAction = YES;
+            notif.fireDate = [NSDate new];
+            [[UIApplication sharedApplication] scheduleLocalNotification:notif];
+        }
+        else {
+            ((PageONEViewController *)[self.views objectAtIndex:0]).AlarmView.alpha = 0.0;
+            ((PageONEViewController *)[self.views objectAtIndex:0]).AlarmGestureView.alpha = 0.0;
+        }
+        
+        self.forecastKit.changedAlerts = false;
+    }
+    if (((PageONEViewController *)[self.views objectAtIndex:0]).showSevereWeatherAlert) {
+        [self.severeWeatherAlert show];
+        ((PageONEViewController *)[self.views objectAtIndex:0]).showSevereWeatherAlert = false;
+    }
+    if (((PageONEViewController *)[self.views objectAtIndex:0]).showHealthHazardAlert) {
+        [self.healthHazardAlert show];
+        ((PageONEViewController *)[self.views objectAtIndex:0]).showHealthHazardAlert = false;
+    }
+    
 }
 
 - (void)swipeRight:(UISwipeGestureRecognizer *)sender {
@@ -137,16 +264,6 @@
         
     }
 }
-
--(void)didBecomeActive {
-    if (self.sensorTag.isConnected)
-        [self.sensorTag normalTimers];
-
-    [((PageONEViewController *)[self.views objectAtIndex:0]) resumeTimer];
-    [((PageTHREEViewController *)[self.views objectAtIndex:2]) resumeTimer];
-    [self.forecastKit update];
-}
-
 
 - (UIViewController *)viewControllerAtIndex:(NSUInteger)index
 {

@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SettingsViewController : UIViewController
+@interface SettingsViewController : UITableViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *pageName;
+
 @property NSUInteger pageIndex;
-@property NSString *titleText;
 
+@property (weak, nonatomic) IBOutlet UISwitch *healthSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *weatherSwitch;
 
 @end

@@ -27,7 +27,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.changedBg = false;
+    self.changedBg = false;    
+    self.showSevereWeatherAlert = false;
+    self.showHealthHazardAlert = false;
+
     //[self resumeTimer];
 }
 
@@ -142,6 +145,14 @@
     else {
         self.TempCircle.extend = -1;
     }
+}
+
+- (IBAction)alarmTap:(UITapGestureRecognizer *)sender {
+    self.showSevereWeatherAlert = true;
+}
+
+- (IBAction)healthTap:(UITapGestureRecognizer *)sender {
+    self.showHealthHazardAlert  = true;
 }
 
 /*

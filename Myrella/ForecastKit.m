@@ -30,6 +30,7 @@
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         //[self.locationManager startUpdatingLocation];
         self.changed = false;
+        self.changedAlerts = false;
     }
     
     return self;
@@ -75,6 +76,7 @@
     }];
     [operation1 start];*/
     self.changed = true;
+    self.changedAlerts = true;
 }
 
 -(NSString *)getCurTemperature {
@@ -117,6 +119,10 @@
     return [NSString stringWithFormat:@"%f", [[[[[self.forecastDict valueForKey:@"hourly"] valueForKey:@"data"] objectAtIndex:hour] objectForKey:@"precipIntensity"] floatValue]];
 }
 
+-(NSMutableArray *)getAlerts {
+    return [self.forecastDict valueForKey:@"alerts"];
+}
+
 -(void)updateLocation {
     [self.locationManager startUpdatingLocation];
 }
@@ -126,9 +132,12 @@
 {
     //NSLog(@"didUpdateToLocation: %@", locations);
     self.location = [locations objectAtIndex:[locations count]-1];
-    
+    self.location = [[CLLocation alloc] initWithLatitude:51.58806789 longitude:-0.22813352];
     // Stop Location Manager
     [self.locationManager stopUpdatingLocation];
+    
+    //51.58806789
+    //-0.22813352
     
     //NSLog(@"Resolving the Address");
     [self.geocoder reverseGeocodeLocation:self.location completionHandler:^(NSArray *placemarks, NSError *error) {
