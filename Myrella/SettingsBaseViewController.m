@@ -28,8 +28,8 @@
     [self.views addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"BuyViewController"]];
     [self.views addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"AboutViewController"]];
     
-    ((DefaultViewController *)[self.views objectAtIndex:1]).pageIndex = 1;
-    ((DefaultViewController *)[self.views objectAtIndex:2]).pageIndex = 2;
+    //((DefaultViewController *)[self.views objectAtIndex:1]).pageIndex = 1;
+    //((DefaultViewController *)[self.views objectAtIndex:2]).pageIndex = 2;
     
     UIViewController *startingViewController = [self viewControllerAtIndex:0];
     NSArray *viewControllers = @[startingViewController];
@@ -94,7 +94,7 @@
         index = 0;
     }
     else if ([viewController isKindOfClass:[DefaultViewController class]]) {
-        index = ((DefaultViewController *)viewController).pageIndex;
+        //index = ((DefaultViewController *)viewController).pageIndex;
     }
     
     if (index == NSNotFound) {
@@ -114,7 +114,7 @@
         [self.navigationItem setTitle:@"Settings"];
     }
     else if ([currentViewController isKindOfClass:[DefaultViewController class]]) {
-        index = ((DefaultViewController *)currentViewController).pageIndex;
+        //index = ((DefaultViewController *)currentViewController).pageIndex;
         if (index == 1)
             [self.navigationItem setTitle:@"Buy Myrella"];
         else

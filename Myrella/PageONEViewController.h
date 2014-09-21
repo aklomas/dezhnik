@@ -38,6 +38,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *AlarmView;
 @property (weak, nonatomic) IBOutlet UIImageView *HealthAlarmView;
 @property (weak, nonatomic) IBOutlet UIView *HealthAlarmGestureView;
+@property (weak, nonatomic) IBOutlet UIImageView *weatherWarning;
+@property (weak, nonatomic) IBOutlet UIImageView *healthWarning;
 
 @property (strong,nonatomic) SensorTag *sensorTag;
 @property (strong,nonatomic) ForecastKit *forecastKit;

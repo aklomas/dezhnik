@@ -45,6 +45,7 @@
 		A6B35022199BDAE8009AF950 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B35021199BDAE8009AF950 /* libsqlite3.dylib */; };
 		A6B350A7199CA820009AF950 /* libSVGKit-iOS.1.2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B35026199CA820009AF950 /* libSVGKit-iOS.1.2.0.a */; };
 		A6C1697F19CF3B0500C380CA /* DefaultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C1697E19CF3B0500C380CA /* DefaultViewController.m */; };
+		A6C1698219CF853300C380CA /* CustomIOS7AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C1698119CF853300C380CA /* CustomIOS7AlertView.m */; };
 		A6D09A1C19C86BC5009E40AF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D09A1B19C86BC5009E40AF /* MapKit.framework */; };
 		A6D09A1F19C86C6C009E40AF /* PageTWOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D09A1E19C86C6C009E40AF /* PageTWOViewController.m */; };
 		A6D09A2519CAE0DA009E40AF /* SGMetOfficeForecastImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D09A2419CAE0DA009E40AF /* SGMetOfficeForecastImage.m */; };
@@ -257,6 +258,8 @@
 		A6B350A6199CA820009AF950 /* Text.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Text.h; sourceTree = "<group>"; };
 		A6C1697D19CF3B0500C380CA /* DefaultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultViewController.h; sourceTree = "<group>"; };
 		A6C1697E19CF3B0500C380CA /* DefaultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultViewController.m; sourceTree = "<group>"; };
+		A6C1698019CF853300C380CA /* CustomIOS7AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomIOS7AlertView.h; sourceTree = "<group>"; };
+		A6C1698119CF853300C380CA /* CustomIOS7AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomIOS7AlertView.m; sourceTree = "<group>"; };
 		A6D09A1B19C86BC5009E40AF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A6D09A1D19C86C6C009E40AF /* PageTWOViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageTWOViewController.h; sourceTree = "<group>"; };
 		A6D09A1E19C86C6C009E40AF /* PageTWOViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageTWOViewController.m; sourceTree = "<group>"; };
@@ -676,6 +679,8 @@
 				A6493A1C19B1DF40000A5604 /* ScreenTHREESignal.m */,
 				A6316D7B19B21C43009B757D /* ScreenTHREEDottedCircle.h */,
 				A6316D7C19B21C43009B757D /* ScreenTHREEDottedCircle.m */,
+				A6C1698019CF853300C380CA /* CustomIOS7AlertView.h */,
+				A6C1698119CF853300C380CA /* CustomIOS7AlertView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -787,6 +792,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6C1698219CF853300C380CA /* CustomIOS7AlertView.m in Sources */,
 				A6AA415219B9E62300EEF9B2 /* GraphView.m in Sources */,
 				A68ADC4C19BD2DC80043A616 /* RootViewController.m in Sources */,
 				A6E0243B19A2285700AB1762 /* BLEUtility.m in Sources */,

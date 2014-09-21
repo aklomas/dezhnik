@@ -30,6 +30,7 @@
 
 @property BOOL weatherAlertOn;
 @property BOOL healthAlertOn;
+@property BOOL notifShown;
 
 @property UIAlertView *severeWeatherAlert;
 @property UIAlertView *healthHazardAlert;

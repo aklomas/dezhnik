@@ -57,7 +57,7 @@
         
         self.DailyHigh.text = [NSString stringWithFormat:@"%d",(int)([self.forecastKit.getDailyMaxTemperature floatValue] + 0.5)];
         self.DailyLow.text = [NSString stringWithFormat:@"%d",(int)([self.forecastKit.getDailyMinTemperature floatValue] + 0.5)];
-        self.DailyMessage.text = self.forecastKit.getDailyMessage;
+        //self.DailyMessage.text = self.forecastKit.getDailyMessage;
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"HH"];
@@ -141,9 +141,29 @@
 - (IBAction)temperatureTap:(UITapGestureRecognizer *)sender {
     if(self.TempContainer.alpha == 1.0) {
         self.TempCircle.extend = 1;
+        [UIView animateWithDuration:0.4 animations:^{
+            self.SensorTempLabel.frame = CGRectMake(self.SensorTempLabel.frame.origin.x, self.SensorTempLabel.frame.origin.y + 10, self.SensorTempLabel.frame.size.width, self.SensorTempLabel.frame.size.height);
+        }];
+        [UIView animateWithDuration:0.4 animations:^{
+            self.healthWarning.frame = CGRectMake(0,4,40,40);
+        }];
+        [UIView animateWithDuration:0.4 animations:^{
+            self.weatherWarning.frame = CGRectMake(280,4,40,40);
+        }];
+        self.SummaryLabel.text = self.forecastKit.getDailyMessage;
     }
-    else {
+    else if(self.TempContainer.alpha == 0.0){
         self.TempCircle.extend = -1;
+        [UIView animateWithDuration:0.4 animations:^{
+            self.SensorTempLabel.frame = CGRectMake(self.SensorTempLabel.frame.origin.x, self.SensorTempLabel.frame.origin.y - 10, self.SensorTempLabel.frame.size.width, self.SensorTempLabel.frame.size.height);
+        }];
+        [UIView animateWithDuration:0.4 animations:^{
+            self.healthWarning.frame = CGRectMake(0,4,60,60);
+        }];
+        [UIView animateWithDuration:0.4 animations:^{
+            self.weatherWarning.frame = CGRectMake(260,4,60,60);
+        }];
+        self.SummaryLabel.text = self.forecastKit.getCurSummary;
     }
 }
 

@@ -113,7 +113,7 @@
     [((PageTHREEViewController *)[self.views objectAtIndex:2]) resumeTimer];
     [self.forecastKit update];
     
-    self.notificationTimer= [NSTimer timerWithTimeInterval:0.1f target:self selector:@selector(notifUpdate:) userInfo:nil repeats:YES];
+    self.notificationTimer= [NSTimer timerWithTimeInterval:1.0f target:self selector:@selector(notifUpdate:) userInfo:nil repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:self.notificationTimer forMode:NSRunLoopCommonModes];
 }
 
@@ -122,7 +122,7 @@
     if (!self.healthAlertOn) {
         ((PageONEViewController *)[self.views objectAtIndex:0]).HealthAlarmView.alpha = 1.0;
         ((PageONEViewController *)[self.views objectAtIndex:0]).HealthAlarmGestureView.alpha = 1.0;
-        self.healthHazardAlert.message = @"Severe storm with thunderstorm and flash floods. Strong winds from NE. Stay inside if you can.";
+        self.healthHazardAlert.message = @"The temperature is very high, there is an increased chance of dehydration. Keep away from the sun and drink a lot of water.";
         self.healthAlertOn = true;
     }
     else {
@@ -164,16 +164,40 @@
         float r = self.sensorTag.currentVal.humidity;
         
         float hi = -42.379 +2.049*t + 10.1433*r - 0.2247*t*r - 0.0068*t*t - 0.0548*r*r + 0.0012*t*t*r + 0.0009*t*r*r - 0.000002*t*t*r*r;
-        NSLog(@"%f",hi);
         
-        if (hi > 100) {
+        float deh = 3.5 * self.sensorTag.currentVal.tAmb - 50;
+        NSLog(@"%f, %f, %f",hi, deh, r);
+        
+        if (hi > 112) {
+            self.healthHazardAlert.message = @"The temperature and humidity are very high, there is an increased chance of heath stroke. Keep hydrated and avoid extensive phisical activity.";
+            if (!self.notifShown) {
+                UILocalNotification *notif = [[UILocalNotification alloc] init];
+                notif.alertBody = @"The temperature and humidity are very high, there is an increased chance of heath stroke.";
+                notif.hasAction = YES;
+                notif.fireDate = [NSDate new];
+                [[UIApplication sharedApplication] scheduleLocalNotification:notif];
+                self.notifShown = true;
+            }
             ((PageONEViewController *)[self.views objectAtIndex:0]).HealthAlarmView.alpha = 1.0;
             ((PageONEViewController *)[self.views objectAtIndex:0]).HealthAlarmGestureView.alpha = 1.0;
-            self.healthHazardAlert.message = [self.forecastKit.getAlerts componentsJoinedByString:@" "];
+        }
+        else if ((r < deh && r > 0) || self.sensorTag.currentVal.tAmb > 35){
+            self.healthHazardAlert.message = @"The temperature is very high, there is an increased chance of dehydration. Keep away from the sun and drink a lot of water.";
+            if (!self.notifShown) {
+                UILocalNotification *notif = [[UILocalNotification alloc] init];
+                notif.alertBody = self.healthHazardAlert.message;
+                notif.hasAction = YES;
+                notif.fireDate = [NSDate new];
+                [[UIApplication sharedApplication] scheduleLocalNotification:notif];
+                self.notifShown = true;
+            }
+            ((PageONEViewController *)[self.views objectAtIndex:0]).HealthAlarmView.alpha = 1.0;
+            ((PageONEViewController *)[self.views objectAtIndex:0]).HealthAlarmGestureView.alpha = 1.0;
         }
         else {
             ((PageONEViewController *)[self.views objectAtIndex:0]).HealthAlarmView.alpha = 0.0;
             ((PageONEViewController *)[self.views objectAtIndex:0]).HealthAlarmGestureView.alpha = 0.0;
+            self.notifShown = false;
         }
     }
     
