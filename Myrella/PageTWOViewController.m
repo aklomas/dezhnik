@@ -37,11 +37,11 @@ NSString* const MET_OFFICE_API_KEY = @"496cb704-5e2d-4ccc-ae32-8a7bfe7fe5a2";
     //self.userLocation = self.mapView.userLocation;
     self.layerName_ = @"Precipitation_Rate";
     
-    UIImage *_maskingImage = [UIImage imageNamed:@"mask1"];
+    UIImage *_maskingImage = [UIImage imageNamed:@"rain mask"];
     CALayer *_maskingLayer = [CALayer layer];
-    _maskingLayer.frame = self.view.bounds;
+    _maskingLayer.frame = self.mView.bounds;
     [_maskingLayer setContents:(id)[_maskingImage CGImage]];
-    //[self.view.layer setMask:_maskingLayer];
+    [self.mView.layer setMask:_maskingLayer];
     
     [self loadMapView];
     
