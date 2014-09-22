@@ -134,9 +134,9 @@
         
         path = [UIBezierPath bezierPath];
         path.lineWidth = 2;
-        CGFloat min = [[self.tempData valueForKeyPath:@"@min.self"] floatValue];
+        CGFloat min = [[self.tempData valueForKeyPath:@"@min.floatValue"] floatValue];
         CGFloat space = 3*height*0.3;
-        CGFloat unit = 3*height*0.4 / ([[self.tempData valueForKeyPath:@"@max.self"] floatValue] - min);
+        CGFloat unit = 3*height*0.4 / ([[self.tempData valueForKeyPath:@"@max.floatValue"] floatValue] - min);
         point = 3*height - (([[self.tempData objectAtIndex:0] floatValue] - min)*unit + space);
         diff1 = point + ((3*height - (([[self.tempData objectAtIndex:1] floatValue] - min)*unit + space)) - point)*0.5;
         diff2 = 0;
@@ -155,6 +155,8 @@
             
             attrStr = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%d°", (int)([[self.tempData objectAtIndex:i] floatValue] + 0.5)] attributes:stringAttrs];
             [attrStr drawInRect:CGRectMake(30 + i*width*1.1 - 10, point - 12, 20, 10)];
+            
+            //NSLog(@"%f, %f, %f", point, [[self.tempData objectAtIndex:i] floatValue], min);
         }
         
         [path strokeWithBlendMode:kCGBlendModeNormal alpha:0.6];

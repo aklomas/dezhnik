@@ -116,7 +116,7 @@
                                 <rect key="frame" x="8.5" y="0.0" width="303" height="563"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">Myrella: The smart umbrella
+                                <string key="text">Myrella: The smart umbrella
 
 This application is a supporting application for Myrella appcessory.
 Created as a final project of master thesis.
@@ -131,7 +131,7 @@ Myrella: The smart umbrella
 MA Graphic Design
 Middlesex University, London
 
-all copyrights @ uzupan, 2014</mutableString>
+all copyrights @ uzupan, 2014</string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="18"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -693,7 +693,7 @@ all copyrights @ uzupan, 2014</mutableString>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hey! It looks like it is going to be a nice day. You wont need me, enjoy the sun!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="216" translatesAutoresizingMaskIntoConstraints="NO" id="XOV-SR-EMF" userLabel="Daily message">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hey! It looks like it is going to be a nice day. You won't need me, enjoy the sun!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="216" translatesAutoresizingMaskIntoConstraints="NO" id="XOV-SR-EMF" userLabel="Daily message">
                                         <rect key="frame" x="52" y="360" width="216" height="81"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
@@ -701,11 +701,11 @@ all copyrights @ uzupan, 2014</mutableString>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="weather-warning" translatesAutoresizingMaskIntoConstraints="NO" id="zHw-J4-JKz">
-                                        <rect key="frame" x="280" y="4" width="40" height="40"/>
+                                        <rect key="frame" x="260" y="4" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="health-warning" translatesAutoresizingMaskIntoConstraints="NO" id="Ngl-Hf-4mn">
-                                        <rect key="frame" x="0.0" y="4" width="40" height="40"/>
+                                        <rect key="frame" x="0.0" y="4" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>

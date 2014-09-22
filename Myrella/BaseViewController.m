@@ -152,6 +152,7 @@
         UILocalNotification *notif = [[UILocalNotification alloc] init];
         notif.alertBody = @"I can't see your phone anymore. I'm lost, go and get me!";
         notif.hasAction = YES;
+        notif.soundName = @"thunder_sound_notification.caf";
         notif.fireDate = [NSDate new];
         [[UIApplication sharedApplication] scheduleLocalNotification:notif];
         self.wasConnected = false;
@@ -167,11 +168,12 @@
         //NSLog(@"%f, %f, %f",hi, deh, r);
         
         if (hi > 112) {
-            self.healthHazardAlert.message = @"The temperature and humidity are very high, there is an increased chance of heath stroke. Keep hydrated and avoid extensive phisical activity.";
+            self.healthHazardAlert.message = @"The temperature and humidity are very high, there is an increased chance of heat stroke. Keep hydrated and avoid extensive physical activity.";
             if (!self.notifShown) {
                 UILocalNotification *notif = [[UILocalNotification alloc] init];
                 notif.alertBody = @"The temperature and humidity are very high, there is an increased chance of heath stroke.";
                 notif.hasAction = YES;
+                notif.soundName = @"thunder_sound_notification.caf";
                 notif.fireDate = [NSDate new];
                 [[UIApplication sharedApplication] scheduleLocalNotification:notif];
                 self.notifShown = true;
@@ -185,6 +187,7 @@
                 UILocalNotification *notif = [[UILocalNotification alloc] init];
                 notif.alertBody = self.healthHazardAlert.message;
                 notif.hasAction = YES;
+                notif.soundName = @"thunder_sound_notification.caf";
                 notif.fireDate = [NSDate new];
                 [[UIApplication sharedApplication] scheduleLocalNotification:notif];
                 self.notifShown = true;
@@ -210,6 +213,7 @@
             UILocalNotification *notif = [[UILocalNotification alloc] init];
             notif.alertBody = [self.forecastKit.getAlerts componentsJoinedByString:@" "];
             notif.hasAction = YES;
+            notif.soundName = @"thunder_sound_notification.caf";            
             notif.fireDate = [NSDate new];
             [[UIApplication sharedApplication] scheduleLocalNotification:notif];
         }

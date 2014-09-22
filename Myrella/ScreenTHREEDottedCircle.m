@@ -25,7 +25,6 @@
         self.percentOfHighlightedDots = log10(number)/4;
     else
         self.percentOfHighlightedDots = 0;
-    
     [self setNeedsDisplay];
 }
 
@@ -58,7 +57,8 @@
     }
     
     CGContextSetRGBFillColor(ctx, 0.7, 0.7, 0.7, 0.5);
-    for (int i = 0; i < nrOfDots * (1 - self.percentOfHighlightedDots); i++) {
+    int temp = self.percentOfHighlightedDots == 0 ? nrOfDots * (1 - self.percentOfHighlightedDots) : nrOfDots * (1 - self.percentOfHighlightedDots);
+    for (int i = 0; i < temp; i++) {
         
         startX = centerX +  cos(angle) * (radius) - dotSize/2;
         startY = centerY +  sin(angle) * (radius) - dotSize/2;

@@ -248,18 +248,18 @@ NSString* const MET_OFFICE_API_KEY = @"496cb704-5e2d-4ccc-ae32-8a7bfe7fe5a2";
 
 -(void) updateLayer: (id)selector{
     //Setup the bounds of our layer to place on the map
-    CLLocationCoordinate2D UKSouthWest = CLLocationCoordinate2DMake(48.00, -12.00);
+    /*CLLocationCoordinate2D UKSouthWest = CLLocationCoordinate2DMake(48.00, -12.00);
     CLLocationCoordinate2D UKNorthEast = CLLocationCoordinate2DMake(61.00, 5.00);
     
     //Clear the Layers in the MapView
-//    for(GMSGroundOverlay *gO in overlayObjectArray){
-//        gO.map = nil;
-//        [overlayObjectArray removeObject: gO];
-//    }
-//    
-//    GMSCoordinateBounds *uk_overlayBounds = [[GMSCoordinateBounds alloc] initWithCoordinate:UKSouthWest
-//                                                                                 coordinate:UKNorthEast];
-//    
+    for(GMSGroundOverlay *gO in overlayObjectArray){
+        gO.map = nil;
+        [overlayObjectArray removeObject: gO];
+    }
+    
+    GMSCoordinateBounds *uk_overlayBounds = [[GMSCoordinateBounds alloc] initWithCoordinate:UKSouthWest
+                                                                                 coordinate:UKNorthEast];
+    */
     SGMetOfficeForecastImage *layerObject = [overlayArray objectAtIndex: [currentLayerIndex intValue]];
     
     // Get the UILabel to display the time and change the timestamp
@@ -282,14 +282,14 @@ NSString* const MET_OFFICE_API_KEY = @"496cb704-5e2d-4ccc-ae32-8a7bfe7fe5a2";
     self.rainMap addlayer = _maskingLayer;*/
     
     //Get next layer and place it on the map
-    //GMSGroundOverlay *layerOverlay = [GMSGroundOverlay groundOverlayWithBounds: uk_overlayBounds icon: layerObject.image];
+    /*GMSGroundOverlay *layerOverlay = [GMSGroundOverlay groundOverlayWithBounds: uk_overlayBounds icon: layerObject.image];
     
-//    layerOverlay.bearing = 0;
-//    layerOverlay.zIndex = 5  * ([currentLayerIndex intValue] + 1);
-//    layerOverlay.map = mapView;
+    layerOverlay.bearing = 0;
+    layerOverlay.zIndex = 5  * ([currentLayerIndex intValue] + 1);
+    layerOverlay.map = mapView;
     
-    //[overlayObjectArray addObject: layerOverlay];
-    
+    [overlayObjectArray addObject: layerOverlay];
+    */
     // Check if we're at the end of the layerArray and then loop
     if([currentLayerIndex intValue] < [overlayArray count] - 1){
         currentLayerIndex = @([currentLayerIndex intValue] + 1);
