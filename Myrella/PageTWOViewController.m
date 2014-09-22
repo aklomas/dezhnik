@@ -37,11 +37,11 @@ NSString* const MET_OFFICE_API_KEY = @"496cb704-5e2d-4ccc-ae32-8a7bfe7fe5a2";
     //self.userLocation = self.mapView.userLocation;
     self.layerName_ = @"Precipitation_Rate";
     
-    UIImage *_maskingImage = [UIImage imageNamed:@"mask"];
+    UIImage *_maskingImage = [UIImage imageNamed:@"mask1"];
     CALayer *_maskingLayer = [CALayer layer];
-    _maskingLayer.frame = self.mView.bounds;
+    _maskingLayer.frame = self.view.bounds;
     [_maskingLayer setContents:(id)[_maskingImage CGImage]];
-    [self.mView.layer setMask:_maskingLayer];
+    //[self.view.layer setMask:_maskingLayer];
     
     [self loadMapView];
     
@@ -63,7 +63,7 @@ NSString* const MET_OFFICE_API_KEY = @"496cb704-5e2d-4ccc-ae32-8a7bfe7fe5a2";
     //    CLLocationCoordinate2D UKSouthWest = CLLocationCoordinate2DMake(48.00, -12.00);
     //    CLLocationCoordinate2D UKNorthEast = CLLocationCoordinate2DMake(61.00, 5.00);
     
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude: 55.559323
+    /*GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude: 55.559323
                                                             longitude: -3.774805
                                                                  zoom: 5];
     
@@ -74,7 +74,7 @@ NSString* const MET_OFFICE_API_KEY = @"496cb704-5e2d-4ccc-ae32-8a7bfe7fe5a2";
     [self.mView addSubview:mapView];
     // Use Tileset stored on remote server.
     GMSTileURLConstructor urls = ^(NSUInteger x, NSUInteger y, NSUInteger zoom) {
-        NSString *url = [NSString stringWithFormat:@"http://media.stevenjamesgray.com/weather/%d/%d/%d.png", zoom, x, y];
+        NSString *url = [NSString stringWithFormat:@"http://media.stevenjamesgray.com/weather/%lu/%lu/%lu.png", (unsigned long)zoom, (unsigned long)x, (unsigned long)y];
         return [NSURL URLWithString:url];
     };
     
@@ -93,7 +93,7 @@ NSString* const MET_OFFICE_API_KEY = @"496cb704-5e2d-4ccc-ae32-8a7bfe7fe5a2";
     //Call UIEdgeInsets so that we're not covering the Copyright information (which would be a TOS violation)
     UIEdgeInsets insets = UIEdgeInsetsMake(0, 5, 58.0, 0);
     mapView.padding = insets;
-    
+    */
     //Make new call
     overlayArray = [[NSMutableArray alloc] init];
     overlayObjectArray = [[NSMutableArray alloc] init];
@@ -200,7 +200,7 @@ NSString* const MET_OFFICE_API_KEY = @"496cb704-5e2d-4ccc-ae32-8a7bfe7fe5a2";
     }
     
     // Start the Time to check that we have all the images we requested downloaded and stored in the layer array
-    checkDownloads = [NSTimer scheduledTimerWithTimeInterval: 1 target:self selector:@selector(checkAllImagesHaveDownloaded:) userInfo: [NSNumber numberWithInt: [timestep_set count]] repeats: YES];
+    checkDownloads = [NSTimer scheduledTimerWithTimeInterval: 1 target:self selector:@selector(checkAllImagesHaveDownloaded:) userInfo: [NSNumber numberWithInt: (int)[timestep_set count]] repeats: YES];
 }
 
 -(void) checkAllImagesHaveDownloaded: (NSTimer*)sender{
@@ -252,14 +252,14 @@ NSString* const MET_OFFICE_API_KEY = @"496cb704-5e2d-4ccc-ae32-8a7bfe7fe5a2";
     CLLocationCoordinate2D UKNorthEast = CLLocationCoordinate2DMake(61.00, 5.00);
     
     //Clear the Layers in the MapView
-    for(GMSGroundOverlay *gO in overlayObjectArray){
-        gO.map = nil;
-        [overlayObjectArray removeObject: gO];
-    }
-    
-    GMSCoordinateBounds *uk_overlayBounds = [[GMSCoordinateBounds alloc] initWithCoordinate:UKSouthWest
-                                                                                 coordinate:UKNorthEast];
-    
+//    for(GMSGroundOverlay *gO in overlayObjectArray){
+//        gO.map = nil;
+//        [overlayObjectArray removeObject: gO];
+//    }
+//    
+//    GMSCoordinateBounds *uk_overlayBounds = [[GMSCoordinateBounds alloc] initWithCoordinate:UKSouthWest
+//                                                                                 coordinate:UKNorthEast];
+//    
     SGMetOfficeForecastImage *layerObject = [overlayArray objectAtIndex: [currentLayerIndex intValue]];
     
     // Get the UILabel to display the time and change the timestamp
@@ -270,14 +270,25 @@ NSString* const MET_OFFICE_API_KEY = @"496cb704-5e2d-4ccc-ae32-8a7bfe7fe5a2";
     UILabel *textLabel = (UILabel*)[self.view viewWithTag: 100];
     textLabel.text = [formatter stringFromDate: timestampDate];
     
+    self.rainOverlay.image = layerObject.image;
+    
+    /*CALayer *_maskingLayer = [CALayer layer];
+    _maskingLayer.frame = self.rainMap.bounds;
+    [_maskingLayer setContents:[UIImage imageNamed:@"Rain map"]];
+    CALayer *temp = [CALayer layer];
+    temp.frame = self.rainMap.bounds;
+    [temp setContents:layerObject.image];
+    [_maskingLayer addSublayer:temp];
+    self.rainMap addlayer = _maskingLayer;*/
+    
     //Get next layer and place it on the map
-    GMSGroundOverlay *layerOverlay = [GMSGroundOverlay groundOverlayWithBounds: uk_overlayBounds icon: layerObject.image];
+    //GMSGroundOverlay *layerOverlay = [GMSGroundOverlay groundOverlayWithBounds: uk_overlayBounds icon: layerObject.image];
     
-    layerOverlay.bearing = 0;
-    layerOverlay.zIndex = 5  * ([currentLayerIndex intValue] + 1);
-    layerOverlay.map = mapView;
+//    layerOverlay.bearing = 0;
+//    layerOverlay.zIndex = 5  * ([currentLayerIndex intValue] + 1);
+//    layerOverlay.map = mapView;
     
-    [overlayObjectArray addObject: layerOverlay];
+    //[overlayObjectArray addObject: layerOverlay];
     
     // Check if we're at the end of the layerArray and then loop
     if([currentLayerIndex intValue] < [overlayArray count] - 1){

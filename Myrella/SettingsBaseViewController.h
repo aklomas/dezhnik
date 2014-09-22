@@ -16,6 +16,7 @@
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 @property (nonatomic, retain) IBOutlet UIPageControl *pageControl;
 @property NSMutableArray *views;
+@property (weak, nonatomic) IBOutlet UIView *mainView;
 
 -(void)didFinishAnimating:(BOOL)finished;
 

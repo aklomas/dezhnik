@@ -59,7 +59,7 @@
     
     CGContextSetRGBStrokeColor(ctx, 1.0 - self.RSSI, self.RSSI, 0.0, 1.0);
     CGContextStrokeEllipseInRect(ctx, CGRectMake((self.frame.size.width-size)*0.5, (self.frame.size.height-size)*0.5, size, size));
-    UIFont* font = [UIFont fontWithName:@"Helvetica" size:80];
+    UIFont* font = [UIFont fontWithName:@"Helvetica-Light" size:80];
     NSMutableParagraphStyle* p = [NSMutableParagraphStyle new];
     p.alignment = NSTextAlignmentCenter;
     NSDictionary* stringAttrs = @{ NSFontAttributeName : font,
@@ -81,12 +81,12 @@
     NSAttributedString* attrStr = [[NSAttributedString alloc] initWithString:str attributes:stringAttrs];
     [attrStr drawInRect:CGRectMake((self.frame.size.width-size)*0.5, (self.frame.size.height-size)*0.5+2, size, size)];
     
-    font = [UIFont fontWithName:@"Helvetica" size:15];
+    font = [UIFont fontWithName:@"Helvetica-Light" size:12];
     stringAttrs = @{ NSFontAttributeName : font,
                                    NSForegroundColorAttributeName : baseColor,
                                    NSParagraphStyleAttributeName: p};
     attrStr = [[NSAttributedString alloc] initWithString:signalStr attributes:stringAttrs];
-    [attrStr drawInRect:CGRectMake((self.frame.size.width-size)*0.5, self.frame.size.height*0.5+20, size, font.pointSize + 10)];
+    [attrStr drawInRect:CGRectMake((self.frame.size.width-size)*0.5, self.frame.size.height*0.5+26, size, font.pointSize + 10)];
     
 }
 

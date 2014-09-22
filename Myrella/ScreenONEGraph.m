@@ -28,8 +28,6 @@
     CGFloat height = (self.frame.size.height-20)/3;
     CGFloat width = (self.frame.size.width-40)/11;
     
-    CGContextRef ctx = UIGraphicsGetCurrentContext();
-    
     UIColor *baseColor = [UIColor colorWithRed:69/255.0 green:81/255.0 blue:87/255.0 alpha:1.0];
     
     [baseColor setStroke];

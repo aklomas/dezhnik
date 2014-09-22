@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DefaultViewController : UIPageViewController
+@interface DefaultViewController : UIViewController
 
 @property int pageIndex;
 

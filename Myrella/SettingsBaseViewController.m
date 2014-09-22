@@ -28,18 +28,20 @@
     [self.views addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"BuyViewController"]];
     [self.views addObject:[self.storyboard instantiateViewControllerWithIdentifier:@"AboutViewController"]];
     
-    //((DefaultViewController *)[self.views objectAtIndex:1]).pageIndex = 1;
-    //((DefaultViewController *)[self.views objectAtIndex:2]).pageIndex = 2;
+    ((DefaultViewController *)[self.views objectAtIndex:1]).pageIndex = 1;
+    ((DefaultViewController *)[self.views objectAtIndex:2]).pageIndex = 2;
     
     UIViewController *startingViewController = [self viewControllerAtIndex:0];
     NSArray *viewControllers = @[startingViewController];
     [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     // Change the size of page view controller
-    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 54);
+    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     
+    self.mainView.gestureRecognizers = nil;
     [self addChildViewController:_pageViewController];
     [self.view addSubview:_pageViewController.view];
+    [self.view insertSubview:_pageViewController.view atIndex:0];
     [self.pageViewController didMoveToParentViewController:self];
     
     self.pageControl.numberOfPages = [self.views count];
@@ -94,7 +96,7 @@
         index = 0;
     }
     else if ([viewController isKindOfClass:[DefaultViewController class]]) {
-        //index = ((DefaultViewController *)viewController).pageIndex;
+        index = ((DefaultViewController *)viewController).pageIndex;
     }
     
     if (index == NSNotFound) {
@@ -114,7 +116,7 @@
         [self.navigationItem setTitle:@"Settings"];
     }
     else if ([currentViewController isKindOfClass:[DefaultViewController class]]) {
-        //index = ((DefaultViewController *)currentViewController).pageIndex;
+        index = ((DefaultViewController *)currentViewController).pageIndex;
         if (index == 1)
             [self.navigationItem setTitle:@"Buy Myrella"];
         else

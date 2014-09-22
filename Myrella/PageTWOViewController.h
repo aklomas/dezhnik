@@ -25,6 +25,8 @@
     MBProgressHUD *HUD;
 }
 @property (weak, nonatomic) IBOutlet UIView *mView;
+@property (weak, nonatomic) IBOutlet UIImageView *rainMap;
+@property (weak, nonatomic) IBOutlet UIImageView *rainOverlay;
 @property (nonatomic, retain) MKUserLocation *userLocation;
 @property (nonatomic, retain) NSString *layerName_;
 

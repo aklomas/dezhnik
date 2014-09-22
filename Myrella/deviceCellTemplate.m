@@ -180,7 +180,7 @@
     CGRect contentRect = self.contentView.bounds;
     CGFloat boundsX = contentRect.origin.x;
     CGRect fr;
-    NSLog(@"Frame : %f,%f,%f,%f ",contentRect.origin.x,contentRect.origin.y,contentRect.size.width,contentRect.size.height);
+    //NSLog(@"Frame : %f,%f,%f,%f ",contentRect.origin.x,contentRect.origin.y,contentRect.size.width,contentRect.size.height);
     if (self.contentView.bounds.size.width < WIDTH_CHECKER) self.height = 100;
     else self.height = 50;
     

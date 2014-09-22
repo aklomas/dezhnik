@@ -21,9 +21,8 @@
 @property (strong,nonatomic) ForecastKit *forecastKit;
 @property NSMutableArray *views;
 
-@property (weak, nonatomic) IBOutlet UIImageView *connectionImage;
+
 @property (weak, nonatomic) IBOutlet UINavigationItem *navItem;
-@property (weak, nonatomic) IBOutlet UIView *swipeView;
 
 @property NSTimer* notificationTimer;
 @property BOOL wasConnected;
@@ -37,8 +36,6 @@
 
 -(void) didBecomeActive;
 -(void) willEnterBackground;
-- (void)swipeRight:(UISwipeGestureRecognizer *)sender;
-- (void)swipeLeft:(UISwipeGestureRecognizer *)sender;
 
 -(void)didFinishAnimating:(BOOL)finished;
 

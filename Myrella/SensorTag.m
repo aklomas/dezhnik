@@ -360,7 +360,7 @@
             CBPeripheral *p = [self.sensorTags objectAtIndex:ii];
             if ([p isEqual:peripheral]) {
                 //[self.sensorTags replaceObjectAtIndex:ii withObject:peripheral];
-                if(![p isConnected]) {
+                if(!(p.state == CBPeripheralStateConnected)) {
                     [self.sensorTags replaceObjectAtIndex:ii withObject:peripheral];
                     replace = NO;
                     found = NO;

@@ -21,7 +21,12 @@
 
 -(void)setNr:(int)number {
     self.number = number;
-    self.percentOfHighlightedDots = log10(number)/4;
+    if (number > 1)
+        self.percentOfHighlightedDots = log10(number)/4;
+    else
+        self.percentOfHighlightedDots = 0;
+    
+    [self setNeedsDisplay];
 }
 
 - (void)drawRect:(CGRect)rect
@@ -62,11 +67,11 @@
         angle+= 2*M_PI/nrOfDots;
     }
     
-    UIFont* font = [UIFont fontWithName:@"Helvetica" size:size*0.6];
+    UIFont* font = [UIFont fontWithName:@"Helvetica-Light" size:size*0.6];
     if (self.number > 999)
-        font = [UIFont fontWithName:@"Helvetica" size:size*0.4];
+        font = [UIFont fontWithName:@"Helvetica-Light" size:size*0.4];
     else if (self.number > 99)
-        font = [UIFont fontWithName:@"Helvetica" size:size*0.5];
+        font = [UIFont fontWithName:@"Helvetica-Light" size:size*0.5];
 
     NSMutableParagraphStyle* p = [NSMutableParagraphStyle new];
     p.alignment = NSTextAlignmentCenter;

@@ -64,6 +64,8 @@
 - (IBAction)showHumidityGraph:(id)sender;
 - (IBAction)showTemperatureGraph:(id)sender;
 - (IBAction)showSensors:(id)sender;
+- (IBAction)openedGesture:(UITapGestureRecognizer *)sender;
+- (IBAction)forgotGesture:(UITapGestureRecognizer *)sender;
 
 
 @end

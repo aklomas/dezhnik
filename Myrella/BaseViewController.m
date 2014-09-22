@@ -38,29 +38,20 @@
     ((PageONEViewController *)[self.views objectAtIndex:0]).sensorTag = self.sensorTag;
     ((PageTHREEViewController *)[self.views objectAtIndex:2]).sensorTag = self.sensorTag;
     
-    ((PageONEViewController *)[self.views objectAtIndex:0]).connectionImage = self.connectionImage;
-    
     UIViewController *startingViewController = [self viewControllerAtIndex:0];
     NSArray *viewControllers = @[startingViewController];
     [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     
     // Change the size of page view controller
-    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 54);
+    self.pageViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     
     [self addChildViewController:_pageViewController];
     [self.view addSubview:_pageViewController.view];
+    //[self.view insertSubview:_pageViewController.view belowSubview:self.navGesture];
     [self.pageViewController didMoveToParentViewController:self];
     
     self.pageControl.numberOfPages = [self.views count];
     self.pageControl.currentPage = 0;
-    
-    UISwipeGestureRecognizer * Swiperight=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeRight:)];
-    Swiperight.direction=UISwipeGestureRecognizerDirectionRight;
-    [self.swipeView addGestureRecognizer:Swiperight];
-    
-    UISwipeGestureRecognizer * Swipeleft=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeLeft:)];
-    Swipeleft.direction=UISwipeGestureRecognizerDirectionLeft;
-    [self.swipeView addGestureRecognizer:Swipeleft];
     
     [GMSServices provideAPIKey:@"AIzaSyAUyP1Z4_o-PglTitSntW5Cj1RhvillPOs"];
     
@@ -79,6 +70,7 @@
     
     [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(handleHealthNotification:) name:@"healthChanged" object:nil];
     [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(handleWeatherNotification:) name:@"weatherChanged" object:nil];
+    [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(handleNameNotification:) name:@"nameChanged" object:nil];
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
@@ -147,6 +139,12 @@
     }
 }
 
+-(void)handleNameNotification:(NSNotification *)notification
+{
+    [self.navItem setTitle:((PageONEViewController*)[self.views objectAtIndex:0]).pageTitle];
+}
+
+
 -(void)notifUpdate:(NSTimer *)timer {
     if  (self.sensorTag.isConnected && !self.wasConnected)
         self.wasConnected = true;
@@ -166,7 +164,7 @@
         float hi = -42.379 +2.049*t + 10.1433*r - 0.2247*t*r - 0.0068*t*t - 0.0548*r*r + 0.0012*t*t*r + 0.0009*t*r*r - 0.000002*t*t*r*r;
         
         float deh = 3.5 * self.sensorTag.currentVal.tAmb - 50;
-        NSLog(@"%f, %f, %f",hi, deh, r);
+        //NSLog(@"%f, %f, %f",hi, deh, r);
         
         if (hi > 112) {
             self.healthHazardAlert.message = @"The temperature and humidity are very high, there is an increased chance of heath stroke. Keep hydrated and avoid extensive phisical activity.";
@@ -231,62 +229,6 @@
         ((PageONEViewController *)[self.views objectAtIndex:0]).showHealthHazardAlert = false;
     }
     
-}
-
-- (void)swipeRight:(UISwipeGestureRecognizer *)sender {
-    UIViewController *viewController = [self.pageViewController.viewControllers objectAtIndex:0];
-    NSUInteger index = 0;
-    if ([viewController isKindOfClass:[PageONEViewController class]]) {
-        index = 0;
-    }
-    else if ([viewController isKindOfClass:[PageTWOViewController class]]) {
-        index = 1;
-    }
-    else if ([viewController isKindOfClass:[PageTHREEViewController class]]) {
-        index = 2;
-    }
-    
-    if (index > 0){
-        
-        //get the page to go to
-        UIViewController *targetPageViewController = [self viewControllerAtIndex:(index - 1)];
-        
-        //put it(or them if in landscape view) in an array
-        NSArray *theViewControllers = nil;
-        theViewControllers = [NSArray arrayWithObjects:targetPageViewController, nil];
-        
-        //add page view
-        [self.pageViewController setViewControllers:theViewControllers direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:^(BOOL finished){[self didFinishAnimating:finished];}];
-    }
-
-}
-
-- (void)swipeLeft:(UISwipeGestureRecognizer *)sender {
-    UIViewController *viewController = [self.pageViewController.viewControllers objectAtIndex:0];
-    NSUInteger index = 0;
-    if ([viewController isKindOfClass:[PageONEViewController class]]) {
-        index = 0;
-    }
-    else if ([viewController isKindOfClass:[PageTWOViewController class]]) {
-        index = 1;
-    }
-    else if ([viewController isKindOfClass:[PageTHREEViewController class]]) {
-        index = 2;
-    }
-    
-    if (index < 2){
-        
-        //get the page to go to
-        UIViewController *targetPageViewController = [self viewControllerAtIndex:(index + 1)];
-        
-        //put it(or them if in landscape view) in an array
-        NSArray *theViewControllers = nil;
-        theViewControllers = [NSArray arrayWithObjects:targetPageViewController, nil];
-        
-        //add page view
-        [self.pageViewController setViewControllers:theViewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished){[self didFinishAnimating:finished];}];
-        
-    }
 }
 
 - (UIViewController *)viewControllerAtIndex:(NSUInteger)index

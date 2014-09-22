@@ -25,8 +25,8 @@
     //[self.graphsContainer addSubview:self.sensorTable.view];
     [self.sensorTable didMoveToParentViewController:self];
     
-    [self.timesReconnected setNr:38];
-    [self.timesOpened setNr:157];
+    [self.timesReconnected setNr:0];
+    [self.timesOpened setNr:0];
 }
 
 - (void)didReceiveMemoryWarning
@@ -85,6 +85,11 @@
     if (self.sensorTag.isConnected) {
         self.signal.connected = 1;
         [self.signal updateRSSI:self.sensorTag.currentVal.RSSI];
+        
+        if (self.timesOpened.number < 158)
+            [self.timesOpened setNr:self.timesOpened.number+3];
+        if (self.timesReconnected.number < 2)
+            [self.timesReconnected setNr:self.timesReconnected.number+1];
 
         if(self.hTemp != self.sensorTag.currentVal.humidity)
             self.hTemp = [self.strHum floatValue];
@@ -118,36 +123,42 @@
 }
 
 - (IBAction)showPressureGraph:(id)sender {
-    self.sensorsView.alpha = 0.0;
-    self.pressureGraph.alpha = 1.0;
-    [self.pressureGraph setNeedsDisplay];
-    self.activeView = 1;
-    self.pressureGesture.alpha = 0.0;
-    self.humidityGesture.alpha = 0.0;
-    self.temperatureGesture.alpha = 0.0;
-    self.backGesture.alpha = 1.0;
+    if (self.pressureGraph.data) {
+        self.sensorsView.alpha = 0.0;
+        self.pressureGraph.alpha = 1.0;
+        [self.pressureGraph setNeedsDisplay];
+        self.activeView = 1;
+        self.pressureGesture.alpha = 0.0;
+        self.humidityGesture.alpha = 0.0;
+        self.temperatureGesture.alpha = 0.0;
+        self.backGesture.alpha = 1.0;
+    }
 }
 
 - (IBAction)showHumidityGraph:(id)sender {
-    self.sensorsView.alpha = 0.0;
-    self.humidityGraph.alpha = 1.0;
-    [self.humidityGraph setNeedsDisplay];
-    self.activeView = 2;
-    self.pressureGesture.alpha = 0.0;
-    self.humidityGesture.alpha = 0.0;
-    self.temperatureGesture.alpha = 0.0;
-    self.backGesture.alpha = 1.0;
+    if (self.humidityGraph.data) {
+        self.sensorsView.alpha = 0.0;
+        self.humidityGraph.alpha = 1.0;
+        [self.humidityGraph setNeedsDisplay];
+        self.activeView = 2;
+        self.pressureGesture.alpha = 0.0;
+        self.humidityGesture.alpha = 0.0;
+        self.temperatureGesture.alpha = 0.0;
+        self.backGesture.alpha = 1.0;
+    }
 }
 
 - (IBAction)showTemperatureGraph:(id)sender {
-    self.sensorsView.alpha = 0.0;
-    self.temperatureGraph.alpha = 1.0;
-    [self.temperatureGraph setNeedsDisplay];
-    self.activeView = 3;
-    self.pressureGesture.alpha = 0.0;
-    self.humidityGesture.alpha = 0.0;
-    self.temperatureGesture.alpha = 0.0;
-    self.backGesture.alpha = 1.0;
+    if (self.temperatureGraph.data) {
+        self.sensorsView.alpha = 0.0;
+        self.temperatureGraph.alpha = 1.0;
+        [self.temperatureGraph setNeedsDisplay];
+        self.activeView = 3;
+        self.pressureGesture.alpha = 0.0;
+        self.humidityGesture.alpha = 0.0;
+        self.temperatureGesture.alpha = 0.0;
+        self.backGesture.alpha = 1.0;
+    }
 }
 
 - (IBAction)showSensors:(id)sender {
@@ -172,6 +183,14 @@
     self.humidityGesture.alpha = 1.0;
     self.temperatureGesture.alpha = 1.0;
     self.backGesture.alpha = 0.0;
+}
+
+- (IBAction)openedGesture:(UITapGestureRecognizer *)sender {
+    [self.timesOpened setNr:self.timesOpened.number+1];
+}
+
+- (IBAction)forgotGesture:(UITapGestureRecognizer *)sender {
+    [self.timesReconnected setNr:self.timesReconnected.number+1];
 }
 
 

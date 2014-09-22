@@ -23,7 +23,6 @@
 @property (weak, nonatomic) IBOutlet UIView *TempContainerExtended;
 @property (weak, nonatomic) IBOutlet UIImageView *LeftImageExtended;
 @property (weak, nonatomic) IBOutlet UIImageView *CenterImageExtended;
-@property (weak, nonatomic) UIImageView *connectionImage;
 @property (weak, nonatomic) IBOutlet UILabel *Plus4Label;
 @property (weak, nonatomic) IBOutlet UIImageView *RightImageExtended;
 @property (weak, nonatomic) IBOutlet UILabel *Plus8Label;
@@ -40,6 +39,7 @@
 @property (weak, nonatomic) IBOutlet UIView *HealthAlarmGestureView;
 @property (weak, nonatomic) IBOutlet UIImageView *weatherWarning;
 @property (weak, nonatomic) IBOutlet UIImageView *healthWarning;
+@property (weak, nonatomic) IBOutlet UIImageView *connectionImage;
 
 @property (strong,nonatomic) SensorTag *sensorTag;
 @property (strong,nonatomic) ForecastKit *forecastKit;

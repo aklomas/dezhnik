@@ -47,11 +47,11 @@
     }
     
     if(self.forecastKit.changed && self.forecastKit.forecastDict){
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"nameChanged" object:nil];
         self.pageTitle = self.forecastKit.curLocName;
         self.ForecastTempLabel.text = [NSString stringWithFormat:@"%d",(int)([self.forecastKit.getCurTemperature floatValue] + 0.5)];
         self.SummaryLabel.text = self.forecastKit.getCurSummary;
         self.LeftImageExtended.image = [UIImage imageNamed:[self.forecastKit getCurIcon]];
-        NSLog(@"%@",[self.forecastKit getCurIcon]);
         self.CenterImageExtended.image = [UIImage imageNamed:[self.forecastKit getIconForNextHour:4]];
         self.RightImageExtended.image = [UIImage imageNamed:[self.forecastKit getIconForNextHour:8]];
         
@@ -119,10 +119,15 @@
         if(self.TempCircle.extend == 0 && self.TempCircle.extended == 1.0) {
             self.TempContainer.alpha = 0.0;
             self.TempContainerExtended.alpha = 1.0;
+            if (self.forecastKit.forecastDict)
+                self.SummaryLabel.text = self.forecastKit.getDailyMessage;
+            
         }
         else if(self.TempCircle.extend == 0 && self.TempCircle.extended == 0.0){
             self.TempContainer.alpha = 1.0;
             self.TempContainerExtended.alpha = 0.0;
+            if (self.forecastKit.forecastDict)
+                self.SummaryLabel.text = self.forecastKit.getCurSummary;
         }
         else
             self.TempContainerExtended.alpha = 0.0;
@@ -150,7 +155,7 @@
         [UIView animateWithDuration:0.4 animations:^{
             self.weatherWarning.frame = CGRectMake(280,4,40,40);
         }];
-        self.SummaryLabel.text = self.forecastKit.getDailyMessage;
+        
     }
     else if(self.TempContainer.alpha == 0.0){
         self.TempCircle.extend = -1;
@@ -163,7 +168,7 @@
         [UIView animateWithDuration:0.4 animations:^{
             self.weatherWarning.frame = CGRectMake(260,4,60,60);
         }];
-        self.SummaryLabel.text = self.forecastKit.getCurSummary;
+        
     }
 }
 
