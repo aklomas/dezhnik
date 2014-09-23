@@ -47,7 +47,6 @@
     }
     
     if(self.forecastKit.changed && self.forecastKit.forecastDict){
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"nameChanged" object:nil];
         self.pageTitle = self.forecastKit.curLocName;
         self.ForecastTempLabel.text = [NSString stringWithFormat:@"%d",(int)([self.forecastKit.getCurTemperature floatValue] + 0.5)];
         self.SummaryLabel.text = self.forecastKit.getCurSummary;
@@ -86,6 +85,7 @@
         self.GraphView.percipData = data;
         [self.GraphView update];
         
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"nameChanged" object:nil];
         self.forecastKit.changed = false;
     }
     
@@ -107,8 +107,14 @@
                 self.curHum -= 0.01;
             else if (hum > self.curHum)
                 self.curHum += 0.01;
-           
-            self.parentViewController.parentViewController.view.backgroundColor = [UIColor colorWithRed:98/255.0 - 34/255.0 * self.curHum green:139/255.0 - 18/255.0 * self.curHum blue:173/255.0 - 4/255.0 * self.curHum alpha:1];
+            ///////////////////////
+            ///////BARVA
+            ///////////////////////
+            int lowColor[] = {98, 139, 173};
+            int highColor[] = {74, 121, 169};
+            self.parentViewController.parentViewController.view.backgroundColor = [UIColor colorWithRed:lowColor[0]/255.0 + (highColor[0]-lowColor[0])/255.0 * self.curHum green:lowColor[1]/255.0 + (highColor[1]-lowColor[1])/255.0 * self.curHum
+                blue:lowColor[2]/255.0 + (highColor[2]-lowColor[2])/255.0 * self.curHum
+                alpha:1];
         }
     }
     else

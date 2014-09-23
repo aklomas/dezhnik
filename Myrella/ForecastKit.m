@@ -132,7 +132,7 @@
 {
     //NSLog(@"didUpdateToLocation: %@", locations);
     self.location = [locations objectAtIndex:[locations count]-1];
-    //self.location = [[CLLocation alloc] initWithLatitude:51.58806789 longitude:-0.22813352];
+    self.location = [[CLLocation alloc] initWithLatitude:51.58806789 longitude:-0.22813352];
     // Stop Location Manager
     [self.locationManager stopUpdatingLocation];
     
