@@ -12,6 +12,8 @@
 
 @property float extended;
 @property int extend;
+@property UIView * blurredView;
+@property UIImage * mask;
 
 -(void)update;
 

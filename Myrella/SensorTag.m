@@ -220,7 +220,8 @@
     self.sensorsEnabled = [[NSMutableArray alloc] init];
     [self.rssiTimer invalidate];
     [self.logTimer invalidate];
-    [central scanForPeripheralsWithServices:self.device.p.services options:nil];
+    if(self.device.p)
+        [central scanForPeripheralsWithServices:nil options:nil];
 }
 
 
@@ -231,7 +232,7 @@
     [self.rssiTimer invalidate];
     [self.logTimer invalidate];
     self.sensorsEnabled = [[NSMutableArray alloc] init];
-    [central scanForPeripheralsWithServices:self.device.p.services options:nil];
+    [central scanForPeripheralsWithServices:nil options:nil];
 }
 
 
@@ -413,15 +414,16 @@
 }
 
 -(void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error {
-    if ([service.UUID isEqual:[CBUUID UUIDWithString:[self.device.setupData valueForKey:@"Accelerometer service UUID"]]]) {
-        //NSLog(@"found gyro service");
-        [self configureSensorTag];
-        self.isConnected = true;
-        self.rssiTimer = [NSTimer timerWithTimeInterval:0.3f target:self selector:@selector(rssiTimer:) userInfo:nil repeats:YES];
-        [[NSRunLoop mainRunLoop] addTimer:self.rssiTimer forMode:NSRunLoopCommonModes];
-        self.logTimer = [NSTimer scheduledTimerWithTimeInterval:self.logInterval target:self selector:@selector(logValues:) userInfo:nil repeats:YES];
-        [[NSRunLoop mainRunLoop] addTimer:self.logTimer forMode:NSRunLoopCommonModes];
-    }
+    if(self.device)
+        if ([service.UUID isEqual:[CBUUID UUIDWithString:[self.device.setupData valueForKey:@"Accelerometer service UUID"]]]) {
+            //NSLog(@"found gyro service");
+            [self configureSensorTag];
+            self.isConnected = true;
+            self.rssiTimer = [NSTimer timerWithTimeInterval:0.3f target:self selector:@selector(rssiTimer:) userInfo:nil repeats:YES];
+            [[NSRunLoop mainRunLoop] addTimer:self.rssiTimer forMode:NSRunLoopCommonModes];
+            self.logTimer = [NSTimer scheduledTimerWithTimeInterval:self.logInterval target:self selector:@selector(logValues:) userInfo:nil repeats:YES];
+            [[NSRunLoop mainRunLoop] addTimer:self.logTimer forMode:NSRunLoopCommonModes];
+        }
 }
 
 -(void) peripheral:(CBPeripheral *)peripheral didUpdateNotificationStateForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {

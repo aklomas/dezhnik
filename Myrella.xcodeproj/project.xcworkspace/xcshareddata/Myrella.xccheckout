@@ -10,29 +10,29 @@
 	<string>Myrella</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>E73DA4FB-83F7-4FCB-8C01-A45F57619DC3</key>
-		<string>ssh://github.com/aklomas/dezhnik.git</string>
+		<key>0EEC7D4B38FB52CD968234825018CC4FE0E42418</key>
+		<string>github.com:aklomas/dezhnik.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Myrella.xcodeproj/project.xcworkspace</string>
+	<string>Myrella.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>E73DA4FB-83F7-4FCB-8C01-A45F57619DC3</key>
+		<key>0EEC7D4B38FB52CD968234825018CC4FE0E42418</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/aklomas/dezhnik.git</string>
+	<string>github.com:aklomas/dezhnik.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>E73DA4FB-83F7-4FCB-8C01-A45F57619DC3</string>
+	<string>0EEC7D4B38FB52CD968234825018CC4FE0E42418</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>E73DA4FB-83F7-4FCB-8C01-A45F57619DC3</string>
+			<string>0EEC7D4B38FB52CD968234825018CC4FE0E42418</string>
 			<key>IDESourceControlWCCName</key>
 			<string>dezhnik</string>
 		</dict>

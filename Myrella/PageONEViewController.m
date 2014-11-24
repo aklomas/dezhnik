@@ -30,8 +30,22 @@
     self.changedBg = false;    
     self.showSevereWeatherAlert = false;
     self.showHealthHazardAlert = false;
-
+    
+    /*UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+    [blurEffectView setFrame:self.view.bounds];
+    [self.view addSubview:blurEffectView];
+    [self.blurView insertSubview:blurEffectView belowSubview:self.transparentView];
+*/
     //[self resumeTimer];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    self.blurView.alpha = 1.0;
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,10 +54,62 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) captureBlur {
+    //Get a UIImage from the UIView
+    NSLog(@"blur capture");
+    
+    UIGraphicsBeginImageContext(self.backgroundImage.bounds.size);
+    [self.backgroundImage.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    float blurRadius = 15.0;
+    //Blur the UIImage
+    CIImage *imageToBlur = [CIImage imageWithCGImage:viewImage.CGImage];
+    CIContext *context = [CIContext contextWithOptions:nil];
+    CGAffineTransform transform = CGAffineTransformIdentity;
+    
+    CIFilter *clampFilter = [CIFilter filterWithName:@"CIAffineClamp"];
+    [clampFilter setValue:imageToBlur forKey:kCIInputImageKey];
+    [clampFilter setValue:[NSValue valueWithBytes:&transform objCType:@encode(CGAffineTransform)] forKey:@"inputTransform"];
+    
+    CIImage *outputImage = [clampFilter outputImage];
+    
+    CIFilter *gaussianBlurFilter = [CIFilter filterWithName: @"CIGaussianBlur"];
+    [gaussianBlurFilter setValue:outputImage forKey: @"inputImage"];
+    [gaussianBlurFilter setValue:[NSNumber numberWithFloat: blurRadius] forKey: @"inputRadius"]; //change number to increase/decrease blur
+    CIImage *resultImage = [gaussianBlurFilter valueForKey: @"outputImage"];
+    //NSLog(@"%f, %f", resultImage.extent.size.height,resultImage.extent.size.width);
+    
+    
+    CGImageRef cgimg = [context createCGImage:resultImage fromRect:[imageToBlur extent]];
+    UIImage *blurredImage = [UIImage imageWithCGImage:cgimg];
+    CGImageRelease(cgimg);
+    
+    UIImageView *newView = [[UIImageView alloc] initWithFrame:CGRectMake(10.0, -250.0, self.backgroundImage.bounds.size.width, self.backgroundImage.bounds.size.height)];
+    newView.image = blurredImage;
+    [self.blurView insertSubview:newView belowSubview:self.transparentView];
+    
+    UIImageView *newView1 = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, -73.0, self.backgroundImage.bounds.size.width, self.backgroundImage.bounds.size.height)];
+    newView1.image = blurredImage;
+    [self.blurViewCircle insertSubview:newView1 belowSubview:self.transparentViewCircle];
+    
+    [self.TempCircle update];
+
+}
+
 -(void)updateView:(NSTimer *)timer {
     if (!self.changedBg) {
         self.parentViewController.parentViewController.view.backgroundColor = [UIColor colorWithRed:98/255.0 green:139/255.0 blue:173/255.0 alpha:1];
+        [self performSelector:@selector(captureBlur) withObject:nil];
         self.changedBg = true;
+        self.TempCircle.blurredView = self.blurViewCircle;
+        self.blurView.layer.borderColor = [UIColor colorWithRed:175/255.0 green:193/255.0 blue:204/255.0 alpha:1].CGColor;
+        self.blurView.layer.borderWidth = 0.7f;
+        
+        self.borderView.layer.borderColor = [UIColor colorWithRed:175/255.0 green:193/255.0 blue:204/255.0 alpha:1].CGColor;
+        self.borderView.layer.borderWidth = 0.7f;
+        
     }
     
     if(self.forecastKit.changed && self.forecastKit.forecastDict){

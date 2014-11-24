@@ -41,8 +41,16 @@
 @property (weak, nonatomic) IBOutlet UIImageView *healthWarning;
 @property (weak, nonatomic) IBOutlet UIImageView *connectionImage;
 
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
+@property (weak, nonatomic) IBOutlet UIView *blurView;
+@property (weak, nonatomic) IBOutlet UIView *transparentView;
+
+@property (weak, nonatomic) IBOutlet UIView *transparentViewCircle;
+@property (weak, nonatomic) IBOutlet UIView *blurViewCircle;
+
 @property (strong,nonatomic) SensorTag *sensorTag;
 @property (strong,nonatomic) ForecastKit *forecastKit;
+@property (weak, nonatomic) IBOutlet UIView *borderView;
 
 @property (strong,nonatomic) NSString *pageTitle;
 @property NSTimer* uiTimer;

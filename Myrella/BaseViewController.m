@@ -206,7 +206,7 @@
         if (self.forecastKit.getAlerts.count > 0) {
             ((PageONEViewController *)[self.views objectAtIndex:0]).AlarmView.alpha = 1.0;
             ((PageONEViewController *)[self.views objectAtIndex:0]).AlarmGestureView.alpha = 1.0;
-            self.severeWeatherAlert.message = [self.forecastKit.getAlerts componentsJoinedByString:@" "];
+            self.severeWeatherAlert.message = [self.forecastKit.getAlerts valueForKey:@"description"];
             
             NSLog(@"%@",self.severeWeatherAlert.message);
             

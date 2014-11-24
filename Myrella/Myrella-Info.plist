@@ -39,5 +39,9 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Without location services app won&apos;t function properly.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Without location services app won&apos;t function properly.</string>
 </dict>
 </plist>

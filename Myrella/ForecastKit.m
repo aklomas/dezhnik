@@ -9,6 +9,7 @@
 #import "ForecastKit.h"
 #import "AFHTTPRequestOperation.h"
 
+
 @interface ForecastKit()
 
 @property (nonatomic, strong) NSString *apiKey;
@@ -16,6 +17,8 @@
 @end
 
 @implementation ForecastKit
+
+#define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 
 -(id)initWithAPIKey:(NSString*)api_key {
     self = [super init];
@@ -28,6 +31,8 @@
         self.geocoder = [[CLGeocoder alloc] init];
         self.locationManager.delegate = self;
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        if(IS_OS_8_OR_LATER)
+            [self.locationManager requestWhenInUseAuthorization];
         //[self.locationManager startUpdatingLocation];
         self.changed = false;
         self.changedAlerts = false;
@@ -132,7 +137,7 @@
 {
     //NSLog(@"didUpdateToLocation: %@", locations);
     self.location = [locations objectAtIndex:[locations count]-1];
-    self.location = [[CLLocation alloc] initWithLatitude:51.58806789 longitude:-0.22813352];
+    //self.location = [[CLLocation alloc] initWithLatitude:51.58806789 longitude:-0.22813352];
     // Stop Location Manager
     [self.locationManager stopUpdatingLocation];
     
